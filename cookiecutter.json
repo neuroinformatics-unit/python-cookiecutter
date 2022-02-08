@@ -1,0 +1,18 @@
+{
+    "full_name": "Python developer",
+    "email": "yourname@example.com",
+    "github_username_or_organization": "githubuser",
+    "package_name": "python-package",
+    "github_repository_url": ["https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}", "provide later"],
+    "module_name": "{{ cookiecutter.package_name|lower|replace('-', '_') }}",
+    "short_description": "A simple Python package",
+    "license": [
+        "BSD-3",
+        "MIT",
+        "Mozilla Public License 2.0",
+        "Apache Software License 2.0",
+        "GNU LGPL v3.0",
+        "GNU GPL v3.0"
+    ],
+    "_copy_without_render": [".github/*"]
+}
