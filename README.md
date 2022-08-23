@@ -22,7 +22,7 @@ pip install cookiecutter
 #### Then run:
 
 ```
-cookiecutter https://github.com/adamltyson/python-cookiecutter
+cookiecutter https://github.com/SainsburyWellcomeCentre/python-cookiecutter
 ```
 
 #### Then you will be asked a series of questions about how you want to set up your project
