@@ -56,7 +56,7 @@ pip install -e .
 
 For a local, editable install with all the development tools (e.g. testing, formatting etc.) run:
 ```
-pip install -e .[dev]
+pip install -e '.[dev]'
 ```
 **Pre-commit hooks**
 Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is 
