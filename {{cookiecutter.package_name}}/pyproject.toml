@@ -1,26 +1,23 @@
 [project]
 name = "{{cookiecutter.package_name}}"
 version = "0.0.1"
-authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
+authors = [{name = "{{cookiecutter.full_name}}", email= "{{cookiecutter.email}}"}]
 description = "{{cookiecutter.short_description}}"
 readme = "README.md"
 requires-python = ">=3.8.0"
 
-{% if cookiecutter.github_repository_url != 'provide later' -%}
-url = "{{ cookiecutter.github_repository_url }}"
-{%- endif %}
 {% if cookiecutter.license == "MIT" -%}
-license = "{{cookiecutter.license}}"
+license = {text = "{{cookiecutter.license}}"}
 {%- elif cookiecutter.license == "BSD-3" -%}
-license = "BSD-3-Clause"
+license = {text = "BSD-3-Clause"}
 {%- elif cookiecutter.license == "GNU GPL v3.0" -%}
-license = "GPL-3.0-only"
+license = {text = "GPL-3.0-only"}
 {%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
-license = "LGPL-3.0-only"
+license = {text = "LGPL-3.0-only"}
 {%- elif cookiecutter.license == "Apache Software License 2.0" -%}
-license = "Apache-2.0"
+license = {text = "Apache-2.0"}
 {%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
-license = "MPL-2.0"
+license = {text = "MPL-2.0"}
 {%- endif %}
 
 classifiers = [
@@ -49,6 +46,7 @@ classifiers = [
 
 {% if cookiecutter.github_repository_url != 'provide later' -%}
 [project.urls]
+homepage = "{{ cookiecutter.github_repository_url }}"
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
@@ -76,11 +74,6 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-
-
-
-[tool.setuptools.packages]
-find = {}  # Scanning implicit namespaces is active by default
 
 [tool.setuptools.packages.find]
 where = ["{{cookiecutter.module_name}}"]
