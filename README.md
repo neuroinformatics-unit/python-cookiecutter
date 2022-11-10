@@ -46,6 +46,8 @@ converted to underscores.
   - `5 - GNU LGPL v3.0`
   - `6 - GNU GPL v3.0`
 
+A project with this information will then be written to the current working directory.
+
 ### To use:
 
 **Installation**
