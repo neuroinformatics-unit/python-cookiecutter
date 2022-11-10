@@ -46,6 +46,7 @@ classifiers = [
     "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     {%- endif %}
 ]
+
 {% if cookiecutter.github_repository_url != 'provide later' -%}
 [project.urls]
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
@@ -53,8 +54,6 @@ documentation = "https://github.com/{{cookiecutter.github_username_or_organizati
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
-
-
 
 [options.extras_require]
 dev = [
