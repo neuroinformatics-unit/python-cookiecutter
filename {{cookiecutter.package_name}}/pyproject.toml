@@ -66,13 +66,18 @@ dev = [
 	"coverage",
 ]
 
+
+
 [build-system]
 requires = [
-    "setuptools",
-    "wheel",  # https://stackoverflow.com/questions/72018887/how-to-build-a-universal-wheel-with-pyproject-toml
+    "setuptools>=45",
+    "wheel",
     "setuptools_scm[toml]>=6.2",
 ]
 build-backend = "setuptools.build_meta"
+
+
+
 
 [tool.setuptools.packages]
 find = {}  # Scanning implicit namespaces is active by default
