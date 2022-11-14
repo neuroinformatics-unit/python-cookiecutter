@@ -53,7 +53,7 @@ source_code = "https://github.com/{{cookiecutter.github_username_or_organization
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
 
-[options.extras_require]
+[project.optional-dependencies]
 dev = [
 	"black",
 	"pytest",
