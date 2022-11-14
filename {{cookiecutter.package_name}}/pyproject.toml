@@ -62,6 +62,7 @@ dev = [
 	"pre-commit",
 	"flake8",
 	"coverage",
+  "setuptools_scm"
 ]
 
 
