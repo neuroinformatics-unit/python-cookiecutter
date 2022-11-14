@@ -10,7 +10,8 @@ It will also set up:
 * Automatic versioning using [bump2version](https://github.com/c4urself/bump2version)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
-**Based on [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
+
+**Based on the [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
 
 ### To set up:
 
