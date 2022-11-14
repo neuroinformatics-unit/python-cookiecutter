@@ -74,10 +74,12 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["{{cookiecutter.module_name}}"]
-exclude = ["{{cookiecutter.package_name}}.test*"]
+exclude = ["test*"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.package_name}}"
