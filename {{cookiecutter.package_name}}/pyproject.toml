@@ -59,9 +59,9 @@ dev = [
 	"coverage",
 	"tox",
 	"black",
-    "isort",
-    "mypy",
-    "bump2version",
+  "isort",
+  "mypy",
+  "bump2version",
 	"pre-commit",
 	"flake8",
  	"setuptools_scm",
@@ -85,7 +85,7 @@ include = ["{{cookiecutter.module_name}}*"]
 exclude = ["tests*"]
 
 [tool.pytest.ini_options]
-addopts = "--cov={{cookiecutter.package_name}}"
+addopts = "--cov={{cookiecutter.module_name}}"
 
 [tool.black]
 target-version = ['py39']
