@@ -11,22 +11,22 @@ It will also set up:
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
 
-**Based on the [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
+**Based on [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
 
-### To set up:
+## Set up
 
-#### First install cookiecutter:
-```
+First install cookiecutter in your desired environment
+```bash
 pip install cookiecutter
 ```
 
-#### Then run:
+In the folder you want to create the repo run
 
-```
+```bash
 cookiecutter https://github.com/SainsburyWellcomeCentre/python-cookiecutter
 ```
 
-#### Then you will be asked a series of questions about how you want to set up your project
+You will be then asked a series of questions about how you want to set up your project
 
 For each one, type your answer, enter a single number (or just hit return) to choose from a default option.
 
@@ -47,32 +47,140 @@ converted to underscores.
   - `5 - GNU LGPL v3.0`
   - `6 - GNU GPL v3.0`
 
-### To use:
+## What are all these files?
 
-**Installation**
-For a local, editable install, in the project directory, run:
+This is the structure cookiecutter will create:
 ```
+my-awesome-software
+	├── LICENSE
+	├── MANIFEST.in
+	├── README.md
+	├── my_awesome_software
+	│   ├── __init__.py
+	├── pyproject.toml
+	├── tests
+    │   ├── __init__.py
+    │   ├── test_integration
+    │   │   └── __init__.py
+    │   └── test_unit
+    │       ├── __init__.py
+    │       └── test_placeholder.py
+	└── tox.ini
+```
+
+### Make it a git repo
+
+Althoug it asks for gihub username or organization and package name, it does not initialize a git repository.
+In order to do so navigate to your project folder:
+```bash
+cd my-awesome-software`
+```
+and run:
+```shell
+git init -b main
+```
+
+Then stage and commit your changes:
+```bash
+git add .
+git commit -m "Initial commit"
+```
+
+On github create a new empty repository, and locally add the remote origin and push:
+```bash
+git remote add origin git@github.com:adamltyson/my-awesome-software.git
+git push
+```
+
+## Add your modules and tests
+
+Your methods and classes would live inside the folder `my_awesome_software`. Split the functionalities into modules, and save them as `.py` files.
+```
+my_awesome_software
+	├── __init__.py
+	├── math.py
+	├── more_math.py
+```
+
+If you want to import methods and classes from one module to another you can use the dot:
+```python
+# filename: maths.py
+from .more_math import subtract
+```
+
+If you want to import all the modules when installing you can add the following to your `__init__.py`:
+```python
+from . import *
+```
+
+### Write tests
+Write your test methods and classes in the `test` folder. We are using [pytest](https://docs.pytest.org/en/7.2.x/getting-started.html).
+In your test module you can call your methods in a simple way:
+```python
+# filename: test_math.py
+from my_awesome_software import math
+
+# here your test function
+```
+
+## Before committing your changes
+
+### Tests
+
+Be sure that you have installed pytest:
+```bash
+pip install pytest
+```
+When running `pytest` you should also see coverage information.
+
+### Install your package locally
+
+For a local, editable install, in the project directory, run:
+```bash
 pip install -e .
 ```
 
 For a local, editable install with all the development tools (e.g. testing, formatting etc.) run:
-```
+```bash
 pip install -e '.[dev]'
 ```
-**Pre-commit hooks**
+
+You might want to install your package in an _ad hoc_ environment.
+
+To test if the installation works, try to call your modules with python in another folder from the same environment.
+```python
+from my_awesome_sofware.maths import add_numbers
+add_numbers(1, 2)
+```
+
+### Pre-commit hooks
+
 Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is 
 formatted correctly. Currently these are:
-
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
 * [flake8](https://flake8.pycqa.org/en/latest/) to enforce [PEP8](https://www.python.org/dev/peps/pep-0008/)
+* [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
+* [isort](https://pycqa.github.io/isort/) sorts imports alphabetically
 
 These will prevent code being committed if any of these hooks fail. To run them individually:
-```
+```bash
 black ./
 flake8
+mypy
+isort
 ```
 
-**Automated versioning**
+You can also run `pre-commit` to run all of them before trying to commit.
+
+In the case you see `mypy` failing with an error like `Library stubs not installed for this-package`, you do have to edit the `.pre-commit-config.yaml` file by adding the additional dependency to `mypy`:
+```yml
+- id: mypy
+	additional_dependencies:
+		- types-setuptools
+		- types-this-package
+```
+
+## Automated versioning
 
 [bump2version](https://github.com/c4urself/bump2version) is used to enforce a consistent style for version numbers,
 and create git tags as appropriate.
@@ -93,13 +201,11 @@ To ensure the tags are pushed to GitHub:
 git push --follow-tags
 ```
 
-**Test structure**
 
-A [pytest](https://docs.pytest.org/en/7.0.x/) test suite can be run with `pytest`. 
-A template structure for this is in `tests`.
+## GitHub actions workflow
 
-**GitHub actions workflow**
 A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set up to run (on each commit/PR):
 * Linting checks (black, flake8, mypy).
 * Pytest (only if linting checks pass)
 * Release to PyPI (only if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
+
