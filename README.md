@@ -15,18 +15,14 @@ It will also set up:
 
 ## Set up
 
-First install cookiecutter in your desired environment
-```bash
-pip install cookiecutter
-```
+First, install cookiecutter in your desired environment.
 
-In the folder you want to create the repo run
-
+In the folder, you want to create the repo run:
 ```bash
 cookiecutter https://github.com/SainsburyWellcomeCentre/python-cookiecutter
 ```
 
-You will be then asked a series of questions about how you want to set up your project
+You will be then asked a series of questions about how you want to set up your project.
 
 For each one, type your answer, enter a single number (or just hit return) to choose from a default option.
 
@@ -34,10 +30,8 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 * `email [yourname@example.com]:` - e.g. `cookiecutter@adamltyson.com`
 * `github_username_or_organization [githubuser]: ` - e.g. `adamltyson`
 * `package_name [python-package]:` - e.g. `my-awesome-software`
-* `Select github_repository_url:` - Default will be e.g. `https://github.com/adamltyson/my-awesome-software`, but you 
-can also provide this later.
-* `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens 
-converted to underscores.
+* `Select github_repository_url:` - Default will be e.g. `https://github.com/adamltyson/my-awesome-software`, but you can also provide this later.
+* `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
 * `short_description [A simple Python package]` - Enter a simple, one-line description of your Python package. 
 * `Select license:` - choose from:
   - `1 - BSD-3`
@@ -46,8 +40,6 @@ converted to underscores.
   - `4 - Apache Software License 2.0`
   - `5 - GNU LGPL v3.0`
   - `6 - GNU GPL v3.0`
-
-## What are all these files?
 
 This is the structure cookiecutter will create:
 ```
@@ -70,8 +62,9 @@ my-awesome-software
 
 ### Make it a git repo
 
-Althoug it asks for gihub username or organization and package name, it does not initialize a git repository.
-In order to do so navigate to your project folder:
+Although it asks for a GitHub username or organization and package name, it does not initialize a git repository.
+
+To do so navigate to your project folder:
 ```bash
 cd my-awesome-software`
 ```
@@ -114,6 +107,7 @@ from . import *
 ```
 
 ### Write tests
+
 Write your test methods and classes in the `test` folder. We are using [pytest](https://docs.pytest.org/en/7.2.x/getting-started.html).
 In your test module you can call your methods in a simple way:
 ```python
@@ -123,15 +117,18 @@ from my_awesome_software import math
 # here your test function
 ```
 
+If you're testing a small piece of code, make it a unit test. If you want to test whether two or more software units work well together, create an integration test.
+
 ## Before committing your changes
 
-### Tests
+### Run the tests
 
-Be sure that you have installed pytest:
+Be sure that you have installed pytest and run it
 ```bash
 pip install pytest
+pytest
 ```
-When running `pytest` you should also see coverage information.
+You should also see coverage information.
 
 ### Install your package locally
 
@@ -156,13 +153,13 @@ add_numbers(1, 2)
 ### Pre-commit hooks
 
 Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is 
-formatted correctly. Currently these are:
+formatted correctly. Currently, these are:
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
 * [flake8](https://flake8.pycqa.org/en/latest/) to enforce [PEP8](https://www.python.org/dev/peps/pep-0008/)
 * [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
 * [isort](https://pycqa.github.io/isort/) sorts imports alphabetically
 
-These will prevent code being committed if any of these hooks fail. To run them individually:
+These will prevent code from being committed if any of these hooks fail. To run them individually:
 ```bash
 black ./
 flake8
@@ -185,13 +182,13 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 [bump2version](https://github.com/c4urself/bump2version) is used to enforce a consistent style for version numbers,
 and create git tags as appropriate.
 
-`.bumpversion.cfg` defines in which files the version will be updated (`setup.cfg`, `<MODULE_NAME>/__init__.py`) and how.
+`.bumpversion.cfg` defines in which files the version will be updated (`setup.cfg`, `my_awesome_software/__init__.py`) and how.
 
-Running `bump2version` will update version numbers throughout the code and, commit the changes to git and tag the commit. The current version is `0.0.1` and there are five version types set up:
+Running `bump2version` will update version numbers throughout the code, commit the changes to git and tag the commit. The current version is `0.0.1` and there are five version types set up:
 
 * `bump2version patch`, e.g. bump from `0.0.1` to a release candidate `0.0.2rc0`
 * `bump2version minor`, e.g. bump from `0.0.1` to a release candidate `0.1.0rc0`
- * `bump2version major`, e.g. bump from `0.0.1` to a release candidate `1.0.0rc0`
+* `bump2version major`, e.g. bump from `0.0.1` to a release candidate `1.0.0rc0`
 * `bump2version rc`, e.g. bump from `0.1.0rc0` to create a new release candidate `0.1.0rc1`
 * `bump2version release`, e.g. bump from `0.1.0rc0` to create a new release `0.1.0`
 
