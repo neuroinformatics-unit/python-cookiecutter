@@ -59,9 +59,8 @@ dev = [
 	"coverage",
 	"tox",
 	"black",
-  "isort",
-  "mypy",
-  "bump2version",
+    "isort",
+    "mypy",
 	"pre-commit",
 	"flake8",
  	"setuptools_scm",
@@ -114,3 +113,4 @@ profile = "black"
 line_length = 79
 
 [tool.setuptools_scm]
+write_to = "{{cookiecutter.package_name}}/_version.py"
