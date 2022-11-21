@@ -179,24 +179,14 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 
 ## Automated versioning
 
-[bump2version](https://github.com/c4urself/bump2version) is used to enforce a consistent style for version numbers,
-and create git tags as appropriate.
+How to use setuptools_scm to automatically version your package.
 
-`.bumpversion.cfg` defines in which files the version will be updated (`setup.cfg`, `my_awesome_software/__init__.py`) and how.
-
-Running `bump2version` will update version numbers throughout the code, commit the changes to git and tag the commit. The current version is `0.0.1` and there are five version types set up:
-
-* `bump2version patch`, e.g. bump from `0.0.1` to a release candidate `0.0.2rc0`
-* `bump2version minor`, e.g. bump from `0.0.1` to a release candidate `0.1.0rc0`
-* `bump2version major`, e.g. bump from `0.0.1` to a release candidate `1.0.0rc0`
-* `bump2version rc`, e.g. bump from `0.1.0rc0` to create a new release candidate `0.1.0rc1`
-* `bump2version release`, e.g. bump from `0.1.0rc0` to create a new release `0.1.0`
-
-To ensure the tags are pushed to GitHub:
+Install setuptools_scm
 
 ```bash
-git push --follow-tags
+pip install setuptools_scm
 ```
+TODO
 
 
 ## GitHub actions workflow
