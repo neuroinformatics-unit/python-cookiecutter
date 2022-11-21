@@ -59,6 +59,7 @@ my-awesome-software
     │       └── test_placeholder.py
 	└── tox.ini
 ```
+A project with this information will then be written to the current working directory.
 
 ### Make it a git repo
 
