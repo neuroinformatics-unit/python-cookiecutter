@@ -1,9 +1,90 @@
+[project]
+name = "{{cookiecutter.package_name}}"
+authors = [{name = "{{cookiecutter.full_name}}", email= "{{cookiecutter.email}}"}]
+description = "{{cookiecutter.short_description}}"
+readme = "README.md"
+requires-python = ">=3.8.0"
+dynamic = ["version"]
+
+{% if cookiecutter.license == "MIT" -%}
+license = {text = "{{cookiecutter.license}}"}
+{%- elif cookiecutter.license == "BSD-3" -%}
+license = {text = "BSD-3-Clause"}
+{%- elif cookiecutter.license == "GNU GPL v3.0" -%}
+license = {text = "GPL-3.0-only"}
+{%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
+license = {text = "LGPL-3.0-only"}
+{%- elif cookiecutter.license == "Apache Software License 2.0" -%}
+license = {text = "Apache-2.0"}
+{%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
+license = {text = "MPL-2.0"}
+{%- endif %}
+
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+    {% if cookiecutter.license == "MIT" -%}
+    "License :: OSI Approved :: MIT License",
+    {%- elif cookiecutter.license == "BSD-3" -%}
+    "License :: OSI Approved :: BSD License",
+    {%- elif cookiecutter.license == "GNU GPL v3.0" -%}
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    {%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    {%- elif cookiecutter.license == "Apache Software License 2.0" -%}
+    "License :: OSI Approved :: Apache Software License",
+    {%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    {%- endif %}
+]
+
+{% if cookiecutter.github_repository_url != 'provide later' -%}
+[project.urls]
+homepage = "{{ cookiecutter.github_repository_url }}"
+bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+{%- endif %}
+
+[project.optional-dependencies]
+dev = [
+	"pytest",
+	"pytest-cov",
+	"coverage",
+	"tox",
+	"black",
+    "isort",
+    "mypy",
+	"pre-commit",
+	"flake8",
+ 	"setuptools_scm",
+]
+
+
+
 [build-system]
 requires = [
-    "setuptools",
-    "wheel"
+    "setuptools>=45",
+    "wheel",
+    "setuptools_scm[toml]>=6.2",
 ]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["{{cookiecutter.module_name}}*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+addopts = "--cov={{cookiecutter.module_name}}"
 
 [tool.black]
 target-version = ['py39']
@@ -26,3 +107,20 @@ exclude = '''
   )/
 )
 '''
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.setuptools_scm]
+
+[tool.check-manifest]
+ignore = [
+  "*.yaml",
+  ".bumpversion.cfg",
+  "tox.ini",
+  "tests/*",
+  "tests/test_unit/*",
+  "tests/test_integration/*",
+  ".flake8"
+]
