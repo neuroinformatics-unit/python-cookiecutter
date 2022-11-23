@@ -44,20 +44,20 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 This is the structure cookiecutter will create:
 ```
 my-awesome-software
-	├── LICENSE
-	├── MANIFEST.in
-	├── README.md
-	├── my_awesome_software
-	│   ├── __init__.py
-	├── pyproject.toml
-	├── tests
-    │   ├── __init__.py
-    │   ├── test_integration
-    │   │   └── __init__.py
-    │   └── test_unit
-    │       ├── __init__.py
-    │       └── test_placeholder.py
-	└── tox.ini
+	LICENSE
+	MANIFEST.in
+	README.md
+	my_awesome_software/
+		__init__.py
+	pyproject.toml
+	tests/
+		__init__.py
+		test_integration/
+			__init__.py
+		test_unit/
+			__init__.py
+			test_placeholder.py
+	tox.ini
 ```
 A project with this information will then be written to the current working directory.
 
@@ -80,7 +80,7 @@ git add .
 git commit -m "Initial commit"
 ```
 
-On github create a new empty repository, and locally add the remote origin and push:
+On GitHub create a new empty repository, and locally add the remote origin and push:
 ```bash
 git remote add origin git@github.com:adamltyson/my-awesome-software.git
 git push
@@ -180,24 +180,7 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 
 ## Automated versioning
 
-[bump2version](https://github.com/c4urself/bump2version) is used to enforce a consistent style for version numbers,
-and create git tags as appropriate.
-
-`.bumpversion.cfg` defines in which files the version will be updated (`setup.cfg`, `my_awesome_software/__init__.py`) and how.
-
-Running `bump2version` will update version numbers throughout the code, commit the changes to git and tag the commit. The current version is `0.0.1` and there are five version types set up:
-
-* `bump2version patch`, e.g. bump from `0.0.1` to a release candidate `0.0.2rc0`
-* `bump2version minor`, e.g. bump from `0.0.1` to a release candidate `0.1.0rc0`
-* `bump2version major`, e.g. bump from `0.0.1` to a release candidate `1.0.0rc0`
-* `bump2version rc`, e.g. bump from `0.1.0rc0` to create a new release candidate `0.1.0rc1`
-* `bump2version release`, e.g. bump from `0.1.0rc0` to create a new release `0.1.0`
-
-To ensure the tags are pushed to GitHub:
-
-```bash
-git push --follow-tags
-```
+Use setuptools_scm to automatically version your package. It has been pre-configured in the `pyproject.toml` file.
 
 
 ## GitHub actions workflow
