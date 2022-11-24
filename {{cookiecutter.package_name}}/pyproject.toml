@@ -87,7 +87,7 @@ exclude = ["tests*"]
 addopts = "--cov={{cookiecutter.module_name}}"
 
 [tool.black]
-target-version = ['py39']
+target-version = ['py38', 'py39', 'py310']
 skip-string-normalization = false
 line-length = 79
 exclude = '''
