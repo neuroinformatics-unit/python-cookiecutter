@@ -43,21 +43,21 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 
 This is the structure cookiecutter will create:
 ```
-my-awesome-software
-	LICENSE
-	MANIFEST.in
-	README.md
-	my_awesome_software/
-		__init__.py
-	pyproject.toml
-	tests/
-		__init__.py
-		test_integration/
-			__init__.py
-		test_unit/
-			__init__.py
-			test_placeholder.py
-	tox.ini
+└── my-awesome-software/
+	├── LICENSE
+	├── MANIFEST.in
+	├── README.md
+	├── pyproject.toml
+	├── tox.ini
+	├── my_awesome_software/
+	│	└── __init__.py
+	└── tests/
+		├── __init__.py
+		├── test_integration/
+		│	└── __init__.py
+		└── test_unit/
+				├── __init__.py
+				└──  test_placeholder.py
 ```
 A project with this information will then be written to the current working directory.
 
@@ -181,6 +181,8 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 ## Automated versioning
 
 Use setuptools_scm to automatically version your package. It has been pre-configured in the `pyproject.toml` file.
+
+<!--  how to use setuptools_scm -->
 
 
 ## GitHub actions workflow
