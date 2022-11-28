@@ -178,36 +178,26 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 		- types-this-package
 ```
 
-## Automated versioning
+## Versioning
+We recommend the use of [semantic versioning](https://semver.org/), which uses a `MAJOR`.`MINOR`.`PATCH` versiong number where these mean:
 
-Use setuptools_scm to automatically version your package. It has been pre-configured in the `pyproject.toml` file.
+* PATCH = small bugfix
+* MINOR = new feature
+* MAJOR = breaking change
 
-### Versioning
+### Automated versioning
+[`setuptools_scm`](https://github.com/pypa/setuptools_scm) can be used to automatically version your package. It has been pre-configured in the `pyproject.toml` file. [`setuptools_scm` will automatically infer the version using git](https://github.com/pypa/setuptools_scm#default-versioning-scheme). To manually set a new semantic version, create a tag and make sure the tag is pushed to GitHub. E.g. to bump the version to `1.0.0`:
 
-> In the standard configuration ``setuptools_scm`` takes a look at three things:
-> 
-> 1. latest tag (with a version number)
-> 2. the distance to this tag (e.g. number of revisions since latest tag)
-> 3. workdir state (e.g. uncommitted changes since latest tag) 
-> and uses roughly the following logic to render the version:
-> no distance and clean:
->     ``{tag}``
-> distance and clean:
->     ``{next_version}.dev{distance}+{scm letter}{revision hash}``
-> no distance and not clean:
->     ``{tag}+dYYYYMMDD``
-> distance and not clean:
->     ``{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYYMMDD``
-> 
-> The next version is calculated by adding ``1`` to the last numeric component of the tag.
-> 
-> For Git projects, the version relies on `git describe <https://git-scm.com/docs/git-describe>`_,
-> so you will see an additional ``g`` prepended to the ``{revision hash}``.
+```bash
+git tag -a v1.0.0 -m "Bump to version 1.0.0"
+git push --follow-tags
+```
+
 
 ## GitHub actions workflow
 
 A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set up to run (on each commit/PR):
-* Linting checks (black, flake8, mypy).
-* Pytest (only if linting checks pass)
-* Release to PyPI (only if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
+* Linting checks (pre-commit).
+* Testing (only if linting checks pass)
+* Release to PyPI (only if a git tag is present and if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
 
