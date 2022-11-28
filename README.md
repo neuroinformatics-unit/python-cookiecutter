@@ -182,8 +182,27 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 
 Use setuptools_scm to automatically version your package. It has been pre-configured in the `pyproject.toml` file.
 
-<!--  how to use setuptools_scm -->
+### Versioning
 
+> In the standard configuration ``setuptools_scm`` takes a look at three things:
+> 
+> 1. latest tag (with a version number)
+> 2. the distance to this tag (e.g. number of revisions since latest tag)
+> 3. workdir state (e.g. uncommitted changes since latest tag) 
+> and uses roughly the following logic to render the version:
+> no distance and clean:
+>     ``{tag}``
+> distance and clean:
+>     ``{next_version}.dev{distance}+{scm letter}{revision hash}``
+> no distance and not clean:
+>     ``{tag}+dYYYYMMDD``
+> distance and not clean:
+>     ``{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYYMMDD``
+> 
+> The next version is calculated by adding ``1`` to the last numeric component of the tag.
+> 
+> For Git projects, the version relies on `git describe <https://git-scm.com/docs/git-describe>`_,
+> so you will see an additional ``g`` prepended to the ``{revision hash}``.
 
 ## GitHub actions workflow
 
