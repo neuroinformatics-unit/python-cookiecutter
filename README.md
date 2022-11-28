@@ -43,21 +43,21 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 
 This is the structure cookiecutter will create:
 ```
-my-awesome-software
+└── my-awesome-software/
 	├── LICENSE
 	├── MANIFEST.in
 	├── README.md
-	├── my_awesome_software
-	│   ├── __init__.py
 	├── pyproject.toml
-	├── tests
-    │   ├── __init__.py
-    │   ├── test_integration
-    │   │   └── __init__.py
-    │   └── test_unit
-    │       ├── __init__.py
-    │       └── test_placeholder.py
-	└── tox.ini
+	├── tox.ini
+	├── my_awesome_software/
+	│	└── __init__.py
+	└── tests/
+		├── __init__.py
+		├── test_integration/
+		│	└── __init__.py
+		└── test_unit/
+				├── __init__.py
+				└──  test_placeholder.py
 ```
 A project with this information will then be written to the current working directory.
 
@@ -80,7 +80,7 @@ git add .
 git commit -m "Initial commit"
 ```
 
-On github create a new empty repository, and locally add the remote origin and push:
+On GitHub create a new empty repository, and locally add the remote origin and push:
 ```bash
 git remote add origin git@github.com:adamltyson/my-awesome-software.git
 git push
@@ -178,24 +178,18 @@ In the case you see `mypy` failing with an error like `Library stubs not install
 		- types-this-package
 ```
 
-## Automated versioning
+## Versioning
+We recommend the use of [semantic versioning](https://semver.org/), which uses a `MAJOR`.`MINOR`.`PATCH` versiong number where these mean:
 
-[bump2version](https://github.com/c4urself/bump2version) is used to enforce a consistent style for version numbers,
-and create git tags as appropriate.
+* PATCH = small bugfix
+* MINOR = new feature
+* MAJOR = breaking change
 
-`.bumpversion.cfg` defines in which files the version will be updated (`setup.cfg`, `my_awesome_software/__init__.py`) and how.
-
-Running `bump2version` will update version numbers throughout the code, commit the changes to git and tag the commit. The current version is `0.0.1` and there are five version types set up:
-
-* `bump2version patch`, e.g. bump from `0.0.1` to a release candidate `0.0.2rc0`
-* `bump2version minor`, e.g. bump from `0.0.1` to a release candidate `0.1.0rc0`
-* `bump2version major`, e.g. bump from `0.0.1` to a release candidate `1.0.0rc0`
-* `bump2version rc`, e.g. bump from `0.1.0rc0` to create a new release candidate `0.1.0rc1`
-* `bump2version release`, e.g. bump from `0.1.0rc0` to create a new release `0.1.0`
-
-To ensure the tags are pushed to GitHub:
+### Automated versioning
+[`setuptools_scm`](https://github.com/pypa/setuptools_scm) can be used to automatically version your package. It has been pre-configured in the `pyproject.toml` file. [`setuptools_scm` will automatically infer the version using git](https://github.com/pypa/setuptools_scm#default-versioning-scheme). To manually set a new semantic version, create a tag and make sure the tag is pushed to GitHub. E.g. to bump the version to `1.0.0`:
 
 ```bash
+git tag -a v1.0.0 -m "Bump to version 1.0.0"
 git push --follow-tags
 ```
 
@@ -203,7 +197,7 @@ git push --follow-tags
 ## GitHub actions workflow
 
 A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set up to run (on each commit/PR):
-* Linting checks (black, flake8, mypy).
-* Pytest (only if linting checks pass)
-* Release to PyPI (only if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
+* Linting checks (pre-commit).
+* Testing (only if linting checks pass)
+* Release to PyPI (only if a git tag is present and if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
 
