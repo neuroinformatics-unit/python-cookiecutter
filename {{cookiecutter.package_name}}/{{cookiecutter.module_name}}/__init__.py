@@ -1,7 +1,7 @@
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 
 try:
-    __version__ = version("{{cookiecutter.package_name}}")
+    __version__ = version("python-packaging-at")
 except PackageNotFoundError:
     # package is not installed
     pass
