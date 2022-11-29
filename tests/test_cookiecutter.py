@@ -1,34 +1,34 @@
-import pathlib
 import toml
-import pytest
 import subprocess
 import yaml
-import pathlib
 import os
-import shutil
+import tempfile
+from pathlib import Path
+
 # dependencies
 # pyyaml
 # cookiecutter
 # pytest
+# toml
 
 
-TEST_DIR = pathlib.Path("/Users/joeziminski/data/cookiecutter")  # change now config in tests dir and use pytest tmpdir for tests
-CONFIG_FILENAME = "cookiecutter_test_configs.yaml"
-COOKIECUTTER_URL = "https://github.com/SainsburyWellcomeCentre/python-cookiecutter.git --checkout porting_to_pyproject.toml"
-COOKIECUTTER_CUT_URL = "https://github.com/SainsburyWellcomeCentre/python-cookiecutter.git"
+TEST_DIR = Path(tempfile.mkdtemp())
+print(TEST_DIR)
+COOKIECUTTER_DIR = Path.cwd()
+CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
 class TestCookieCutter:
+    def __init__(self):
+        self.config_dict = self.load_configs()
+        self.package_path = TEST_DIR / self.config_dict["package_name"]
 
     def setup_cookiercutter(self):
         os.chdir(TEST_DIR)
-        if os.path.isdir(TEST_DIR / "test-cookiecutter"):  # TODO: config
-            shutil.rmtree(TEST_DIR / "test-cookiecutter")
-
-        subprocess.run(f"cookiecutter {COOKIECUTTER_URL} --config-file {TEST_DIR / CONFIG_FILENAME} --no-input", shell=True)
+        subprocess.run(f"cookiecutter {COOKIECUTTER_DIR} --config-file {CONFIG_FILENAME} --no-input", shell=True)
 
     def load_configs(self):
         """"""
-        with open(TEST_DIR / CONFIG_FILENAME, "r") as config_file:
+        with open(f"{CONFIG_FILENAME}", "r") as config_file:
             config_dict = yaml.full_load(config_file)
         config_dict = config_dict["default_context"]
 
@@ -36,39 +36,31 @@ class TestCookieCutter:
 
     def test_directory_names(self):
         """"""
-        config_dict = self.load_configs()
-        package_path = TEST_DIR / config_dict["package_name"]
+        assert self.package_path.exists()
+        assert (self.package_path / ".flake8").exists()
+        assert (self.package_path / ".github").exists()
+        assert (self.package_path / ".gitignore").exists()
+        assert (self.package_path / ".pre-commit-config.yaml").exists()
+        assert (self.package_path / "LICENSE").exists()
+        assert (self.package_path / "MANIFEST.in").exists()
+        assert (self.package_path / "pyproject.toml").exists()
+        assert (self.package_path / "README.md").exists()
+        assert (self.package_path / "tox.ini").exists()
 
-        assert os.path.isdir(package_path)
-        assert os.path.isfile(package_path / ".bumpversion.cfg")
-        assert os.path.isfile(package_path / ".flake8")
-        assert os.path.isdir(package_path / ".github")
-        assert os.path.isfile(package_path / ".gitignore")
-        assert os.path.isfile(package_path / ".pre-commit-config.yaml")
-        assert os.path.isfile(package_path / "LICENSE")
-        assert os.path.isfile(package_path / "MANIFEST.in")
-        assert os.path.isfile(package_path / "pyproject.toml")
-        assert os.path.isfile(package_path / "README.md")
+        assert (self.package_path / "test_cookiecutter").exists()
+        assert (self.package_path / "test_cookiecutter" / "__init__.py").exists()
 
-        assert os.path.isdir(package_path / "test_cookiecutter")  # TODO: why is this underscore?
-        assert os.path.isfile(package_path / "test_cookiecutter" / "__init__.py")
-
-        # assert not os.path.isdir(package_path / "tests") FAILING
+        assert (self.package_path / "tests").exists()
 
     def check_pyproject_toml(self):
-
-        config_dict = self.load_configs()
-        package_path = TEST_DIR / config_dict["package_name"]  # TODO: copy from above
-
-        pyproject_path =  package_path / "pyproject.toml"
+        pyproject_path =  self.package_path / "pyproject.toml"
         project_toml = toml.load(pyproject_path.as_posix())
 
-        assert project_toml["project"]["name"] == config_dict["package_name"]
+        assert project_toml["project"]["name"] == self.config_dict["package_name"]
 
         # some of these are hard coded from the cookiecutter pyproject.toml as not asked user for
-        assert project_toml["project"]["version"] == "0.0.1" # TODO: could not load this in config
-        assert project_toml["project"]["authors"][0]["name"] == config_dict["full_name"]
-        assert project_toml["project"]["authors"][0]["email"] == config_dict["email"]
+        assert project_toml["project"]["authors"][0]["name"] == self.config_dict["full_name"]
+        assert project_toml["project"]["authors"][0]["email"] == self.config_dict["email"]
         assert project_toml["project"]["description"] == "A simple Python package"
 
         assert project_toml["project"]["readme"] == "README.md"
@@ -78,27 +70,29 @@ class TestCookieCutter:
         assert project_toml["project"]["classifiers"] == ["Development Status :: 2 - Pre-Alpha",
                                                           "Programming Language :: Python",
                                                           "Programming Language :: Python :: 3",
-                                                          "Programming Language :: Python :: 3.7",
                                                           "Programming Language :: Python :: 3.8",
                                                           "Programming Language :: Python :: 3.9",
                                                           "Programming Language :: Python :: 3.10",
                                                           "Operating System :: OS Independent",
                                                           "License :: OSI Approved :: BSD License"]
 
-        assert project_toml["project"]["urls"]["homepage"] == config_dict["github_repository_url"]
-        assert project_toml["project"]["urls"]["bug_tracker"] == config_dict["github_repository_url"] + "/issues"
-        assert project_toml["project"]["urls"]["documentation"] == config_dict["github_repository_url"]
-        assert project_toml["project"]["urls"]["source_code"] == config_dict["github_repository_url"]
-        assert project_toml["project"]["urls"]["user_support"] == config_dict["github_repository_url"] + "/issues"
+        assert project_toml["project"]["urls"]["homepage"] == self.config_dict["github_repository_url"]
+        assert project_toml["project"]["urls"]["bug_tracker"] == self.config_dict["github_repository_url"] + "/issues"
+        assert project_toml["project"]["urls"]["documentation"] == self.config_dict["github_repository_url"]
+        assert project_toml["project"]["urls"]["source_code"] == self.config_dict["github_repository_url"]
+        assert project_toml["project"]["urls"]["user_support"] == self.config_dict["github_repository_url"] + "/issues"
 
-        assert len(project_toml["options"]["extras_require"].keys()) == 1
-        assert project_toml["options"]["extras_require"]["dev"] == ["black",
-                                                                    "pytest",
-                                                                    "pytest-cov",
-                                                                    "bump2version",
-                                                                    "pre-commit",
-                                                                    "flake8",
-                                                                    "coverage"]
+        assert len(project_toml["project"]["optional-dependencies"].keys()) == 1
+        assert project_toml["project"]["optional-dependencies"]["dev"] == ["pytest",
+                                                                           "pytest-cov",
+                                                                           "coverage",
+                                                                           "tox",
+                                                                           "black",
+                                                                           "isort",
+                                                                           "mypy",
+                                                                           "pre-commit",
+                                                                           "flake8",
+                                                                           "setuptools_scm"]
 
         assert project_toml["build-system"]["requires"] == ["setuptools>=45",
                                                             "wheel",
@@ -106,44 +100,51 @@ class TestCookieCutter:
 
         assert project_toml["build-system"]["build-backend"] == "setuptools.build_meta"
 
-        assert project_toml["tool"]["setuptools"]["packages"]["find"]["where"] == ["test_cookiecutter"]
-        assert project_toml["tool"]["setuptools"]["packages"]["find"]["exclude"] == ['test-cookiecutter.test*']
+        assert project_toml["tool"]["setuptools"]["packages"]["find"]["include"] == ["test_cookiecutter*"]
+        assert project_toml["tool"]["setuptools"]["packages"]["find"]["exclude"] == ['tests*']
 
-        assert project_toml["tool"]["pytest"]["ini_options"]["addopts"] == "--cov=test-cookiecutter"
+        assert project_toml["tool"]["pytest"]["ini_options"]["addopts"] == "--cov=test_cookiecutter"
         assert project_toml["tool"]["black"]
 
     def test_pip_install(self):
+        os.chdir(self.package_path)
+        subprocess.run(f"git init", shell=True)
+        subprocess.run(f"pip uninstall -y {self.config_dict['package_name']}", shell=True)
+        result = subprocess.Popen(f"pip show {self.config_dict['package_name']}", shell=True,
+                                  stderr=subprocess.PIPE)
 
-        config_dict = self.load_configs()
-        package_path = TEST_DIR / config_dict["package_name"]  # TODO: copy from above
-
-        os.chdir(package_path)
-        subprocess.run(f"pip uninstall -y {config_dict['package_name']}", shell=True)
-        result = subprocess.Popen(f"pip show {config_dict['package_name']}", shell=True,
-                                  stderr=subprocess.PIPE)  # TODO: maybe platform dependent
-
-        # check package definately not already installed
+        # check package definitely not already installed
         __, stderr = result.communicate()
-        assert f"WARNING: Package(s) not found: {config_dict['package_name']}" in stderr.decode("utf8")
+        assert f"WARNING: Package(s) not found: {self.config_dict['package_name']}" in stderr.decode("utf8")
 
         # install package and check correct install
-        result = subprocess.Popen(f"pip install -e '.[dev]'", shell=True,
-                                  stdout=subprocess.PIPE)  # TODO: maybe platform dependent
-        stdout, __ = result.communicate()
-        assert "Successfully installed test-cookiecutter-0.0.1" in stdout.decode("utf8")
+        stdout = self.pip_install()
+        if "no matches found" in stdout.decode("utf8"):
+            stdout = self.pip_install(zsh=True)
+        assert "Successfully installed test-cookiecutter-0.1.dev0" in stdout.decode("utf8")
 
         # install package and check correct install
-        result = subprocess.Popen(f"pip show {config_dict['package_name']}", shell=True,
+        result = subprocess.Popen(f"pip show {self.config_dict['package_name']}", shell=True,
                                   stdout=subprocess.PIPE)
         stdout, __ = result.communicate()
 
         # Home-page is not in pip show output...
         show_details = stdout.decode("utf8")
         assert "Name: test-cookiecutter" in show_details
-        assert "Version: 0.0.1" in show_details
+        assert "Version: 0.1.dev0" in show_details
         assert "Summary: A simple Python package" in show_details
-        assert "\nAuthor: \nAuthor-email: Test Cookiecutter <testing@cookiecutter.com>" in show_details
+        assert "Author-email: Test Cookiecutter <testing@cookiecutter.com>" in show_details
         assert "License: BSD-3-Clause" in show_details
+
+    @staticmethod
+    def pip_install(zsh=False):
+        if zsh:
+            cmd = "pip install -e '.[dev]'"
+        else:
+            cmd = "pip install -e .[dev]"
+        result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        stdout, __ = result.communicate()
+        return stdout
 
 tester = TestCookieCutter()
 tester.setup_cookiercutter()

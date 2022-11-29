@@ -60,7 +60,7 @@ dev = [
 	"tox",
 	"black",
    	"isort",
-        "mypy",
+    "mypy",
 	"pre-commit",
 	"flake8",
  	"setuptools_scm",
