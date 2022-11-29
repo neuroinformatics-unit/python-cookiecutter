@@ -31,6 +31,7 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
+          conda activate test
           python -m pip install --upgrade pip
           python -m pip install pre-commit cookiecutter pyyaml pytest toml
       - name: Run tests
