@@ -6,3 +6,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: neuroinformatics-unit/actions/lint@v1.0.4
+
+  test:
+    needs: [linting]
+    name: ${{ matrix.os }} py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # Run all supported Python versions on linux
+        python-version: ["3.8", "3.9", "3.10"]
+        os: [ubuntu-latest]
+        # Include one windows and macos run
+        include:
+        - os: macos-latest
+          python-version: "3.10"
+        - os: windows-latest
+          python-version: "3.10"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ inputs.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Install tox
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pre-commit cookiecutter pyyaml pytest toml
+      - name: Run tests
+        shell: bash
+        run: pytest
+
+      - name: Report coverage to codecov
+        uses: codecov/codecov-action@v2
