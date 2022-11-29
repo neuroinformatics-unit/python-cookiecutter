@@ -36,3 +36,5 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+      - name: Report coverage to codecov
+        uses: codecov/codecov-action@v2
