@@ -177,12 +177,10 @@ class TestCookieCutter:
 
         # install package and check correct install
         stdout = self.pip_install()
+
+        # if using zsh
         if "no matches found" in stdout.decode("utf8"):
-            stdout = self.pip_install(zsh=True)
-        assert (
-            "Successfully installed test-cookiecutter-0.1.dev0"
-            in stdout.decode("utf8")
-        )
+            self.pip_install(zsh=True)
 
         # install package and check correct install
         result = subprocess.Popen(
