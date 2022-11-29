@@ -14,17 +14,13 @@ import yaml
 
 
 TEST_DIR = Path(tempfile.mkdtemp())
-print(TEST_DIR)
 COOKIECUTTER_DIR = Path.cwd()
 CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
 
 class TestCookieCutter:
-    def __init__(self):
-        self.config_dict = self.load_configs()
-        self.package_path = TEST_DIR / self.config_dict["package_name"]
-
-    def setup_cookiercutter(self):
+    @staticmethod
+    def setup_cookiecutter():
         os.chdir(TEST_DIR)
         subprocess.run(
             f"cookiecutter {COOKIECUTTER_DIR} --config-file "
@@ -33,7 +29,6 @@ class TestCookieCutter:
         )
 
     def load_configs(self):
-        """"""
         with open(f"{CONFIG_FILENAME}", "r") as config_file:
             config_dict = yaml.full_load(config_file)
         config_dict = config_dict["default_context"]
@@ -41,42 +36,41 @@ class TestCookieCutter:
         return config_dict
 
     def test_directory_names(self):
-        """"""
-        assert self.package_path.exists()
-        assert (self.package_path / ".flake8").exists()
-        assert (self.package_path / ".github").exists()
-        assert (self.package_path / ".gitignore").exists()
-        assert (self.package_path / ".pre-commit-config.yaml").exists()
-        assert (self.package_path / "LICENSE").exists()
-        assert (self.package_path / "MANIFEST.in").exists()
-        assert (self.package_path / "pyproject.toml").exists()
-        assert (self.package_path / "README.md").exists()
-        assert (self.package_path / "tox.ini").exists()
+        config_dict, package_path = self.setup_paths()
 
-        assert (self.package_path / "test_cookiecutter").exists()
-        assert (
-            self.package_path / "test_cookiecutter" / "__init__.py"
-        ).exists()
+        assert package_path.exists()
+        assert (package_path / ".flake8").exists()
+        assert (package_path / ".github").exists()
+        assert (package_path / ".gitignore").exists()
+        assert (package_path / ".pre-commit-config.yaml").exists()
+        assert (package_path / "LICENSE").exists()
+        assert (package_path / "MANIFEST.in").exists()
+        assert (package_path / "pyproject.toml").exists()
+        assert (package_path / "README.md").exists()
+        assert (package_path / "tox.ini").exists()
 
-        assert (self.package_path / "tests").exists()
+        assert (package_path / "test_cookiecutter").exists()
+        assert (package_path / "test_cookiecutter" / "__init__.py").exists()
+
+        assert (package_path / "tests").exists()
 
     def check_pyproject_toml(self):
-        pyproject_path = self.package_path / "pyproject.toml"
+        config_dict, package_path = self.setup_paths()
+
+        pyproject_path = package_path / "pyproject.toml"
         project_toml = toml.load(pyproject_path.as_posix())
 
-        assert (
-            project_toml["project"]["name"] == self.config_dict["package_name"]
-        )
+        assert project_toml["project"]["name"] == config_dict["package_name"]
 
         # some of these are hard coded from the cookiecutter
-        # pyproject.toml as not asked user for
+        # pyproject.toml has not asked user for
         assert (
             project_toml["project"]["authors"][0]["name"]
-            == self.config_dict["full_name"]
+            == config_dict["full_name"]
         )
         assert (
             project_toml["project"]["authors"][0]["email"]
-            == self.config_dict["email"]
+            == config_dict["email"]
         )
         assert (
             project_toml["project"]["description"] == "A simple Python package"
@@ -101,23 +95,23 @@ class TestCookieCutter:
 
         assert (
             project_toml["project"]["urls"]["homepage"]
-            == self.config_dict["github_repository_url"]
+            == config_dict["github_repository_url"]
         )
         assert (
             project_toml["project"]["urls"]["bug_tracker"]
-            == self.config_dict["github_repository_url"] + "/issues"
+            == config_dict["github_repository_url"] + "/issues"
         )
         assert (
             project_toml["project"]["urls"]["documentation"]
-            == self.config_dict["github_repository_url"]
+            == config_dict["github_repository_url"]
         )
         assert (
             project_toml["project"]["urls"]["source_code"]
-            == self.config_dict["github_repository_url"]
+            == config_dict["github_repository_url"]
         )
         assert (
             project_toml["project"]["urls"]["user_support"]
-            == self.config_dict["github_repository_url"] + "/issues"
+            == config_dict["github_repository_url"] + "/issues"
         )
 
         assert (
@@ -161,13 +155,15 @@ class TestCookieCutter:
         assert project_toml["tool"]["black"]
 
     def test_pip_install(self):
-        os.chdir(self.package_path)
+        config_dict, package_path = self.setup_paths()
+
+        os.chdir(package_path)
         subprocess.run("git init", shell=True)
         subprocess.run(
-            f"pip uninstall -y {self.config_dict['package_name']}", shell=True
+            f"pip uninstall -y {config_dict['package_name']}", shell=True
         )
         result = subprocess.Popen(
-            f"pip show {self.config_dict['package_name']}",
+            f"pip show {config_dict['package_name']}",
             shell=True,
             stderr=subprocess.PIPE,
         )
@@ -176,7 +172,7 @@ class TestCookieCutter:
         __, stderr = result.communicate()
         assert (
             f"WARNING: Package(s) not found: "
-            f"{self.config_dict['package_name']}" in stderr.decode("utf8")
+            f"{config_dict['package_name']}" in stderr.decode("utf8")
         )
 
         # install package and check correct install
@@ -190,7 +186,7 @@ class TestCookieCutter:
 
         # install package and check correct install
         result = subprocess.Popen(
-            f"pip show {self.config_dict['package_name']}",
+            f"pip show {config_dict['package_name']}",
             shell=True,
             stdout=subprocess.PIPE,
         )
@@ -207,6 +203,11 @@ class TestCookieCutter:
         )
         assert "License: BSD-3-Clause" in show_details
 
+    def setup_paths(self):
+        config_dict = self.load_configs()
+        package_path = TEST_DIR / config_dict["package_name"]
+        return config_dict, package_path
+
     @staticmethod
     def pip_install(zsh=False):
         if zsh:
@@ -219,7 +220,7 @@ class TestCookieCutter:
 
 
 tester = TestCookieCutter()
-tester.setup_cookiercutter()
+tester.setup_cookiecutter()
 tester.test_directory_names()
 tester.check_pyproject_toml()
 tester.test_pip_install()
