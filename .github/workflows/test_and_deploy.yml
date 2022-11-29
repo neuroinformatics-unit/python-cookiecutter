@@ -30,8 +30,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ inputs.python-version }}
-
-      - name: Install tox
+      - name: Install dependencies
         shell: bash
         run: |
           python -m pip install --upgrade pip
@@ -39,6 +38,5 @@ jobs:
       - name: Run tests
         shell: bash
         run: pytest
-
       - name: Report coverage to codecov
         uses: codecov/codecov-action@v2
