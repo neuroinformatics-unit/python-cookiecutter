@@ -1,0 +1,9 @@
+default_context:
+  full_name: "Test Cookiecutter"
+  email: "testing@cookiecutter.com"
+  github_username_or_organization: "test_cookiecutter_username"
+  package_name: "test-cookiecutter"
+  github_repository_url: "https://github.com/test_cookiecutter_username/test-cookiecutter"
+  module_name: "test_cookiecutter_module"
+  short_description: "Lets Test CookierCutter"
+  license: "BSD-3"

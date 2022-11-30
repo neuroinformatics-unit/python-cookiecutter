@@ -1,0 +1,40 @@
+name: tests
+
+on: [push, pull_request]
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: neuroinformatics-unit/actions/lint@v1.0.4
+
+  test:
+    needs: [linting]
+    name: ${{ matrix.os }} py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # Run all supported Python versions on linux
+        python-version: ["3.8", "3.9", "3.10"]
+        os: [ubuntu-latest]
+        # Include one windows and macos run
+        include:
+        - os: macos-latest
+          python-version: "3.10"
+        - os: windows-latest
+          python-version: "3.10"
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pre-commit cookiecutter pyyaml pytest toml
+      - name: Test with pytest
+        run: |
+          pytest
+      - name: Report coverage to codecov
+        uses: codecov/codecov-action@v2

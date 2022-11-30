@@ -5,7 +5,7 @@ It will also set up:
 * A blank `README.md` file
 * A `LICENSE` file
 * Formatting checks using [flake8](https://flake8.pycqa.org/en/latest/)
-* Autoformatting using [Black](https://black.readthedocs.io/en/stable/) 
+* Autoformatting using [Black](https://black.readthedocs.io/en/stable/)
 * [Pre-commit hooks](https://pre-commit.com/)
 * Automatic versioning using [bump2version](https://github.com/c4urself/bump2version)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
@@ -32,7 +32,7 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 * `package_name [python-package]:` - e.g. `my-awesome-software`
 * `Select github_repository_url:` - Default will be e.g. `https://github.com/adamltyson/my-awesome-software`, but you can also provide this later.
 * `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
-* `short_description [A simple Python package]` - Enter a simple, one-line description of your Python package. 
+* `short_description [A simple Python package]` - Enter a simple, one-line description of your Python package.
 * `Select license:` - choose from:
   - `1 - BSD-3`
   - `2 - MIT`
@@ -153,7 +153,7 @@ add_numbers(1, 2)
 
 ### Pre-commit hooks
 
-Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is 
+Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
 formatted correctly. Currently, these are:
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
 * [flake8](https://flake8.pycqa.org/en/latest/) to enforce [PEP8](https://www.python.org/dev/peps/pep-0008/)
@@ -200,4 +200,3 @@ A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set
 * Linting checks (pre-commit).
 * Testing (only if linting checks pass)
 * Release to PyPI (only if a git tag is present and if tests pass). Requires `TWINE_API_KEY` from PyPI to be set in repository secrets.
-
