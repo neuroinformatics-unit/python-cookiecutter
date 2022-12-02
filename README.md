@@ -74,6 +74,12 @@ and run:
 git init -b main
 ```
 
+**N.B. If you have an older version of Git (<v2.28), this will produce an error and you will need to run the following:**
+```
+git init
+git checkout -b main
+```
+
 Then stage and commit your changes:
 ```bash
 git add .
