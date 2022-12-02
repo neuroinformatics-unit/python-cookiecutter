@@ -113,6 +113,13 @@ If you want to import all the modules when installing you can add the following 
 from . import *
 ```
 
+### Add dependencies
+To ensure any dependencies are installed at the same time as installing your package, add them to your `pyproject.toml` file. E.g. to add `numpy` and `pandas` as dependencies, add the following line to the `pyproject.toml` file, under the `[project]` heading:
+
+```toml
+dependencies = ["numpy", "pandas"]
+```
+
 ### Write tests
 
 Write your test methods and classes in the `test` folder. We are using [pytest](https://docs.pytest.org/en/7.2.x/getting-started.html).
