@@ -206,6 +206,8 @@ git tag -a v1.0.0 -m "Bump to version 1.0.0"
 git push --follow-tags
 ```
 
+**N.B. It is also possible to perform this step by using the [GitHub web interface or CLI](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).**
+
 
 ## GitHub actions workflow
 
