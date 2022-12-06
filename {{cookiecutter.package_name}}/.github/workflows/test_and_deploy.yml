@@ -12,7 +12,7 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - uses: neuroinformatics-unit/actions/lint@v1.0.4
+      - uses: neuroinformatics-unit/actions/lint@main
 
   manifest:
     name: Check Manifest
