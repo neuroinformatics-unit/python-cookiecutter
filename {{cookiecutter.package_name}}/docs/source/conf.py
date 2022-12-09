@@ -6,10 +6,12 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+from importlib.metadata import version
+
 project = '{{cookiecutter.package_name}}'
 copyright = '2022, {{cookiecutter.full_name}}'
 author = '{{cookiecutter.full_name}}'
-release = '0.0.0'
+release = version('{{cookiecutter.package_name}}')
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
