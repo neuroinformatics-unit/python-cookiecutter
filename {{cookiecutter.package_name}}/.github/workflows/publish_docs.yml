@@ -1,0 +1,15 @@
+name: 'publish docs'
+
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+  publish_sphinx_docs:
+    name: Publish Sphinx Docs
+    runs-on: ubuntu-latest
+    steps:
+    - uses: neuroinformatics-unit/actions/publish_sphinx_docs@v1.2.0
+      with:
+        secret_input: ${{ secrets.GITHUB_TOKEN }}
