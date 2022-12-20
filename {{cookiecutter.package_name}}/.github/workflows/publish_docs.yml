@@ -1,9 +1,12 @@
 name: 'publish docs'
 
+# Publish when a git tag is pushed to main
 on:
   push:
     branches:
       - main
+    tags:
+      - '*'
 
 jobs:
   publish_sphinx_docs:
