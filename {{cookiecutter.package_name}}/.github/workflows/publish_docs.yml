@@ -13,6 +13,6 @@ jobs:
     name: Publish Sphinx Docs
     runs-on: ubuntu-latest
     steps:
-    - uses: neuroinformatics-unit/actions/publish_sphinx_docs@v1.2.0
+    - uses: neuroinformatics-unit/actions/publish_sphinx_docs@v1
       with:
         secret_input: ${{ secrets.GITHUB_TOKEN }}

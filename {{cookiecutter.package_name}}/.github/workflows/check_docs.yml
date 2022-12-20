@@ -10,4 +10,4 @@ jobs:
     name: Check Sphinx Docs
     runs-on: ubuntu-latest
     steps:
-    - uses: neuroinformatics-unit/actions/check_sphinx_docs@v1.2.0
+    - uses: neuroinformatics-unit/actions/check_sphinx_docs@v1
