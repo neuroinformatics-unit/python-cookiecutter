@@ -6,12 +6,12 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-from importlib.metadata import version
+import setuptools_scm
 
 project = "{{cookiecutter.package_name}}"
 copyright = "2022, {{cookiecutter.full_name}}"
 author = "{{cookiecutter.full_name}}"
-release = version("{{cookiecutter.package_name}}")
+release = setuptools_scm.get_version(root="../..", relative_to=__file__)
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
