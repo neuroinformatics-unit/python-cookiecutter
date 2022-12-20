@@ -6,7 +6,15 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import os
+import sys
+
 import setuptools_scm
+
+# Add the module path to sys.path here.
+# If the directory is relative to the documentation root,
+# use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath("../.."))
 
 project = "{{cookiecutter.package_name}}"
 copyright = "2022, {{cookiecutter.full_name}}"
@@ -54,6 +62,10 @@ myst_heading_anchors = 2
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
+
+# Automatically generate stub pages for API
+autosummary_generate = True
+autodoc_default_flags = ["members", "inherited-members"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
