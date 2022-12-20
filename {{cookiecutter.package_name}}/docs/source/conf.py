@@ -79,7 +79,10 @@ html_theme_options = {
             # The type of image to be used (see below for details)
             "type": "fontawesome",
         }
-    ]
+    ],
+    "logo": {
+        "text": f"{project} v{release}",
+    },
 }
 
 # Redirect the webpage to another URL
