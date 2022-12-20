@@ -103,7 +103,7 @@ class TestCookieCutter:
         )
         assert (
             project_toml["project"]["urls"]["documentation"]
-            == config_dict["github_repository_url"]
+            == config_dict["ghpages_docs_url"]
         )
         assert (
             project_toml["project"]["urls"]["source_code"]

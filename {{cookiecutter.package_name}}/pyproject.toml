@@ -47,7 +47,7 @@ classifiers = [
 [project.urls]
 homepage = "{{ cookiecutter.github_repository_url }}"
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
-documentation = "http(s)://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
+documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
