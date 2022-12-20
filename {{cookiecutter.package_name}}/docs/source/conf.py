@@ -11,7 +11,12 @@ import setuptools_scm
 project = "{{cookiecutter.package_name}}"
 copyright = "2022, {{cookiecutter.full_name}}"
 author = "{{cookiecutter.full_name}}"
-release = setuptools_scm.get_version(root="../..", relative_to=__file__)
+try:
+    release = setuptools_scm.get_version(root="../..", relative_to=__file__)
+except LookupError:
+    # if git is not initialised, still allow local build
+    # with a dummy version
+    release = "0.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
