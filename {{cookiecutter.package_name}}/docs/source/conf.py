@@ -108,7 +108,7 @@ html_theme_options = {
 # The default is the URL of the GitHub pages
 # https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
 github_user = "{{cookiecutter.github_username_or_organization}}"
-html_baseurl = f"http(s)://{github_user}.github.io/{project}"
+html_baseurl = f"https://{github_user}.github.io/{project}"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
