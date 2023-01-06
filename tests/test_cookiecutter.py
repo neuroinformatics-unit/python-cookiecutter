@@ -146,7 +146,7 @@ class TestCookieCutter:
         ] == ["test_cookiecutter*"]
         assert project_toml["tool"]["setuptools"]["packages"]["find"][
             "exclude"
-        ] == ["tests*"]
+        ] == ["tests", "docs*"]
 
         assert (
             project_toml["tool"]["pytest"]["ini_options"]["addopts"]

@@ -80,7 +80,7 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["{{cookiecutter.module_name}}"]
+include = ["{{cookiecutter.module_name}}*"]
 exclude = ["tests", "docs*"]
 
 [tool.pytest.ini_options]
