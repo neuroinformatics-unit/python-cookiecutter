@@ -80,8 +80,8 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["{{cookiecutter.module_name}}*"]
-exclude = ["tests*"]
+include = ["{{cookiecutter.module_name}}"]
+exclude = ["tests", "docs*"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.module_name}}"
@@ -116,11 +116,13 @@ line_length = 79
 
 [tool.check-manifest]
 ignore = [
-  "*.yaml",
-  ".bumpversion.cfg",
-  "tox.ini",
-  "tests/*",
-  "tests/test_unit/*",
-  "tests/test_integration/*",
-  ".flake8"
+".yaml",
+".bumpversion.cfg",
+"tox.ini",
+"tests/",
+"tests/test_unit/",
+"tests/test_integration/",
+"docs/",
+"docs/source/",
+".flake8"
 ]
