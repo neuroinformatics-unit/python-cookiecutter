@@ -1,0 +1,10 @@
+default_context:
+  email: testing@cookiecutter.com
+  full_name: Test Cookiecutter
+  ghpages_docs_url: https://test_cookiecutter_username.github.io/test-cookiecutter
+  github_repository_url: https://github.com/test_cookiecutter_username/test-cookiecutter
+  github_username_or_organization: test_cookiecutter_username
+  license: BSD-3
+  module_name: test_cookiecutter_module
+  package_name: test-cookiecutter
+  short_description: Lets Test CookierCutter

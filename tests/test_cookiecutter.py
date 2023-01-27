@@ -28,6 +28,26 @@ class TestCookieCutter:
             shell=True,
         )
 
+    def create_test_configs(
+        self,
+    ):  # TODO: make this a fixture? it doesn't change for any test.
+        # but as will overwrite in new test need to make fresh for each other test so add it as a fixture.
+        test_configs = {
+            "default_context": {
+                "full_name": "Test Cookiecutter",
+                "email": "testing@cookiecutter.com",
+                "github_username_or_organization": "test_cookiecutter_username",
+                "package_name": "test-cookiecutter",
+                "github_repository_url": "https://github.com/test_cookiecutter_username/test-cookiecutter",
+                "ghpages_docs_url": "https://test_cookiecutter_username.github.io/test-cookiecutter",
+                "module_name": "test_cookiecutter_module",
+                "short_description": "Lets Test CookierCutter",
+                "license": "BSD-3",
+            },
+        }
+        with open(CONFIG_FILENAME, "w") as config_file:
+            yaml.dump(test_configs, config_file)
+
     def load_configs(self):
         with open(f"{CONFIG_FILENAME}", "r") as config_file:
             config_dict = yaml.full_load(config_file)
@@ -200,6 +220,8 @@ class TestCookieCutter:
             in show_details
         )
         assert "License: BSD-3-Clause" in show_details
+
+    #    def test_create_docs_option(self):
 
     def setup_paths(self):
         config_dict = self.load_configs()
