@@ -1,4 +1,6 @@
+{% if cookiecutter.create_docs == "yes" -%}
 exclude: 'conf.py'
+{%- endif %}
 repos:
     - repo: https://github.com/pycqa/isort
       rev: 5.10.1
