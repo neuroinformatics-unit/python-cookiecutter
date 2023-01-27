@@ -47,7 +47,13 @@ classifiers = [
 [project.urls]
 homepage = "{{ cookiecutter.github_repository_url }}"
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+
+{% if cookiecutter.create_docs == "yes" -%}
 documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
+{% if cookiecutter.create_docs == "no" -%}
+documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+{%- endif %}
+
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
@@ -59,8 +65,8 @@ dev = [
 	"coverage",
 	"tox",
 	"black",
-  "isort",
-  "mypy",
+    "isort",
+    "mypy",
 	"pre-commit",
 	"flake8",
  	"setuptools_scm",
@@ -81,7 +87,12 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 include = ["{{cookiecutter.module_name}}*"]
+
+{% if cookiecutter.create_docs == "yes" -%}
 exclude = ["tests", "docs*"]
+{% if cookiecutter.create_docs == "no" -%}
+exclude = ["tests*"]
+{%- endif %}
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.module_name}}"
@@ -115,6 +126,8 @@ line_length = 79
 [tool.setuptools_scm]
 
 [tool.check-manifest]
+
+{% if cookiecutter.create_docs == "yes" -%}
 ignore = [
 ".yaml",
 ".bumpversion.cfg",
@@ -126,3 +139,15 @@ ignore = [
 "docs/source/",
 ".flake8"
 ]
+{% if cookiecutter.create_docs == "no" -%}
+ignore = [
+".yaml",
+".bumpversion.cfg",
+"tox.ini",
+"tests/",
+"tests/test_unit/",
+"tests/test_integration/",
+".flake8"
+]
+{%- endif %}
+
