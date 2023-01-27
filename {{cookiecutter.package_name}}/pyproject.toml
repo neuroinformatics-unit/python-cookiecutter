@@ -50,7 +50,7 @@ bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization
 
 {% if cookiecutter.create_docs == "yes" -%}
 documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
-{% if cookiecutter.create_docs == "no" -%}
+{% elif cookiecutter.create_docs == "no" -%}
 documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 {%- endif %}
 
@@ -90,7 +90,7 @@ include = ["{{cookiecutter.module_name}}*"]
 
 {% if cookiecutter.create_docs == "yes" -%}
 exclude = ["tests", "docs*"]
-{% if cookiecutter.create_docs == "no" -%}
+{% elif cookiecutter.create_docs == "no" -%}
 exclude = ["tests*"]
 {%- endif %}
 
@@ -139,7 +139,7 @@ ignore = [
 "docs/source/",
 ".flake8"
 ]
-{% if cookiecutter.create_docs == "no" -%}
+{% elif cookiecutter.create_docs == "no" -%}
 ignore = [
 ".yaml",
 ".bumpversion.cfg",
