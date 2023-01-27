@@ -14,5 +14,6 @@
         "GNU LGPL v3.0",
         "GNU GPL v3.0"
     ],
+    "create_docs": ["y"],
     "_copy_without_render": [".github/*"]
 }
