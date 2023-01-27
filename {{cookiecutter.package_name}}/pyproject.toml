@@ -47,13 +47,11 @@ classifiers = [
 [project.urls]
 homepage = "{{ cookiecutter.github_repository_url }}"
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
-
 {% if cookiecutter.create_docs == "yes" -%}
 documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
 {% elif cookiecutter.create_docs == "no" -%}
 documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 {%- endif %}
-
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
@@ -87,7 +85,6 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 include = ["{{cookiecutter.module_name}}*"]
-
 {% if cookiecutter.create_docs == "yes" -%}
 exclude = ["tests", "docs*"]
 {% elif cookiecutter.create_docs == "no" -%}
@@ -126,7 +123,6 @@ line_length = 79
 [tool.setuptools_scm]
 
 [tool.check-manifest]
-
 {% if cookiecutter.create_docs == "yes" -%}
 ignore = [
 ".yaml",
