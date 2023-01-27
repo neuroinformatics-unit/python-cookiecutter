@@ -11,6 +11,10 @@ import sys
 
 import setuptools_scm
 
+autodoc_mock_imports = []  # Used when building API docs, put
+                           # the dependencies of any class you
+                           # are documenting here
+
 # Add the module path to sys.path here.
 # If the directory is relative to the documentation root,
 # use os.path.abspath to make it absolute, like shown here.
