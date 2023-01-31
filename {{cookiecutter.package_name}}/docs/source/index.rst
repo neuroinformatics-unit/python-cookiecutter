@@ -14,9 +14,8 @@ Welcome to {{cookiecutter.package_name}}'s documentation!
 
 
 
-Indices and tables
-==================
+Index and search
+================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
