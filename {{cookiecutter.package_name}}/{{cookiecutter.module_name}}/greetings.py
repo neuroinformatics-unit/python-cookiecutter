@@ -18,9 +18,9 @@ class Greetings:
 
     Methods
     -------
-    say_hello()
+    say_hello
         Say hello to the person
-    say_goodbye()
+    say_goodbye
         Say goodbye to the person
     """
 
