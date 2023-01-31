@@ -1,7 +1,6 @@
 linkify-it-py
 myst-parser
 nbsphinx
-numpydoc
 pydata-sphinx-theme
 setuptools_scm
 sphinx>=5.0,<6.0
