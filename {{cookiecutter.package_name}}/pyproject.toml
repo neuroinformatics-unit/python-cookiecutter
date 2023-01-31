@@ -60,9 +60,9 @@ dev = [
 	"tox",
 	"black",
    	"isort",
-    	"mypy",
+    "mypy",
 	"pre-commit",
-	"flake8",
+	"ruff",
  	"setuptools_scm",
 ]
 
@@ -124,3 +124,7 @@ ignore = [
   "tests/test_integration/*",
   ".flake8"
 ]
+
+[tool.ruff]
+line-length = 79
+exclude = ["__init__.py","build",".eggs"]
