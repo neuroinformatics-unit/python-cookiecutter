@@ -39,7 +39,6 @@ class TestCookieCutter:
         config_dict, package_path = self.setup_paths()
 
         assert package_path.exists()
-        assert (package_path / ".flake8").exists()
         assert (package_path / ".github").exists()
         assert (package_path / ".gitignore").exists()
         assert (package_path / ".pre-commit-config.yaml").exists()
@@ -126,7 +125,7 @@ class TestCookieCutter:
             "isort",
             "mypy",
             "pre-commit",
-            "flake8",
+            "ruff",
             "setuptools_scm",
         ]
 
