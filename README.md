@@ -169,16 +169,15 @@ add_numbers(1, 2)
 Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
 formatted correctly. Currently, these are:
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
-* [flake8](https://flake8.pycqa.org/en/latest/) to enforce [PEP8](https://www.python.org/dev/peps/pep-0008/)
 * [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
-* [isort](https://pycqa.github.io/isort/) sorts imports alphabetically
+* [ruff](https://github.com/charliermarsh/ruff) does a number of jobs, including enforcing PEP8 and sorting imports
 
 These will prevent code from being committed if any of these hooks fail. To run them individually:
 ```bash
 black ./
 flake8
 mypy
-isort
+ruff .
 ```
 
 You can also run `pre-commit` to run all of them before trying to commit.
