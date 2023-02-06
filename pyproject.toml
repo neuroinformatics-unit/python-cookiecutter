@@ -2,15 +2,6 @@
 target-version = ['py38', 'py39', 'py310']
 skip-string-normalization = false
 line-length = 79
-exclude = '''
-(
-  /(
-    | _build
-    | buck-out
-    | examples
-  )/
-)
-'''
 
 [tool.isort]
 profile = "black"
