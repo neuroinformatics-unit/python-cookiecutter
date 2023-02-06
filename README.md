@@ -4,7 +4,7 @@ A tool to automatically create a Python project structure ready to release via G
 It will also set up:
 * A blank `README.md` file
 * A `LICENSE` file
-* Formatting checks using [flake8](https://flake8.pycqa.org/en/latest/)
+* Formatting checks using [ruff](https://github.com/charliermarsh/ruff)
 * Autoformatting using [Black](https://black.readthedocs.io/en/stable/)
 * [Pre-commit hooks](https://pre-commit.com/)
 * Automatic versioning using [bump2version](https://github.com/c4urself/bump2version)
@@ -28,7 +28,7 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 
 * `full_name [Python developer]:` - e.g. `Adam Tyson`
 * `email [yourname@example.com]:` - e.g. `cookiecutter@adamltyson.com`
-* `github_username_or_organization [githubuser]: ` - e.g. `adamltyson`
+* `github_username_or_organization [githubuser]:` - e.g. `adamltyson`
 * `package_name [python-package]:` - e.g. `my-awesome-software`
 * `Select github_repository_url:` - Default will be e.g. `https://github.com/adamltyson/my-awesome-software`, but you can also provide this later.
 * `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
@@ -175,7 +175,6 @@ formatted correctly. Currently, these are:
 These will prevent code from being committed if any of these hooks fail. To run them individually:
 ```bash
 black ./
-flake8
 mypy
 ruff .
 ```
