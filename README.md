@@ -67,7 +67,7 @@ Although it asks for a GitHub username or organization and package name, it does
 
 To do so navigate to your project folder:
 ```bash
-cd my-awesome-software`
+cd my-awesome-software
 ```
 and run:
 ```shell
