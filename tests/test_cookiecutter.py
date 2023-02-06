@@ -1,6 +1,5 @@
 import os
 import subprocess
-import tempfile
 from pathlib import Path
 
 import pytest
@@ -14,7 +13,6 @@ import yaml
 # toml
 
 
-TEST_DIR = Path(tempfile.mkdtemp())
 COOKIECUTTER_DIR = Path(__file__).parent.parent
 CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
@@ -22,23 +20,34 @@ with open(f"{CONFIG_FILENAME}", "r") as config_file:
     config_dict = yaml.full_load(config_file)
 
 config_dict = config_dict["default_context"]
-package_path = TEST_DIR / config_dict["package_name"]
 
 
 @pytest.fixture(autouse=True, scope="session")
-def setup_cookiecutter():
-    os.chdir(TEST_DIR)
+def package_path(tmp_path_factory):
+    # Runs cookiecutter in a temporary directory, and returns
+    # that directory.
+    tmp_path = tmp_path_factory.mktemp("package")
+    os.chdir(tmp_path)
     subprocess.run(
         f"cookiecutter {COOKIECUTTER_DIR} --config-file "
         f"{CONFIG_FILENAME} --no-input",
         shell=True,
     )
 
-    yield
+    return tmp_path / config_dict["package_name"]
 
 
-def test_directory_names():
-    package_path = TEST_DIR / config_dict["package_name"]
+def pip_install(zsh=False):
+    if zsh:
+        cmd = "pip install -e '.[dev]'"
+    else:
+        cmd = "pip install -e .[dev]"
+    result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    stdout, __ = result.communicate()
+    return stdout
+
+
+def test_directory_names(package_path):
 
     assert package_path.exists()
     assert (package_path / ".github").exists()
@@ -56,7 +65,7 @@ def test_directory_names():
     assert (package_path / "tests").exists()
 
 
-def test_pyproject_toml():
+def test_pyproject_toml(package_path):
     pyproject_path = package_path / "pyproject.toml"
     project_toml = toml.load(pyproject_path.as_posix())
 
@@ -150,63 +159,47 @@ def test_pyproject_toml():
     assert project_toml["tool"]["black"]
 
 
-class TestCookieCutter:
-    def test_pip_install(self):
-        os.chdir(package_path)
-        subprocess.run("git init", shell=True)
-        subprocess.run(
-            f"pip uninstall -y {config_dict['package_name']}", shell=True
-        )
-        result = subprocess.Popen(
-            f"pip show {config_dict['package_name']}",
-            shell=True,
-            stderr=subprocess.PIPE,
-        )
+def test_pip_install(package_path):
+    os.chdir(package_path)
+    subprocess.run("git init", shell=True)
+    subprocess.run(
+        f"pip uninstall -y {config_dict['package_name']}", shell=True
+    )
+    result = subprocess.Popen(
+        f"pip show {config_dict['package_name']}",
+        shell=True,
+        stderr=subprocess.PIPE,
+    )
 
-        # check package definitely not already installed
-        __, stderr = result.communicate()
-        assert (
-            f"WARNING: Package(s) not found: "
-            f"{config_dict['package_name']}" in stderr.decode("utf8")
-        )
+    # check package definitely not already installed
+    __, stderr = result.communicate()
+    assert (
+        f"WARNING: Package(s) not found: "
+        f"{config_dict['package_name']}" in stderr.decode("utf8")
+    )
 
-        # install package and check correct install
-        stdout = self.pip_install()
+    # install package and check correct install
+    stdout = pip_install()
 
-        # if using zsh
-        if "no matches found" in stdout.decode("utf8"):
-            self.pip_install(zsh=True)
+    # if using zsh
+    if "no matches found" in stdout.decode("utf8"):
+        pip_install(zsh=True)
 
-        # install package and check correct install
-        result = subprocess.Popen(
-            f"pip show {config_dict['package_name']}",
-            shell=True,
-            stdout=subprocess.PIPE,
-        )
-        stdout, __ = result.communicate()
+    # install package and check correct install
+    result = subprocess.Popen(
+        f"pip show {config_dict['package_name']}",
+        shell=True,
+        stdout=subprocess.PIPE,
+    )
+    stdout, __ = result.communicate()
 
-        # Home-page is not in pip show output...
-        show_details = stdout.decode("utf8")
-        assert "Name: test-cookiecutter" in show_details
-        assert "Version: 0.1.dev0" in show_details
-        assert "Summary: A simple Python package" in show_details
-        assert (
-            "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
-            in show_details
-        )
-        assert "License: BSD-3-Clause" in show_details
-
-    @staticmethod
-    def pip_install(zsh=False):
-        if zsh:
-            cmd = "pip install -e '.[dev]'"
-        else:
-            cmd = "pip install -e .[dev]"
-        result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        stdout, __ = result.communicate()
-        return stdout
-
-
-def test_cookiecutter():
-    tester = TestCookieCutter()
-    tester.test_pip_install()
+    # Home-page is not in pip show output...
+    show_details = stdout.decode("utf8")
+    assert "Name: test-cookiecutter" in show_details
+    assert "Version: 0.1.dev0" in show_details
+    assert "Summary: A simple Python package" in show_details
+    assert (
+        "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
+        in show_details
+    )
+    assert "License: BSD-3-Clause" in show_details
