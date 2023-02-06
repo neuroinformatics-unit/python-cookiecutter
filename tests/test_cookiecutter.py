@@ -122,7 +122,6 @@ class TestCookieCutter:
             "coverage",
             "tox",
             "black",
-            "isort",
             "mypy",
             "pre-commit",
             "ruff",

@@ -54,16 +54,15 @@ user_support = "https://github.com/{{cookiecutter.github_username_or_organizatio
 
 [project.optional-dependencies]
 dev = [
-	"pytest",
-	"pytest-cov",
-	"coverage",
-	"tox",
-	"black",
-   	"isort",
-    "mypy",
-	"pre-commit",
-	"ruff",
- 	"setuptools_scm",
+  "pytest",
+  "pytest-cov",
+  "coverage",
+  "tox",
+  "black",
+  "mypy",
+  "pre-commit",
+  "ruff",
+  "setuptools_scm",
 ]
 
 [build-system]
@@ -88,27 +87,6 @@ addopts = "--cov={{cookiecutter.module_name}}"
 target-version = ['py38', 'py39', 'py310']
 skip-string-normalization = false
 line-length = 79
-exclude = '''
-(
-  /(
-      \.eggs
-    | \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | buck-out
-    | build
-    | dist
-    | examples
-  )/
-)
-'''
-
-[tool.isort]
-profile = "black"
-line_length = 79
 
 [tool.setuptools_scm]
 
@@ -126,6 +104,8 @@ ignore = [
 [tool.ruff]
 line-length = 79
 exclude = ["__init__.py","build",".eggs"]
+select = ["I", "E", "F"]
+fix = true
 
 [tool.cibuildwheel]
 build = "cp38-* cp39-* cp310-*"
