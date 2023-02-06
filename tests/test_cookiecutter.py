@@ -16,6 +16,7 @@ import yaml
 COOKIECUTTER_DIR = Path(__file__).parent.parent
 CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
+
 with open(f"{CONFIG_FILENAME}", "r") as config_file:
     config_dict = yaml.full_load(config_file)
 
@@ -37,14 +38,34 @@ def package_path(tmp_path_factory):
     return tmp_path / config_dict["package_name"]
 
 
-def pip_install(zsh=False):
-    if zsh:
-        cmd = "pip install -e '.[dev]'"
-    else:
-        cmd = "pip install -e .[dev]"
+@pytest.fixture(autouse=True, scope="session")
+def pip_install(package_path):
+    # Installs the package using pip
+    os.chdir(package_path)
+
+    # Uninstall and check package not installed
+    subprocess.run("git init", shell=True)
+    uninstall_cmd = f"pip uninstall -y {config_dict['package_name']}"
+    subprocess.run(uninstall_cmd, shell=True)
+    result = subprocess.Popen(
+        f"pip show {config_dict['package_name']}",
+        shell=True,
+        stderr=subprocess.PIPE,
+    )
+    __, stderr = result.communicate()
+    assert (
+        f"WARNING: Package(s) not found: "
+        f"{config_dict['package_name']}" in stderr.decode("utf8")
+    )
+
+    # Install package
+    cmd = "pip install -e '.[dev]'"
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     stdout, __ = result.communicate()
-    return stdout
+    yield
+
+    # Uninstall package
+    subprocess.run(uninstall_cmd, shell=True)
 
 
 def test_directory_names(package_path):
@@ -159,33 +180,7 @@ def test_pyproject_toml(package_path):
     assert project_toml["tool"]["black"]
 
 
-def test_pip_install(package_path):
-    os.chdir(package_path)
-    subprocess.run("git init", shell=True)
-    subprocess.run(
-        f"pip uninstall -y {config_dict['package_name']}", shell=True
-    )
-    result = subprocess.Popen(
-        f"pip show {config_dict['package_name']}",
-        shell=True,
-        stderr=subprocess.PIPE,
-    )
-
-    # check package definitely not already installed
-    __, stderr = result.communicate()
-    assert (
-        f"WARNING: Package(s) not found: "
-        f"{config_dict['package_name']}" in stderr.decode("utf8")
-    )
-
-    # install package and check correct install
-    stdout = pip_install()
-
-    # if using zsh
-    if "no matches found" in stdout.decode("utf8"):
-        pip_install(zsh=True)
-
-    # install package and check correct install
+def test_pip_install(pip_install):
     result = subprocess.Popen(
         f"pip show {config_dict['package_name']}",
         shell=True,
