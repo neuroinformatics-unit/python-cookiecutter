@@ -7,7 +7,7 @@ It will also set up:
 * Formatting checks using [ruff](https://github.com/charliermarsh/ruff)
 * Autoformatting using [Black](https://black.readthedocs.io/en/stable/)
 * [Pre-commit hooks](https://pre-commit.com/)
-* Automatic versioning using [bump2version](https://github.com/c4urself/bump2version)
+* Automatic versioning using [setuptools_scm](https://github.com/pypa/setuptools_scm)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
 
