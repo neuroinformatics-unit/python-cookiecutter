@@ -66,8 +66,6 @@ dev = [
  	"setuptools_scm",
 ]
 
-
-
 [build-system]
 requires = [
     "setuptools>=45",
@@ -128,3 +126,9 @@ ignore = [
 [tool.ruff]
 line-length = 79
 exclude = ["__init__.py","build",".eggs"]
+
+[tool.cibuildwheel]
+build = "cp38-* cp39-* cp310-*"
+
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
