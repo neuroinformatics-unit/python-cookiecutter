@@ -166,7 +166,7 @@ add_numbers(1, 2)
 
 ### Pre-commit hooks
 
-Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
+Running `pre-commit install` will set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
 formatted correctly. Currently, these are:
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
 * [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
@@ -179,7 +179,7 @@ mypy
 ruff .
 ```
 
-You can also run `pre-commit` to run all of them before trying to commit.
+You can also execute all the hooks using `pre-commit run`. The best time to run this is after you have staged your changes, but before you commit them.
 
 In the case you see `mypy` failing with an error like `Library stubs not installed for this-package`, you do have to edit the `.pre-commit-config.yaml` file by adding the additional dependency to `mypy`:
 ```yml
