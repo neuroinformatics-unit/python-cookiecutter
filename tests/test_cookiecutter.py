@@ -152,7 +152,6 @@ def test_pyproject_toml(package_path):
         "coverage",
         "tox",
         "black",
-        "isort",
         "mypy",
         "pre-commit",
         "ruff",
