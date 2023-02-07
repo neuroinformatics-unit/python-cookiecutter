@@ -69,21 +69,25 @@ def pip_install(package_path):
 
 
 def test_directory_names(package_path):
-
     assert package_path.exists()
-    assert (package_path / ".github").exists()
-    assert (package_path / ".gitignore").exists()
-    assert (package_path / ".pre-commit-config.yaml").exists()
-    assert (package_path / "LICENSE").exists()
-    assert (package_path / "MANIFEST.in").exists()
-    assert (package_path / "pyproject.toml").exists()
-    assert (package_path / "README.md").exists()
-    assert (package_path / "tox.ini").exists()
+    expected = [
+        # Files
+        ".github",
+        ".gitignore",
+        ".pre-commit-config.yaml",
+        "LICENSE",
+        "MANIFEST.in",
+        "pyproject.toml",
+        "README.md",
+        "tox.ini",
+        Path("test_cookiecutter") / "__init__.py",
+        # Directories
+        "test_cookiecutter",
+        "tests",
+    ]
 
-    assert (package_path / "test_cookiecutter").exists()
-    assert (package_path / "test_cookiecutter" / "__init__.py").exists()
-
-    assert (package_path / "tests").exists()
+    for f in expected:
+        assert (package_path / f).exists()
 
 
 def test_pyproject_toml(package_path):
