@@ -4,10 +4,10 @@ A tool to automatically create a Python project structure ready to release via G
 It will also set up:
 * A blank `README.md` file
 * A `LICENSE` file
-* Formatting checks using [flake8](https://flake8.pycqa.org/en/latest/)
+* Formatting checks using [ruff](https://github.com/charliermarsh/ruff)
 * Autoformatting using [Black](https://black.readthedocs.io/en/stable/)
 * [Pre-commit hooks](https://pre-commit.com/)
-* Automatic versioning using [bump2version](https://github.com/c4urself/bump2version)
+* Automatic versioning using [setuptools_scm](https://github.com/pypa/setuptools_scm)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
 
@@ -28,7 +28,7 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 
 * `full_name [Python developer]:` - e.g. `Adam Tyson`
 * `email [yourname@example.com]:` - e.g. `cookiecutter@adamltyson.com`
-* `github_username_or_organization [githubuser]: ` - e.g. `adamltyson`
+* `github_username_or_organization [githubuser]:` - e.g. `adamltyson`
 * `package_name [python-package]:` - e.g. `my-awesome-software`
 * `Select github_repository_url:` - Default will be e.g. `https://github.com/adamltyson/my-awesome-software`, but you can also provide this later.
 * `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
@@ -67,7 +67,7 @@ Although it asks for a GitHub username or organization and package name, it does
 
 To do so navigate to your project folder:
 ```bash
-cd my-awesome-software`
+cd my-awesome-software
 ```
 and run:
 ```shell
@@ -166,7 +166,7 @@ add_numbers(1, 2)
 
 ### Pre-commit hooks
 
-Running `pre-commit install` will run set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
+Running `pre-commit install` will set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
 formatted correctly. Currently, these are:
 * [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
 * [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
@@ -175,12 +175,11 @@ formatted correctly. Currently, these are:
 These will prevent code from being committed if any of these hooks fail. To run them individually:
 ```bash
 black ./
-flake8
 mypy
 ruff .
 ```
 
-You can also run `pre-commit` to run all of them before trying to commit.
+You can also execute all the hooks using `pre-commit run`. The best time to run this is after you have staged your changes, but before you commit them.
 
 In the case you see `mypy` failing with an error like `Library stubs not installed for this-package`, you do have to edit the `.pre-commit-config.yaml` file by adding the additional dependency to `mypy`:
 ```yml
