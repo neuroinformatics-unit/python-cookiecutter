@@ -59,7 +59,7 @@ def pip_install(package_path):
     )
 
     # Install package
-    dev_formatting = ".[dev]" if platform.system() == "Windows" else "'[.dev]'"
+    dev_formatting = ".[dev]" if platform.system() == "Windows" else "'.[dev]'"
     cmd = f"pip install -e {dev_formatting}"
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     stdout, __ = result.communicate()
