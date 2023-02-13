@@ -1,7 +1,7 @@
 import os
+import platform
 import subprocess
 from pathlib import Path
-import platform
 
 import pytest
 import toml
@@ -12,7 +12,6 @@ import yaml
 # cookiecutter
 # pytest
 # toml
-
 
 COOKIECUTTER_DIR = Path(__file__).parent.parent
 CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
