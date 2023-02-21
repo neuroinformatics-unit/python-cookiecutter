@@ -40,12 +40,15 @@ def package_path(tmp_path_factory):
 
 @pytest.fixture(autouse=True, scope="session")
 def pip_install(package_path):
+    uninstall_cmd = f"pip uninstall -y {config_dict['package_name']}"
+    dev_formatting = ".[dev]" if platform.system() == "Windows" else "'.[dev]'"
+    install_cmd = f"pip install -e {dev_formatting}"
+
     # Installs the package using pip
     os.chdir(package_path)
-
     # Uninstall and check package not installed
     subprocess.run("git init", shell=True)
-    uninstall_cmd = f"pip uninstall -y {config_dict['package_name']}"
+
     subprocess.run(uninstall_cmd, shell=True)
     result = subprocess.Popen(
         f"pip show {config_dict['package_name']}",
@@ -59,12 +62,8 @@ def pip_install(package_path):
     )
 
     # Install package
-    dev_formatting = ".[dev]" if platform.system() == "Windows" else "'.[dev]'"
-    cmd = f"pip install -e {dev_formatting}"
-    result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    stdout, __ = result.communicate()
+    subprocess.run(install_cmd, shell=True)
     yield
-
     # Uninstall package
     subprocess.run(uninstall_cmd, shell=True)
 
