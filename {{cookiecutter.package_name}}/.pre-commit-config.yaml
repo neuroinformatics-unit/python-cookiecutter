@@ -1,4 +1,4 @@
-{% if cookiecutter.create_docs -%}
+{% if cookiecutter.create_docs == "yes" -%}
 exclude: 'conf.py'
 {%- endif %}
 repos:
