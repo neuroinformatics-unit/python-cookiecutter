@@ -43,18 +43,18 @@ classifiers = [
     {%- endif %}
 ]
 
-{%- if cookiecutter.github_repository_url != 'provide later' -%}
+{% if cookiecutter.github_repository_url != 'provide later' -%}
 [project.urls]
 homepage = "{{ cookiecutter.github_repository_url }}"
 bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
-{%- if cookiecutter.create_docs -%}
+{% if cookiecutter.create_docs == "yes" -%}
 documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
-{%- else -%}
+{% elif cookiecutter.create_docs == "no" -%}
 documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
-{% endif %}
+{%- endif %}
 source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
-{% endif %}
+{%- endif %}
 
 [project.optional-dependencies]
 dev = [
@@ -85,11 +85,11 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 include = ["{{cookiecutter.module_name}}*"]
-{%- if cookiecutter.create_docs -%}
+{% if cookiecutter.create_docs == "yes" -%}
 exclude = ["tests", "docs*"]
-{%- else -%}
+{% elif cookiecutter.create_docs == "no" -%}
 exclude = ["tests*"]
-{% endif %}
+{%- endif %}
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.module_name}}"
@@ -123,7 +123,7 @@ line_length = 79
 [tool.setuptools_scm]
 
 [tool.check-manifest]
-{% if cookiecutter.create_docs -%}
+{% if cookiecutter.create_docs == "yes" -%}
 ignore = [
 ".yaml",
 ".bumpversion.cfg",
@@ -135,7 +135,7 @@ ignore = [
 "docs/source/",
 ".flake8"
 ]
-{% else -%}
+{% elif cookiecutter.create_docs == "no" -%}
 ignore = [
 ".yaml",
 ".bumpversion.cfg",
