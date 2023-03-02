@@ -1,5 +1,5 @@
-import shutil
 import os
+import shutil
 
 create_docs = "{{ cookiecutter.create_docs }}"
 module_name = "{{ cookiecutter.module_name }}"

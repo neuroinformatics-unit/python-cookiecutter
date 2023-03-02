@@ -146,4 +146,3 @@ ignore = [
 ".flake8"
 ]
 {%- endif %}
-
