@@ -1,3 +1,5 @@
+tests/cookiecutter_test_configs.yaml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
