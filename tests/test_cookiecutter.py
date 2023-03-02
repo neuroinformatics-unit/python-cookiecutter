@@ -50,13 +50,20 @@ def create_test_configs(create_docs):
 
 
 def load_pyproject_toml(package_path):
-    """ """
+    """
+    Load the pyproject.toml file from the
+    created cookiecutter to check.
+    """
     pyproject_path = package_path / "pyproject.toml"
     project_toml = toml.load(pyproject_path.as_posix())
     return project_toml
 
 
 def run_cookiecutter():
+    """
+    Run the cookiecutter to create the test
+    project folder
+    """
     subprocess.run(
         f"cookiecutter {COOKIECUTTER_DIR} "
         f"--config-file {CONFIG_FILENAME} "
@@ -67,7 +74,9 @@ def run_cookiecutter():
 
 @pytest.fixture(scope="function")
 def package_path_config_dict(tmp_path):
-
+    """
+    Fixture to build a cookiecutter project
+    """
     config_dict = create_test_configs(create_docs=False)
 
     os.chdir(tmp_path)
@@ -81,7 +90,10 @@ def package_path_config_dict(tmp_path):
 
 @pytest.fixture(scope="function")
 def pip_install(package_path_config_dict):
-
+    """
+    Fixture to build a cookiecutter project and
+    install with pip
+    """
     package_path, config_dict = package_path_config_dict
 
     uninstall_cmd = f"pip uninstall -y {config_dict['package_name']}"
@@ -114,7 +126,10 @@ def pip_install(package_path_config_dict):
 
 
 def test_directory_names(package_path_config_dict):
-
+    """
+    Check that all expected directories are present
+    in the created cookiecutter project
+    """
     package_path = package_path_config_dict[0]
 
     assert package_path.exists()
@@ -141,8 +156,18 @@ def test_directory_names(package_path_config_dict):
 
 def test_docs(package_path_config_dict):
     """
-    First take the
-    docs false must come first
+    Test that all files and configurations related
+    to creating docs in the cookiecutter are
+    set properly. First, check they are
+    not set when docs are not created.
+    Then, make a new cookiecutter project
+    with docs and check all expected configs are there.
+
+    NOTE:
+        This assumes docs are not created by
+        default in the fixture. So, the tests
+        to check when creating a project
+        with docs must come second.
     """
     package_path, config_dict = package_path_config_dict
 
@@ -183,7 +208,11 @@ def test_docs(package_path_config_dict):
 
 
 def test_pyproject_toml(package_path_config_dict):
-    """ """
+    """
+    Check that all entries in the pyproject.toml
+    of the created cookiecutter project match
+    these settings specified (in --config-file)
+    """
     package_path, config_dict = package_path_config_dict
 
     project_toml = load_pyproject_toml(package_path)
