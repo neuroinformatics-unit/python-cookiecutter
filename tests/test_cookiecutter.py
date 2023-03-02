@@ -19,10 +19,14 @@ CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
 def create_test_configs(create_docs):
     """
-    Need to be very careful with input to lists.
-    If the option is not one of default options in the
-    cookiecutter list, it will silently fail and just
-    use the defaults.
+    Dynamically create the config file for each test,
+    to test different settings.
+
+    NOTE:
+        Need to be very careful with input to lists.
+        If the option is not one of default options in the
+        cookiecutter list, it will silently fail and just
+        use the defaults.
     """
     test_dict = {
         "default_context": {
@@ -36,7 +40,7 @@ def create_test_configs(create_docs):
             "module_name": "test_cookiecutter_module",
             "short_description": "Lets Test CookierCutter",
             "license": "MIT",
-            "create_docs": "yes",
+            "create_docs": "yes" if create_docs else "no",
         },
     }
     with open(CONFIG_FILENAME, "w") as config_file:
@@ -46,22 +50,29 @@ def create_test_configs(create_docs):
 
 
 def load_pyproject_toml(package_path):
+    """ """
     pyproject_path = package_path / "pyproject.toml"
     project_toml = toml.load(pyproject_path.as_posix())
     return project_toml
 
 
+def run_cookiecutter():
+    subprocess.run(
+        f"cookiecutter {COOKIECUTTER_DIR} "
+        f"--config-file {CONFIG_FILENAME} "
+        f"--no-input",
+        shell=True,
+    )
+
+
 @pytest.fixture(scope="function")
 def package_path_config_dict(tmp_path):
 
-    config_dict = create_test_configs(create_docs=True)
+    config_dict = create_test_configs(create_docs=False)
 
     os.chdir(tmp_path)
 
-    subprocess.run(
-        f"cookiecutter {COOKIECUTTER_DIR} --config-file {CONFIG_FILENAME} --no-input",
-        shell=True,
-    )
+    run_cookiecutter()
 
     package_path = tmp_path / config_dict["package_name"]
 
@@ -128,40 +139,47 @@ def test_directory_names(package_path_config_dict):
         assert (package_path / f).exists()
 
 
-def _test_docs(package_path_config_dict):
+def test_docs(package_path_config_dict):
     """
     First take the
+    docs false must come first
     """
     package_path, config_dict = package_path_config_dict
-    breakpoint()
 
-    #   assert not (package_path / "workflows/check_docs.yml").exists()
-    #  assert not (package_path / "workflows/publish_docs.yml").exists()
-    # assert not (package_path / "docs").exists()
-    # assert not (package_path / "module_name/greetings.py").exists()
-    # assert not (package_path / "module_name/math.py").exists()
+    for true_if_create_docs in [False, True]:
+        import shutil
 
-    with open(package_path / ".pre-commit-config.yaml") as file:
-        line = file.read().splitlines()[0]
+        if true_if_create_docs:
+            config_dict = create_test_configs(create_docs=True)
+            shutil.rmtree(package_path)
+            run_cookiecutter()
 
-    breakpoint()
-    # conf.py from pre-commit exclude
-
-    project_toml = load_pyproject_toml(package_path)
-    assert "documentation" not in project_toml["project"]["urls"]
-
-    if config_dict["create_docs"]:
         assert (
-            project_toml["project"]["urls"]["documentation"]
-            == config_dict["github_repository_url"]
+            package_path / ".github/workflows/check_docs.yml"
+        ).exists() is true_if_create_docs
+        assert (
+            package_path / ".github/workflows/publish_docs.yml"
+        ).exists() is true_if_create_docs
+        assert (package_path / "docs").exists() is true_if_create_docs
+        assert (
+            package_path / f"{config_dict['module_name']}/greetings.py"
+        ).exists() is true_if_create_docs
+        assert (
+            package_path / f"{config_dict['module_name']}/math.py"
+        ).exists() is true_if_create_docs
+
+        with open(package_path / ".pre-commit-config.yaml") as file:
+            line = file.read().splitlines()[0]
+
+        assert (
+            line == "exclude: 'conf.py'" if true_if_create_docs else line == ""
         )
 
-    ## do some tests
-    # b#
-    # create_test_configs(create_docs=True)
-    assert (package_path / "docs").exists()
+        project_toml = load_pyproject_toml(package_path)
 
-    # do some other tests
+        assert (
+            "github.io" in project_toml["project"]["urls"]["documentation"]
+        ) is true_if_create_docs
 
 
 def test_pyproject_toml(package_path_config_dict):
