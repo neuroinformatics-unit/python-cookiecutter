@@ -5,7 +5,7 @@ create_docs = "{{ cookiecutter.create_docs }}"
 module_name = "{{ cookiecutter.module_name }}"
 
 if __name__ == "__main__":
-    if create_docs != "yes":
+    if not create_docs:
         shutil.rmtree("docs", ignore_errors=True)
         os.remove(".github/workflows/check_docs.yml")
         os.remove(".github/workflows/publish_docs.yml")
