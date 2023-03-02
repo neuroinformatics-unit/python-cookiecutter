@@ -1,11 +1,9 @@
-import copy
 import os
 import platform
 import subprocess
 from pathlib import Path
 
 import pytest
-import ruamel.yaml
 import toml
 import yaml
 
@@ -18,40 +16,57 @@ import yaml
 COOKIECUTTER_DIR = Path(__file__).parent.parent
 CONFIG_FILENAME = COOKIECUTTER_DIR / "tests" / "cookiecutter_test_configs.yaml"
 
-def create_test_configs(create_docs=False):
+
+def create_test_configs(create_docs):
+    """
+    Need to be very careful with input to lists.
+    If the option is not one of default options in the
+    cookiecutter list, it will silently fail and just
+    use the defaults.
+    """
     test_dict = {
         "default_context": {
             "full_name": "Test Cookiecutter",
             "email": "testing@cookiecutter.com",
             "github_username_or_organization": "test_cookiecutter_username",
             "package_name": "test-cookiecutter",
-            "github_repository_url": "https://github.com/test_cookiecutter_username/test-cookiecutter",
+            "github_repository_url": "https://github.com/"
+            "{{cookiecutter.github_username_or_organization}}/"
+            "{{cookiecutter.package_name}}",
             "module_name": "test_cookiecutter_module",
             "short_description": "Lets Test CookierCutter",
-            "license": "BSD-3",
-            "create_docs": create_docs,
+            "license": "MIT",
+            "create_docs": "yes",
         },
     }
-
     with open(CONFIG_FILENAME, "w") as config_file:
         yaml.dump(test_dict, config_file, sort_keys=False)
 
     return test_dict["default_context"]
 
 
-@pytest.fixture(scope="function") 
+def load_pyproject_toml(package_path):
+    pyproject_path = package_path / "pyproject.toml"
+    project_toml = toml.load(pyproject_path.as_posix())
+    return project_toml
+
+
+@pytest.fixture(scope="function")
 def package_path_config_dict(tmp_path):
 
-    config_dict = create_test_configs(create_docs=False)
+    config_dict = create_test_configs(create_docs=True)
 
     os.chdir(tmp_path)
-    
-    subprocess.run(f"cookiecutter {COOKIECUTTER_DIR} --config-file {CONFIG_FILENAME} --no-input", shell=True)
+
+    subprocess.run(
+        f"cookiecutter {COOKIECUTTER_DIR} --config-file {CONFIG_FILENAME} --no-input",
+        shell=True,
+    )
 
     package_path = tmp_path / config_dict["package_name"]
 
     return package_path, config_dict
-        
+
 
 @pytest.fixture(scope="function")
 def pip_install(package_path_config_dict):
@@ -103,33 +118,57 @@ def test_directory_names(package_path_config_dict):
         "pyproject.toml",
         "README.md",
         "tox.ini",
-        Path("test_cookiecutter") / "__init__.py",
+        Path("test_cookiecutter_module") / "__init__.py",
         # Directories
-        "test_cookiecutter",
+        "test_cookiecutter_module",
         "tests",
     ]
 
     for f in expected:
         assert (package_path / f).exists()
 
-def test_docs():
+
+def _test_docs(package_path_config_dict):
     """
     First take the
     """
+    package_path, config_dict = package_path_config_dict
+    breakpoint()
+
+    #   assert not (package_path / "workflows/check_docs.yml").exists()
+    #  assert not (package_path / "workflows/publish_docs.yml").exists()
+    # assert not (package_path / "docs").exists()
+    # assert not (package_path / "module_name/greetings.py").exists()
+    # assert not (package_path / "module_name/math.py").exists()
+
+    with open(package_path / ".pre-commit-config.yaml") as file:
+        line = file.read().splitlines()[0]
+
+    breakpoint()
+    # conf.py from pre-commit exclude
+
+    project_toml = load_pyproject_toml(package_path)
+    assert "documentation" not in project_toml["project"]["urls"]
+
+    if config_dict["create_docs"]:
+        assert (
+            project_toml["project"]["urls"]["documentation"]
+            == config_dict["github_repository_url"]
+        )
+
     ## do some tests
-   # b#
-    #create_test_configs(create_docs=True)
+    # b#
+    # create_test_configs(create_docs=True)
+    assert (package_path / "docs").exists()
 
     # do some other tests
 
 
 def test_pyproject_toml(package_path_config_dict):
-    """
-    """
+    """ """
     package_path, config_dict = package_path_config_dict
 
-    pyproject_path = package_path / "pyproject.toml"
-    project_toml = toml.load(pyproject_path.as_posix())
+    project_toml = load_pyproject_toml(package_path)
 
     assert project_toml["project"]["name"] == config_dict["package_name"]
 
@@ -142,12 +181,12 @@ def test_pyproject_toml(package_path_config_dict):
     assert (
         project_toml["project"]["authors"][0]["email"] == config_dict["email"]
     )
-    assert project_toml["project"]["description"] == "A simple Python package"
+    assert project_toml["project"]["description"] == "Lets Test CookierCutter"
 
     assert project_toml["project"]["readme"] == "README.md"
     assert project_toml["project"]["requires-python"] == ">=3.8.0"
     assert (
-        project_toml["project"]["license"]["text"] == "BSD-3-Clause"
+        project_toml["project"]["license"]["text"] == "MIT"
     )  # parameterize this? test if url not given?
 
     assert project_toml["project"]["classifiers"] == [
@@ -158,32 +197,26 @@ def test_pyproject_toml(package_path_config_dict):
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
-        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: MIT License",
     ]
 
-    assert (
-        project_toml["project"]["urls"]["homepage"]
-        == config_dict["github_repository_url"]
+    test_repo_url = (
+        f"https://github.com/"
+        f"{config_dict['github_username_or_organization']}/"
+        f"{config_dict['package_name']}"
     )
+
+    assert project_toml["project"]["urls"]["homepage"] == test_repo_url
+
     assert (
         project_toml["project"]["urls"]["bug_tracker"]
-        == config_dict["github_repository_url"] + "/issues"
+        == test_repo_url + "/issues"
     )
 
-    if config_dict["create_docs"]:
-        assert (
-            project_toml["project"]["urls"]["documentation"]
-            == config_dict["github_repository_url"]
-        )
-
-        
-    assert (
-        project_toml["project"]["urls"]["source_code"]
-        == config_dict["github_repository_url"]
-    )
+    assert project_toml["project"]["urls"]["source_code"] == test_repo_url
     assert (
         project_toml["project"]["urls"]["user_support"]
-        == config_dict["github_repository_url"] + "/issues"
+        == test_repo_url + "/issues"
     )
 
     assert len(project_toml["project"]["optional-dependencies"].keys()) == 1
@@ -214,18 +247,18 @@ def test_pyproject_toml(package_path_config_dict):
 
     assert project_toml["tool"]["setuptools"]["packages"]["find"][
         "include"
-    ] == ["test_cookiecutter*"]
+    ] == [config_dict["module_name"] + "*"]
 
     assert (
         project_toml["tool"]["pytest"]["ini_options"]["addopts"]
-        == "--cov=test_cookiecutter"
+        == f"--cov={config_dict['module_name']}"
     )
     assert project_toml["tool"]["black"]
 
 
 def test_pip_install(pip_install):
 
-    config_dict = pip_install  
+    config_dict = pip_install
 
     result = subprocess.Popen(
         f"pip show {config_dict['package_name']}",
@@ -238,9 +271,11 @@ def test_pip_install(pip_install):
     show_details = stdout.decode("utf8")
     assert "Name: test-cookiecutter" in show_details
     assert "Version: 0.1.dev0" in show_details
-    assert "Summary: A simple Python package" in show_details
+
+    assert "Summary: Lets Test CookierCutter" in show_details
+
     assert (
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details
     )
-    assert "License: BSD-3-Clause" in show_details
+    assert "License: MIT" in show_details
