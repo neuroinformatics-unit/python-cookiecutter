@@ -181,10 +181,7 @@ def test_docs(package_path_config_dict):
             run_cookiecutter()
 
         assert (
-            package_path / ".github/workflows/check_docs.yml"
-        ).exists() is true_if_create_docs
-        assert (
-            package_path / ".github/workflows/publish_docs.yml"
+            package_path / ".github/workflows/docs_build_and_deploy.yml"
         ).exists() is true_if_create_docs
         assert (package_path / "docs").exists() is true_if_create_docs
         assert (
