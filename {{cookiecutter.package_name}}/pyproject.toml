@@ -109,7 +109,6 @@ ignore = [
   "tests/test_integration/",
   "docs/",
   "docs/source/",
-  ".flake8"
 ]
 {% elif cookiecutter.create_docs == "no" -%}
 ignore = [
@@ -119,7 +118,6 @@ ignore = [
   "tests/",
   "tests/test_unit/",
   "tests/test_integration/",
-  ".flake8"
 ]
 {%- endif %}
 

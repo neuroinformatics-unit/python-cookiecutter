@@ -125,6 +125,7 @@ def pip_install(package_path_config_dict):
     # Uninstall package
     subprocess.run(uninstall_cmd, shell=True)
 
+
 def test_directory_names(package_path_config_dict):
     """
     Check that all expected directories are present
