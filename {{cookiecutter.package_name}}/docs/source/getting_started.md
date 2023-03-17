@@ -1,6 +1,6 @@
 # Getting started
 
-Here you may demonstrate the basic funcitonalities your package.
+Here you may demonstrate the basic functionalities your package.
 
 You can include code snippets using the usual Markdown syntax:
 
