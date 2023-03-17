@@ -61,8 +61,8 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
-# Automatically add achors to markdown headings
-myst_heading_anchors = 2
+# Automatically add anchors to markdown headings
+myst_heading_anchors = 3
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -86,7 +86,7 @@ exclude_patterns = [
 html_theme = "pydata_sphinx_theme"
 html_title = "{{cookiecutter.package_name}}"
 
-# Cutomize the theme
+# Customize the theme
 html_theme_options = {
     "icon_links": [
         {
