@@ -121,9 +121,9 @@ def pip_install(package_path_config_dict):
     # Install package
     subprocess.run(install_cmd, shell=True)
     yield config_dict
+
     # Uninstall package
     subprocess.run(uninstall_cmd, shell=True)
-
 
 def test_directory_names(package_path_config_dict):
     """
@@ -229,7 +229,6 @@ def test_pyproject_toml(package_path_config_dict):
         project_toml["project"]["authors"][0]["email"] == config_dict["email"]
     )
     assert project_toml["project"]["description"] == "Lets Test CookierCutter"
-
     assert project_toml["project"]["readme"] == "README.md"
     assert project_toml["project"]["requires-python"] == ">=3.8.0"
     assert (
@@ -274,10 +273,9 @@ def test_pyproject_toml(package_path_config_dict):
         "coverage",
         "tox",
         "black",
-        "isort",
         "mypy",
         "pre-commit",
-        "flake8",
+        "ruff",
         "setuptools_scm",
     ]
 
@@ -318,9 +316,7 @@ def test_pip_install(pip_install):
     show_details = stdout.decode("utf8")
     assert "Name: test-cookiecutter" in show_details
     assert "Version: 0.1.dev0" in show_details
-
     assert "Summary: Lets Test CookierCutter" in show_details
-
     assert (
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details
