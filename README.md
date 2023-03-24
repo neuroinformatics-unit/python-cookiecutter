@@ -19,7 +19,7 @@ First, install cookiecutter in your desired environment.
 
 In the folder, you want to create the repo run:
 ```bash
-cookiecutter https://github.com/SainsburyWellcomeCentre/python-cookiecutter
+cookiecutter https://github.com/neuroinformatics-unit/python-cookiecutter
 ```
 
 You will be then asked a series of questions about how you want to set up your project.
