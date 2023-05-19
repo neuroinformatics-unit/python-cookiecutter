@@ -83,7 +83,7 @@ This is the structure cookiecutter will create:
 				├── __init__.py
 				└──  test_placeholder.py
 ```
-A project with this information will then be written to the current working directory. 
+A project with this information will then be written to the current working directory.
 
 If you respond positively to `Select create_docs:`, an additional `docs` folder will be created and two example Python modules (`math.py` and `greetings.py`) will be added to the above structure.
 ```
@@ -260,7 +260,7 @@ A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set
 
 ## Documentation
 
-Software documentation is important for effectively communicating how to use the software to others as well as to your future self. 
+Software documentation is important for effectively communicating how to use the software to others as well as to your future self.
 
 If you want to include documentation in your package, make sure to respond with `1 - Yes` when prompted during the `cookiecutter` setup. This will instantiate a `docs` folder with a skeleton documentation system, that you can build upon.
 
