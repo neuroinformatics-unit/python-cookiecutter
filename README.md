@@ -10,8 +10,29 @@ It will also set up:
 * Automatic versioning using [setuptools_scm](https://github.com/pypa/setuptools_scm)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
+* Documentation using [Sphinx](https://www.sphinx-doc.org/en/master/)
 
 **Based on [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
+
+## Table of contents
+- [cookiecutter-python](#cookiecutter-python)
+	- [Table of contents](#table-of-contents)
+	- [Set up](#set-up)
+		- [Make it a git repo](#make-it-a-git-repo)
+	- [Add your modules and tests](#add-your-modules-and-tests)
+		- [Add dependencies](#add-dependencies)
+		- [Write tests](#write-tests)
+	- [Before committing your changes](#before-committing-your-changes)
+		- [Run the tests](#run-the-tests)
+		- [Install your package locally](#install-your-package-locally)
+		- [Pre-commit hooks](#pre-commit-hooks)
+	- [Versioning](#versioning)
+		- [Automated versioning](#automated-versioning)
+	- [GitHub actions workflow](#github-actions-workflow)
+	- [Documentation](#documentation)
+		- [Building the documentation locally](#building-the-documentation-locally)
+		- [Publishing the documentation](#publishing-the-documentation)
+		- [Docstrings and API documentation](#docstrings-and-api-documentation)
 
 ## Set up
 
