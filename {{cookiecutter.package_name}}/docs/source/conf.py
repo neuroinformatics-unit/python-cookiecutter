@@ -46,6 +46,7 @@ extensions = [
 ]
 
 # Configure the myst parser to enable cool markdown features
+# See https://sphinx-design.readthedocs.io
 myst_enable_extensions = [
     "amsmath",
     "colon_fence",
