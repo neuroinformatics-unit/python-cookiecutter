@@ -300,7 +300,6 @@ def test_pyproject_toml(package_path_config_dict):
 
 
 def test_pip_install(pip_install):
-
     config_dict = pip_install
 
     result = subprocess.Popen(
