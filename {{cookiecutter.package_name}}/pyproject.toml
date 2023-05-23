@@ -102,7 +102,6 @@ line-length = 79
 {% if cookiecutter.create_docs == "yes" -%}
 ignore = [
   ".yaml",
-  ".bumpversion.cfg",
   "tox.ini",
   "tests/",
   "tests/test_unit/",
@@ -113,7 +112,6 @@ ignore = [
 {% elif cookiecutter.create_docs == "no" -%}
 ignore = [
   ".yaml",
-  ".bumpversion.cfg",
   "tox.ini",
   "tests/",
   "tests/test_unit/",
