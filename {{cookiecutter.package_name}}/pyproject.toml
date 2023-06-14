@@ -52,7 +52,7 @@ classifiers = [
 {% elif cookiecutter.create_docs == "no" -%}
 "Documentation" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 {%- endif %}
-"Source code" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+"Source Code" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 "User Support" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
 
