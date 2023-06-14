@@ -45,15 +45,15 @@ classifiers = [
 
 {% if cookiecutter.github_repository_url != 'provide later' -%}
 [project.urls]
-homepage = "{{ cookiecutter.github_repository_url }}"
-bug_tracker = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+"Homepage" = "{{ cookiecutter.github_repository_url }}"
+"Bug Tracker" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {% if cookiecutter.create_docs == "yes" -%}
-documentation = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
+"Documentation" = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
 {% elif cookiecutter.create_docs == "no" -%}
-documentation = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+"Documentation" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
 {%- endif %}
-source_code = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
-user_support = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+"Source code" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+"User Support" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
 
 [project.optional-dependencies]
