@@ -201,7 +201,7 @@ def test_docs(package_path_config_dict):
         project_toml = load_pyproject_toml(package_path)
 
         assert (
-            "github.io" in project_toml["project"]["urls"]["documentation"]
+            "github.io" in project_toml["project"]["urls"]["Documentation"]
         ) is true_if_create_docs
 
 
@@ -250,16 +250,16 @@ def test_pyproject_toml(package_path_config_dict):
         f"{config_dict['package_name']}"
     )
 
-    assert project_toml["project"]["urls"]["homepage"] == test_repo_url
+    assert project_toml["project"]["urls"]["Homepage"] == test_repo_url
 
     assert (
-        project_toml["project"]["urls"]["bug_tracker"]
+        project_toml["project"]["urls"]["Bug Tracker"]
         == test_repo_url + "/issues"
     )
 
-    assert project_toml["project"]["urls"]["source_code"] == test_repo_url
+    assert project_toml["project"]["urls"]["Source Code"] == test_repo_url
     assert (
-        project_toml["project"]["urls"]["user_support"]
+        project_toml["project"]["urls"]["User Support"]
         == test_repo_url + "/issues"
     )
 
