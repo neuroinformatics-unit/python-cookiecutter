@@ -44,7 +44,7 @@ First, install cookiecutter in your desired environment. Running in the terminal
 
 or conda:
 
-`conda install cookiecutter`
+`conda install -c conda-forge cookiecutter`
 
 ### Creating a Cookiecutter project
 
