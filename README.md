@@ -36,7 +36,17 @@ It will also set up:
 
 ## Set up
 
-First, install cookiecutter in your desired environment.
+### Installating Cookiecutter
+
+First, install cookiecutter in your desired environment. Running in the terminal in your environment, with Pip:
+
+`pip install cookiecutter`
+
+or conda:
+
+`conda install -c conda-forge cookiecutter`
+
+### Creating a Cookiecutter project
 
 In the folder, you want to create the repo run:
 ```bash
