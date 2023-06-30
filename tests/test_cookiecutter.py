@@ -144,7 +144,6 @@ def test_directory_names(package_path_config_dict):
         "MANIFEST.in",
         "pyproject.toml",
         "README.md",
-        "tox.ini",
         Path("test_cookiecutter_module") / "__init__.py",
         # Directories
         "test_cookiecutter_module",
@@ -297,6 +296,8 @@ def test_pyproject_toml(package_path_config_dict):
         == f"--cov={config_dict['module_name']}"
     )
     assert project_toml["tool"]["black"]
+
+    assert "legacy_tox_ini" in project_toml["tool"]["tox"]
 
 
 def test_pip_install(pip_install):
