@@ -130,3 +130,22 @@ build = "cp38-* cp39-* cp310-*"
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py{38,39,310}
+isolated_build = True
+
+[gh-actions]
+python =
+    3.8: py38
+    3.9: py39
+    3.10: py310
+
+[testenv]
+extras =
+    dev
+commands =
+    pytest -v --color=yes --cov={{cookiecutter.module_name}} --cov-report=xml
+"""
