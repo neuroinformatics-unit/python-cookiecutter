@@ -12,8 +12,8 @@ repos:
             args: [--fix=lf]
           - id: requirements-txt-fixer
           - id: trailing-whitespace
-    - repo: https://github.com/charliermarsh/ruff-pre-commit
-      rev: v0.0.275
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.0.277
       hooks:
         - id: ruff
           args: [ --config=pyproject.toml ]
