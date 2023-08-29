@@ -1,3 +1,7 @@
+# Configuring https://pre-commit.ci/
+ci:
+    autoupdate_schedule: monthly
+
 exclude: "conf.py"
 
 repos:
