@@ -295,7 +295,7 @@ sphinx-build docs/source docs/build
 ```
 
 ### Publishing the documentation
-We have included an extra GitHub actions workflow in `.github/workflows/docs_build_and_depoly.yml` that will build the documentation and deploy it to [GitHub pages](https://pages.github.com/).
+We have included an extra GitHub actions workflow in `.github/workflows/docs_build_and_deploy.yml` that will build the documentation and deploy it to [GitHub pages](https://pages.github.com/).
 * The build step is triggered every time a pull request is opened or a push is made to the `main` branch. This way you can make sure that the documentation does not break before merging your changes.
 * The deployment is triggered only when a tag is present (see [Automated versioning](#automated-versioning)). This ensures that new documentation versions are published in tandem with the release of a new package version on PyPI (see [GitHub actions workflow](#github-actions-workflow)).
 * The published docs are by default hosted at `https://<github_username_or_organization>.github.io/<package_name>/`. To enable hosting, you will need to go to the settings of your repository, and under the "Pages" section, select the `gh-pages` branch as the source for your GitHub pages site.
