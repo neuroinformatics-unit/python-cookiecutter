@@ -126,7 +126,7 @@ select = ["I", "E", "F"]
 fix = true
 
 [tool.cibuildwheel]
-build = "cp38-* cp39-* cp310-*"
+build = "cp39-* cp10-* cp311-*"
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
