@@ -1,6 +1,5 @@
 name: Trigger a scheduled test
 on:
-  push: # temporary
   workflow_dispatch: # For occasional manual triggering e.g. for debugging
   schedule:
     - cron: "0 3 * * 0" # Every Sunday at 3 AM
