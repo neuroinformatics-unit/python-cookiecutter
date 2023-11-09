@@ -1,8 +1,17 @@
 name: tests
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
+  workflow_dispatch: # for occasional debugging
+  schedule:
+    # Every Sunday at 3 AM
+    - cron: "0 3 * * 0" 	
+
 jobs:
   linting:
+    # scheduled workflows should not run on forks
+    if: (${{ github.event_name == 'schedule' }} && github.repository_owner == 'neuroinformatics-unit') || (${{ github.event_name != 'schedule' }}) 
     runs-on: ubuntu-latest
     steps:
       - uses: neuroinformatics-unit/actions/lint@v1
