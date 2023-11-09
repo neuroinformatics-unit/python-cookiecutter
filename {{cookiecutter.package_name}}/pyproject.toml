@@ -125,12 +125,6 @@ exclude = ["__init__.py","build",".eggs"]
 select = ["I", "E", "F"]
 fix = true
 
-[tool.cibuildwheel]
-build = "cp39-* cp10-* cp311-*"
-
-[tool.cibuildwheel.macos]
-archs = ["x86_64", "arm64"]
-
 [tool.tox]
 legacy_tox_ini = """
 [tox]
