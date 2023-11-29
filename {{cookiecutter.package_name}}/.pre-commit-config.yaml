@@ -1,10 +1,11 @@
+{% if cookiecutter.create_docs == "yes" -%}
+exclude: 'conf.py'
+{%- endif %}
+
 # Configuring https://pre-commit.ci/
 ci:
     autoupdate_schedule: monthly
 
-{% if cookiecutter.create_docs == "yes" -%}
-exclude: 'conf.py'
-{%- endif %}
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.4.0
