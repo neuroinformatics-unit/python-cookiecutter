@@ -1,7 +1,7 @@
 # Configuring https://pre-commit.ci/
 ci:
     autoupdate_schedule: monthly
-    
+
 {% if cookiecutter.create_docs == "yes" -%}
 exclude: 'conf.py'
 {%- endif %}
