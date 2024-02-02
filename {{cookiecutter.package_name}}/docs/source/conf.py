@@ -41,7 +41,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
-    "sphinx-sitemap",
+    "sphinx_sitemap",
     "myst_parser",
     "nbsphinx",
 ]
