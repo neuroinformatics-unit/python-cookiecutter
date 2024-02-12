@@ -20,7 +20,7 @@ By default the documentation includes the following sections:
 
 You can create additional sections with narrative documentation,
 by adding new ``.md`` or ``.rst`` files to the ``docs/source`` folder.
-These files shoult start with a level-1 (H1) header,
+These files should start with a level-1 (H1) header,
 which will be used as the section title. Sub-sections can be created
 with lower-level headers (H2, H3, etc.) within the same file.
 

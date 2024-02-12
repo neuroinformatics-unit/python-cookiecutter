@@ -36,7 +36,7 @@ It will also set up:
 
 ## Set up
 
-### Installating Cookiecutter
+### Installing Cookiecutter
 
 First, install cookiecutter in your desired environment. Running in the terminal in your environment, with Pip:
 
