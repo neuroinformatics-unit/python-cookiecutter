@@ -92,6 +92,9 @@ exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.module_name}}"
+filterwarnings = [
+    "error",
+]
 
 [tool.black]
 target-version = ['py39', 'py310', 'py311']
