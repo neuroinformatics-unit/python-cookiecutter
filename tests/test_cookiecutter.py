@@ -299,6 +299,9 @@ def test_pyproject_toml(package_path_config_dict):
 
     assert "legacy_tox_ini" in project_toml["tool"]["tox"]
 
+    assert project_toml["tool"]["codespell"]["skip"] == ".git"
+    assert project_toml["tool"]["codespell"]["check-hidden"] is True
+
 
 def test_pip_install(pip_install):
     config_dict = pip_install
