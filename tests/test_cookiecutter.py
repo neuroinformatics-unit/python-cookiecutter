@@ -38,7 +38,7 @@ def create_test_configs(create_docs):
             "{{cookiecutter.github_username_or_organization}}/"
             "{{cookiecutter.package_name}}",
             "module_name": "test_cookiecutter_module",
-            "short_description": "Lets Test CookierCutter",
+            "short_description": "Lets Test CookieCutter",
             "license": "MIT",
             "create_docs": "yes" if create_docs else "no",
         },
@@ -225,7 +225,7 @@ def test_pyproject_toml(package_path_config_dict):
     assert (
         project_toml["project"]["authors"][0]["email"] == config_dict["email"]
     )
-    assert project_toml["project"]["description"] == "Lets Test CookierCutter"
+    assert project_toml["project"]["description"] == "Lets Test CookieCutter"
     assert project_toml["project"]["readme"] == "README.md"
     assert project_toml["project"]["requires-python"] == ">=3.9.0"
     assert (
@@ -299,6 +299,9 @@ def test_pyproject_toml(package_path_config_dict):
 
     assert "legacy_tox_ini" in project_toml["tool"]["tox"]
 
+    assert project_toml["tool"]["codespell"]["skip"] == ".git"
+    assert project_toml["tool"]["codespell"]["check-hidden"] is True
+
 
 def test_pip_install(pip_install):
     config_dict = pip_install
@@ -314,7 +317,7 @@ def test_pip_install(pip_install):
     show_details = stdout.decode("utf8")
     assert "Name: test-cookiecutter" in show_details
     assert "Version: 0.1.dev0" in show_details
-    assert "Summary: Lets Test CookierCutter" in show_details
+    assert "Summary: Lets Test CookieCutter" in show_details
     assert (
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details

@@ -145,3 +145,8 @@ extras =
 commands =
     pytest -v --color=yes --cov={{cookiecutter.module_name}} --cov-report=xml
 """
+
+
+[tool.codespell]
+skip = '.git'
+check-hidden = true
