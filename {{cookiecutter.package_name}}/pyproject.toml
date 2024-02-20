@@ -143,3 +143,11 @@ extras =
 commands =
     pytest -v --color=yes --cov={{cookiecutter.module_name}} --cov-report=xml
 """
+
+
+[tool.codespell]
+# Ref: https://github.com/codespell-project/codespell#using-a-config-file
+skip = '.git'
+check-hidden = true
+# ignore-regex = ''
+# ignore-words-list = ''
