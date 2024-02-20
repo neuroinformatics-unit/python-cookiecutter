@@ -166,7 +166,10 @@ from . import *
 ```
 
 ### Add dependencies
-To ensure any dependencies are installed at the same time as installing your package, add them to your `pyproject.toml` file. E.g. to add `numpy` and `pandas` as dependencies, add the following line to the `pyproject.toml` file, under the `[project]` heading:
+To ensure any dependencies are installed at the same time as installing
+your package, add them to your `pyproject.toml` file. E.g. to add `numpy`
+and `pandas` as dependencies, add them to the `dependencies = []` list under
+the `[project]` heading:
 
 ```toml
 dependencies = ["numpy", "pandas"]

@@ -6,6 +6,8 @@ readme = "README.md"
 requires-python = ">=3.9.0"
 dynamic = ["version"]
 
+dependencies = []
+
 {% if cookiecutter.license == "MIT" -%}
 license = {text = "{{cookiecutter.license}}"}
 {%- elif cookiecutter.license == "BSD-3" -%}
