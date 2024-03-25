@@ -5,6 +5,6 @@ line-length = 79
 
 [tool.ruff]
 line-length = 79
-exclude = ["__init__.py","build",".eggs"]
-select = ["I", "E", "F"]
+exclude = ["__init__.py", "build", ".eggs"]
+lint.select = ["I", "E", "F"]
 fix = true
