@@ -4,9 +4,7 @@ A tool to automatically create a Python project structure ready to release via G
 It will also set up:
 * A blank `README.md` file
 * A `LICENSE` file
-* Formatting checks using [ruff](https://github.com/charliermarsh/ruff)
-* Autoformatting using [Black](https://black.readthedocs.io/en/stable/)
-* [Pre-commit hooks](https://pre-commit.com/)
+* [Pre-commit hooks](https://pre-commit.com/) to automate linting checks and formatting
 * Automatic versioning using [setuptools_scm](https://github.com/pypa/setuptools_scm)
 * A structure for automated tests using [pytest](https://docs.pytest.org/en/7.0.x/)
 * Automated formatting checks, testing and release using [GitHub actions](https://github.com/features/actions)
@@ -15,24 +13,25 @@ It will also set up:
 **Based on [cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin)**
 
 ## Table of contents
-- [cookiecutter-python](#cookiecutter-python)
-	- [Table of contents](#table-of-contents)
-	- [Set up](#set-up)
-		- [Make it a git repo](#make-it-a-git-repo)
-	- [Add your modules and tests](#add-your-modules-and-tests)
-		- [Add dependencies](#add-dependencies)
-		- [Write tests](#write-tests)
-	- [Before committing your changes](#before-committing-your-changes)
-		- [Run the tests](#run-the-tests)
-		- [Install your package locally](#install-your-package-locally)
-		- [Pre-commit hooks](#pre-commit-hooks)
-	- [Versioning](#versioning)
-		- [Automated versioning](#automated-versioning)
-	- [GitHub actions workflow](#github-actions-workflow)
-	- [Documentation](#documentation)
-		- [Building the documentation locally](#building-the-documentation-locally)
-		- [Publishing the documentation](#publishing-the-documentation)
-		- [Docstrings and API documentation](#docstrings-and-api-documentation)
+- [Table of contents](#table-of-contents)
+- [Set up](#set-up)
+	- [Installing Cookiecutter](#installing-cookiecutter)
+	- [Creating a Cookiecutter project](#creating-a-cookiecutter-project)
+	- [Make it a git repo](#make-it-a-git-repo)
+- [Add your modules and tests](#add-your-modules-and-tests)
+	- [Add dependencies](#add-dependencies)
+	- [Write tests](#write-tests)
+- [Before committing your changes](#before-committing-your-changes)
+	- [Run the tests](#run-the-tests)
+	- [Install your package locally](#install-your-package-locally)
+	- [Pre-commit hooks](#pre-commit-hooks)
+- [Versioning](#versioning)
+	- [Automated versioning](#automated-versioning)
+- [GitHub actions workflow](#github-actions-workflow)
+- [Documentation](#documentation)
+	- [Building the documentation locally](#building-the-documentation-locally)
+	- [Publishing the documentation](#publishing-the-documentation)
+	- [Docstrings and API documentation](#docstrings-and-api-documentation)
 
 ## Set up
 
@@ -223,15 +222,19 @@ add_two_integers(1, 2)
 
 Running `pre-commit install` will set up [pre-commit hooks](https://pre-commit.com/) to ensure the code is
 formatted correctly. Currently, these are:
-* [black](https://black.readthedocs.io/en/stable/) for code structure formatting (maximum line length set to 79)
+* [ruff](https://github.com/charliermarsh/ruff) does a number of jobs, including linting, auto-formatting code (with `ruff-format`), and sorting import statements.
 * [mypy](https://mypy.readthedocs.io/en/stable/index.html) a static type checker
-* [ruff](https://github.com/charliermarsh/ruff) does a number of jobs, including enforcing PEP8 and sorting imports
+* [check-manifest](https://github.com/mgedmin/check-manifest) to ensure that the right files are included in the pip package.
+* [codespell](https://github.com/codespell-project/codespell) to check for common misspellings.
+
 
 These will prevent code from being committed if any of these hooks fail. To run them individually:
 ```bash
-ruff .
-black ./
+ruff check --fix   # Lint all files in the current directory, and fix any fixable errors.
+ruff format		   # Format all files in the current directory.
 mypy -p my_awesome_software
+check-manifest
+codespell
 ```
 
 You can also execute all the hooks using `pre-commit run`. The best time to run this is after you have staged your changes, but before you commit them.
