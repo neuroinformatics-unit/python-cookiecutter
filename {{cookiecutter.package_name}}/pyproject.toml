@@ -125,7 +125,17 @@ ignore = [
 [tool.ruff]
 line-length = 79
 exclude = ["__init__.py", "build", ".eggs"]
-lint.select = ["I", "E", "F"]
+lint.select = [
+  "E",   # pycodestyle errors
+  "F",   # Pyflakes
+  "I",   # isort
+  # You can see what all the rules do here: https://docs.astral.sh/ruff/rules/
+  # Some additional ruff rules that might be useful (uncomment to enable)
+  #"UP",  # pyupgrade
+  #"B",   # flake8 bugbear
+  #"SIM", # flake8 simplify
+  #"C90", # McCabe complexity
+]
 fix = true
 
 [tool.ruff.format]
