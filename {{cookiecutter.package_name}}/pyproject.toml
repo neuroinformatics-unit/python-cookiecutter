@@ -64,7 +64,6 @@ dev = [
   "pytest-cov",
   "coverage",
   "tox",
-  "black",
   "mypy",
   "pre-commit",
   "ruff",
@@ -95,11 +94,6 @@ addopts = "--cov={{cookiecutter.module_name}}"
 filterwarnings = [
     "error",
 ]
-
-[tool.black]
-target-version = ['py39', 'py310', 'py311']
-skip-string-normalization = false
-line-length = 79
 
 [tool.setuptools_scm]
 
