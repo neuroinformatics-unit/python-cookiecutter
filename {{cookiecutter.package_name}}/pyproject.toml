@@ -116,6 +116,8 @@ ignore = [
   "tests/test_unit/",
   "tests/test_integration/",
 ]
+{%- endif %}
+
 [tool.ruff]
 line-length = 79
 exclude = ["__init__.py", "build", ".eggs"]
