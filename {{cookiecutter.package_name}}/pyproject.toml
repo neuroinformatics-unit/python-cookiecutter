@@ -122,13 +122,14 @@ ignore = [
   "tests/test_unit/",
   "tests/test_integration/",
 ]
-{%- endif %}
-
 [tool.ruff]
 line-length = 79
-exclude = ["__init__.py","build",".eggs"]
+exclude = ["__init__.py", "build", ".eggs"]
 lint.select = ["I", "E", "F"]
 fix = true
+
+[tool.ruff.format]
+docstring-code-format = true # Also format code in docstrings (e.g. examples)
 
 [tool.tox]
 legacy_tox_ini = """
