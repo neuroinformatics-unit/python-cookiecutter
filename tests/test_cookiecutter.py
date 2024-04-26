@@ -269,7 +269,6 @@ def test_pyproject_toml(package_path_config_dict):
         "pytest-cov",
         "coverage",
         "tox",
-        "black",
         "mypy",
         "pre-commit",
         "ruff",
@@ -295,7 +294,7 @@ def test_pyproject_toml(package_path_config_dict):
         project_toml["tool"]["pytest"]["ini_options"]["addopts"]
         == f"--cov={config_dict['module_name']}"
     )
-    assert project_toml["tool"]["black"]
+    assert project_toml["tool"]["ruff"]
 
     assert "legacy_tox_ini" in project_toml["tool"]["tox"]
 

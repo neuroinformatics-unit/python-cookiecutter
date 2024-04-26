@@ -1,13 +1,11 @@
-[tool.black]
-target-version = ['py39', 'py310', 'py311']
-skip-string-normalization = false
-line-length = 79
-
 [tool.ruff]
 line-length = 79
-exclude = ["__init__.py","build",".eggs"]
+exclude = ["__init__.py", "build", ".eggs"]
 lint.select = ["I", "E", "F"]
 fix = true
+
+[tool.ruff.format]
+docstring-code-format = true # Also format code in docstrings
 
 [tool.codespell]
 # Ref: https://github.com/codespell-project/codespell#using-a-config-file

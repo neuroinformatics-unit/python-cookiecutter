@@ -64,7 +64,6 @@ dev = [
   "pytest-cov",
   "coverage",
   "tox",
-  "black",
   "mypy",
   "pre-commit",
   "ruff",
@@ -96,11 +95,6 @@ filterwarnings = [
     "error",
 ]
 
-[tool.black]
-target-version = ['py39', 'py310', 'py311']
-skip-string-normalization = false
-line-length = 79
-
 [tool.setuptools_scm]
 
 [tool.check-manifest]
@@ -126,9 +120,22 @@ ignore = [
 
 [tool.ruff]
 line-length = 79
-exclude = ["__init__.py","build",".eggs"]
-lint.select = ["I", "E", "F"]
+exclude = ["__init__.py", "build", ".eggs"]
+lint.select = [
+  "E",   # pycodestyle errors
+  "F",   # Pyflakes
+  "I",   # isort
+  # You can see what all the rules do here: https://docs.astral.sh/ruff/rules/
+  # Some additional ruff rules that might be useful (uncomment to enable)
+  #"UP",  # pyupgrade
+  #"B",   # flake8 bugbear
+  #"SIM", # flake8 simplify
+  #"C90", # McCabe complexity
+]
 fix = true
+
+[tool.ruff.format]
+docstring-code-format = true # Also format code in docstrings (e.g. examples)
 
 [tool.tox]
 legacy_tox_ini = """
