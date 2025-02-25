@@ -227,7 +227,7 @@ def test_pyproject_toml(package_path_config_dict):
     )
     assert project_toml["project"]["description"] == "Lets Test CookieCutter"
     assert project_toml["project"]["readme"] == "README.md"
-    assert project_toml["project"]["requires-python"] == ">=3.9.0"
+    assert project_toml["project"]["requires-python"] == ">=3.11.0"
     assert (
         project_toml["project"]["license"]["text"] == "MIT"
     )  # parameterize this? test if url not given?
@@ -236,9 +236,9 @@ def test_pyproject_toml(package_path_config_dict):
         "Development Status :: 2 - Pre-Alpha",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
     ]
