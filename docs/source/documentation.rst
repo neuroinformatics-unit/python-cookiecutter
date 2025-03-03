@@ -31,6 +31,7 @@ After updating your documentation, remove the build folder and rebuild:
 .. code-block:: bash
 
    rm -rf docs/build
+
    sphinx-build docs/source docs/build
 
 Publishing the Documentation

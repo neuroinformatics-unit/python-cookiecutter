@@ -34,21 +34,23 @@ html_logo = "_static/logo.png"
 html_static_path = ["_static"]
 
 html_theme_options = {
-    # Disable right sidebar TOC
-    "show_toc_level": 0,
+    # Disable all default search locations
+    "navbar_end": [],  
+    "navbar_persistent": [],  
     
     # Configure navbar
     "navbar_start": [],
-    "navbar_center": ["navbar.html"],
+    "navbar_center": ["navbar.html"],  
     "navbar_end": [],
     
-    # Disable default right sidebar
+    # Disable right sidebar and TOC
+    "show_toc_level": 0,
     "secondary_sidebar_items": [],
     
     # Keep other settings
     "show_nav_level": 2,
     "navigation_depth": 3,
-    "collapse_navigation": False,
+    "collapse_navigation": True,
 }
 
 html_sidebars = {

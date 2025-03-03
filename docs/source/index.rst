@@ -1,10 +1,10 @@
-Welcome to cookiecutter-python Documentation
-============================================
+Cookiecutter Data Science
+=========================
+A logical, flexible, and reasonably standardized project structure for doing and sharing data science work.
 
-A tool to automatically create a Python project structure ready to release via GitHub and PyPI.
-It sets up a blank README, LICENSE, pre-commit hooks, automated versioning, tests with pytest,
-GitHub Actions for CI/CD, and Sphinx documentation.
-
+Humble Opinion
+--------------
+The default project structure reflects certain opinions about how to do collaborative data science work. These opinions grew out of our own experiences with what works and what doesn't. Some of these opinions are about workflows, and others are about tools that can make the process easier.
 
 .. toctree::
    :maxdepth: 2

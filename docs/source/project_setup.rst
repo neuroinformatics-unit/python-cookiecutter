@@ -1,5 +1,5 @@
-Setup
-=====
+Installation & Setup
+====================
 
 This section describes how to set up your project using cookiecutter.
 
@@ -7,6 +7,7 @@ Installing Cookiecutter
 -----------------------
 
 Install Cookiecutter using pip or conda:
+>Note: you must have Python installed to use Cookiecutter
 
 .. code-block:: bash
 
@@ -61,23 +62,22 @@ After running cookiecutter, your project will have a structure similar to:
 Creating a GitHub Repository
 ----------------------------
 
-1. **Sign In to GitHub:**  
+1. **Sign In to GitHub:**
    Visit [GitHub](https://github.com) and sign in with your account.
 
-2. **Create a New Repository:**  
+2. **Create a New Repository:**
    - Click on the **+** icon in the upper-right corner of the page and select **"New repository"**.
-   - Alternatively, you can navigate directly to:  
-     https://github.com/new
+   - Alternatively, you can navigate directly to: https://github.com/new
 
-3. **Fill in Repository Details:**  
+3. **Fill in Repository Details:**
    - **Repository Name:** Enter a name for your project (e.g., `my-awesome-software`).
    - **Description:** Optionally, provide a short description of your project.
    - **Repository Visibility:** Choose between **Public** or **Private**.
-   - **Initialize Repository:**  
-     You may leave the repository empty (without a README, .gitignore, or license) if you plan to push your existing local project. If you prefer, you can initialize it with a README file.  
-     *Note: If you initialize with a README, you will need to pull those changes before pushing your local repository.*
+   - **Initialize Repository:**
+   You may leave the repository empty (without a README, .gitignore, or license) if you plan to push your existing local project. If you prefer, you can initialize it with a README file.
+   *Note: If you initialize with a README, you will need to pull those changes before pushing your local repository.*
 
-4. **Create the Repository:**  
+4. **Create the Repository:**
    Click the **"Create repository"** button. GitHub will then create your new repository and provide you with the repository URL (e.g., `https://github.com/yourusername/my-awesome-software.git`).
 
 
@@ -96,6 +96,7 @@ If you’re using an older Git version (<2.28), use:
 .. code-block:: bash
 
    git init
+
    git checkout -b main
 
 Then, add and commit your changes:
@@ -103,11 +104,15 @@ Then, add and commit your changes:
 .. code-block:: bash
 
    git add .
+
    git commit -m "Initial commit"
 
 Finally, add the remote origin and push to GitHub:
 
 .. code-block:: bash
 
-   git remote add origin git@github.com:adamltyson/my-awesome-software.git
+   git remote add origin https://github.com/<your-username>/my-awesome-software.git
+
    git push --set-upstream origin main
+
+That's it! Your project is now set up and ready to go. 🚀
