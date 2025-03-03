@@ -57,6 +57,30 @@ After running cookiecutter, your project will have a structure similar to:
            ├── __init__.py
            └── test_placeholder.py
 
+
+Creating a GitHub Repository
+----------------------------
+
+1. **Sign In to GitHub:**  
+   Visit [GitHub](https://github.com) and sign in with your account.
+
+2. **Create a New Repository:**  
+   - Click on the **+** icon in the upper-right corner of the page and select **"New repository"**.
+   - Alternatively, you can navigate directly to:  
+     https://github.com/new
+
+3. **Fill in Repository Details:**  
+   - **Repository Name:** Enter a name for your project (e.g., `my-awesome-software`).
+   - **Description:** Optionally, provide a short description of your project.
+   - **Repository Visibility:** Choose between **Public** or **Private**.
+   - **Initialize Repository:**  
+     You may leave the repository empty (without a README, .gitignore, or license) if you plan to push your existing local project. If you prefer, you can initialize it with a README file.  
+     *Note: If you initialize with a README, you will need to pull those changes before pushing your local repository.*
+
+4. **Create the Repository:**  
+   Click the **"Create repository"** button. GitHub will then create your new repository and provide you with the repository URL (e.g., `https://github.com/yourusername/my-awesome-software.git`).
+
+
 Initializing a Git Repository
 -----------------------------
 
@@ -86,4 +110,4 @@ Finally, add the remote origin and push to GitHub:
 .. code-block:: bash
 
    git remote add origin git@github.com:adamltyson/my-awesome-software.git
-   git push
+   git push --set-upstream origin main
