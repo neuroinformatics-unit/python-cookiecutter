@@ -1,0 +1,59 @@
+/* Top navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background: #2B3A42;
+}
+
+.navbar-brand {
+    flex: 0 0 auto;
+}
+
+.navbar-center-group {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 2rem;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navbar-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Rest of your existing styles remain */
+.navbar-brand-logo img { height: 40px; }
+.nav-link { color: white !important; font-weight: 500; }
+.icon-link { color: white !important; font-size: 1.2rem; }
+.bd-sidebar-secondary { display: none !important; }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 0.8rem;
+    }
+    
+    .navbar-center-group {
+        order: 2;
+        width: 100%;
+        margin: 1rem 0;
+        justify-content: center;
+    }
+    
+    .navbar-brand {
+        order: 1;
+    }
+}
