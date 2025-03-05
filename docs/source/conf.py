@@ -1,25 +1,41 @@
 # conf.py
-
-# -- Project information -----------------------------------------------------
+# Configuration file for the Sphinx documentation builder.
 project = 'cookiecutter-python'
-author = 'Name'
-release = '0.1.0'
+copyright = "2025, Neuroinformatics Unit"
+author = 'NIU'
+release = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 extensions = [
     "myst_parser",
     "sphinx_design",
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon"
+    "sphinx.ext.napoleon",
+    "sphinx.ext.githubpages",
+    "sphinx_autodoc_typehints",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
+    "sphinx_sitemap",
+    "nbsphinx",
 ]
 
+# Configure MyST Parser
 myst_enable_extensions = [
     "colon_fence",
     "deflist",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
     "linkify",
+    "replacements",
+    "smartquotes",
     "substitution",
     "tasklist",
+    "attrs_inline"
 ]
+
+myst_heading_anchors = 4
 
 source_suffix = {
     '.md': 'markdown',
@@ -27,34 +43,48 @@ source_suffix = {
 }
 
 templates_path = ['_templates']
+exclude_patterns = [
+    "**.ipynb_checkpoints",
+    "**/includes/**",
+]
 
 # -- HTML output options -----------------------------------------------------
 html_theme = 'pydata_sphinx_theme'
 html_logo = "_static/logo.png"
 html_static_path = ["_static"]
+html_title = "Python Cookiecutter"
+html_favicon = "_static/favicon.ico"
+html_show_sourcelink = False
 
 html_theme_options = {
-    # Disable all default search locations
-    "navbar_end": [],  
-    "navbar_persistent": [],  
-    
-    # Configure navbar
-    "navbar_start": [],
-    "navbar_center": ["navbar.html"],  
-    "navbar_end": [],
-    
-    # Disable right sidebar and TOC
-    "show_toc_level": 0,
-    "secondary_sidebar_items": [],
-    
-    # Keep other settings
+    "navbar_start": ["navbar-logo"],
+    "navbar_center": ["navbar.html"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/neuroinformatics-unit/python-cookiecutter",
+            "icon": "fa-brands fa-github",
+            "type": "fontawesome",
+        }
+    ],
+    "logo": {
+        "text": "Python Cookiecutter",
+        "image_light": "logo.png",
+        "image_dark": "logo.png",
+    },
     "show_nav_level": 2,
     "navigation_depth": 3,
     "collapse_navigation": True,
 }
 
+# Sitemap configuration
+html_baseurl = "https://neuroinformatics-unit.github.io/python-cookiecutter/"
+sitemap_url_scheme = "{link}"
+
+  
 html_sidebars = {
-    "**": ["sidebar-nav.html", "search-field.html"]
+    "**": ["sidebar-nav.html"]
 }
 
 def setup(app):

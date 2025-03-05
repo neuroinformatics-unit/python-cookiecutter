@@ -1,34 +1,14 @@
 <nav class="bd-navbar navbar">
-  <!-- Left: Logo -->
-  <div class="navbar-brand">
-    <a class="navbar-brand-logo" href="{{ pathto(master_doc) }}">
-      <img src="{{ pathto('_static/logo.png', 1) }}" alt="{{ project }} logo">
-    </a>
-  </div>
-
   <!-- Center: Navigation items -->
   <div class="navbar-center-group">
     <ul class="nav navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="https://cookiecutter-data-science.drivendata.org/">About</a>
+        <a class="nav-link" href="{{ pathto('index') }}">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ pathto('contributing') }}">Contribute</a>
       </li>
     </ul>
-
-    <div class="navbar-icons">
-      <a href="https://github.com/neuroinformatics-unit/python-cookiecutter" class="icon-link" title="GitHub">
-        <i class="fab fa-github">GitHub</i>
-      </a>
-      <a href="https://github.com/yourusername/cookiecutter-python/stargazers" class="icon-link" title="Give us a Star">
-        <i class="fas fa-star" style="color: gold;">Give a Star</i>
-      </a>
-    </div>
   </div>
 
-  <!-- Right: Custom Search -->
-  <div class="navbar-search">
-    {% include "search-field.html" %}
-  </div>
 </nav>
