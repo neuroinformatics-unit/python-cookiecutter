@@ -1,6 +1,6 @@
 Neuroinformatics Unit Python cookiecutter
 =========================
-A logical, flexible, and reasonably standardized project structure for doing and sharing data science work.
+A tool to automatically create a Python project structure ready to release via GitHub and [PyPI](https://pypi.org/).
 
 Humble Opinion
 --------------
