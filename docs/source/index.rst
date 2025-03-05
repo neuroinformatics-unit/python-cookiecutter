@@ -1,4 +1,4 @@
-Cookiecutter Data Science
+Neuroinformatics Unit Python cookiecutter
 =========================
 A logical, flexible, and reasonably standardized project structure for doing and sharing data science work.
 
