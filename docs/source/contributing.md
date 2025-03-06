@@ -3,6 +3,10 @@
 Thank you for considering contributing to cookiecutter-python! We welcome contributions that improve the project, whether it's code,
 documentation, or enhancements.
 
+:::{note}
+You can Join the [Zulip Channel](https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter) here.
+:::
+
 Please follow the guidelines below to ensure a smooth process.
 
 1. **Fork and Clone the Repository** Fork the main repository on
@@ -77,5 +81,6 @@ make html
 
     Then, open `docs/build/index.html` in your browser to preview the changes.
 
-
+:::{important}
 Thank you for your contributions!
+:::

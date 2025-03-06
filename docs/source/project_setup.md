@@ -2,27 +2,41 @@
 
 This section describes how to set up your project using cookiecutter.
 
-## Installing Cookiecutter
-
 First, install cookiecutter in your desired environment. Running in the terminal in your environment:
->Note: you must have Python installed to use Cookiecutter
+
+:::{note}
+You must have Python installed to use Cookiecutter
+:::
 
 using pip or conda:
 
-``` sh
+::::{tab-set}
+:::{tab-item} pip
+Install using pip
+```sh
 pip install cookiecutter
-# or with conda:
+```
+:::
+:::{tab-item} conda
+Install using conda
+```sh
 conda install -c conda-forge cookiecutter
 ```
+:::
+::::
 
-### Creating a Cookiecutter Project
+
+## Creating a Cookiecutter Project
 
 In the folder or directory, you want to create the project:
->You can use ``cd folder_name or directory`` to change directories
+
+:::{tip}
+You can use ``cd folder_name or directory`` to change directories
+:::
 
 Then Run the following command:
 
-```
+```sh
 cookiecutter https://github.com/neuroinformatics-unit/python-cookiecutter
 ```
 
@@ -72,7 +86,9 @@ This is the structure cookiecutter will create:
 
 A project with this information will then be written to the current working directory.
 
+:::{important}
 If you respond positively to `Select create_docs:`, an additional `docs` folder will be created and two example Python modules (`math.py` and `greetings.py`) will be added to the above structure.
+:::
 
 ```
 └── my-awesome-software/
@@ -94,7 +110,10 @@ If you respond positively to `Select create_docs:`, an additional `docs` folder 
 ### Creating a GitHub Repository
 
 1. **Sign In to GitHub:** Visit [GitHub](https://github.com) and sign in with your account.
->If you do not have an account create one
+
+:::{note}
+If you do not have an account create one
+:::
 
 2. **Create a New Repository:**
 
@@ -109,14 +128,18 @@ If you respond positively to `Select create_docs:`, an additional `docs` folder 
 
     - **Initialize Repository:** You may leave the repository empty (without a README, .gitignore, or license) if you plan to push your existing local project. If you prefer, you can initialize it with a README file.
 
-    >***Note:*** If you initialize with a README, you will need to pull those changes before pushing your local repository.
+:::{warning}
+If you initialize with a README, you will need to pull those changes before pushing your local repository.
+:::
 
 4. **Create the Repository:** Click the **Create repository** button. GitHub will then create your new repository and provide you
     with the repository URL (e.g.``https://github.com/your-username/my-awesome-software.git``).
 
 ### Initializing a Git Repository
 
+:::{note}
 Although While creating a Cookiecutter Projects, it asks for a GitHub username or organization and package name, it does not initialize a git repository.
+:::
 
 Navigate to your project folder and initialize git:
 
@@ -153,5 +176,4 @@ git remote add origin https://github.com/<your-username>/my-awesome-software.git
 ```sh
 git push --set-upstream origin main
 ```
-
 That\'s it! Your project is now set up and ready to go. 🚀

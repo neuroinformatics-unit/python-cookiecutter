@@ -1,48 +1,77 @@
-# Neuroinformatics Unit Python cookiecutter
+---
+hide-sidebar: true
+---
 
-The Neuroinformatics Unit (NIU) is a **Research Software Engineering** team based at the **Sainsbury Wellcome Centre** and the **Gatsby Computational Neuroscience Unit**.
-
-The NIU is dedicated to the development of high quality, accurate, robust, easy to use and maintainable open-source software for neuroscience and machine learning. We collaborate with researchers and other software engineers to advance research in the two research centres and make new algorithms and tools available to the global community,[Read more](https://neuroinformatics.dev/index.html).
-
-## Python cookiecutter
+# Python cookiecutter
 
 A tool to automatically create a Python project structure ready to
 release via GitHub and [PyPI](https://pypi.org/).
 
-### Getting Started
+::::{grid} 1 2 2 3
+:gutter: 3
+:class-container: sd-p-3
 
-**Python-cookiecutter** is a tool that helps you quickly set up a Python
-project with everything needed to publish it in a very easy steps on GitHub and
-[PyPI](https://pypi.org/).
+:::{grid-item-card} {fas}`rocket;sd-text-primary` Get Started
+:link: get_started
+:link-type: doc
+:text-align: center
 
-It automatically creates a structured project and sets up essential
-tools, including:
+Learn how to begin using python cookiecutter.
+:::
 
--   A blank `README.md` file for documentation.
--   A `LICENSE` file to define usage rights.
--   [Pre-commit hooks](https://pre-commit.com/) to maintain code
-    quality.
--   Automatic versioning with
-    [setuptools_scm](https://setuptools-scm.readthedocs.io/en/latest/).
--   A test setup using [pytest](https://docs.pytest.org/en/7.0.x/).
--   Automated formatting, testing, and publishing via [GitHub
-    Actions](https://github.com/features/actions).
--   A documentation setup with
-    [Sphinx](https://www.sphinx-doc.org/en/master/).
+:::{grid-item-card} {fas}`tools;sd-text-primary` Project Setup
+:link: project_setup
+:link-type: doc
+:text-align: center
 
+Installation && Setup.
+:::
+
+:::{grid-item-card} {fas}`book-open;sd-text-primary` Documentation
+:link: documentation
+:link-type: doc
+:text-align: center
+
+Build and publish project documentation
+:::
+
+:::{grid-item-card} {fas}`handshake-angle;sd-text-primary` Contributing
+:link: contributing
+:link-type: doc
+:text-align: center
+
+Guidelines on How to Contribute.
+:::
+
+:::{grid-item-card} {fas}`code-branch;sd-text-primary` Versioning
+:link: versioning
+:link-type: doc
+:text-align: center
+
+Semantic and Automated versioning.
+:::
+
+:::{grid-item-card} {fas}`circle-check;sd-text-primary` Pre Commits
+:link: pre_commits
+:link-type: doc
+:text-align: center
+
+Set up pre-commit hooks.
+:::
+::::
+
+:::{note}
 This tool is based on
 [cookiecutter-napari-plugin](https://github.com/napari/napari-plugin-template)
 and provides a solid starting point for your projects.
-
->With this tool, you can start immediately without manually setting up
-everything!
-
+:::
 
 ```{toctree}
 :maxdepth: 2
-:caption: Documentation
+:caption: Get Started
 :hidden:
 
+get_started
 project_setup
 modules
 github_actions_setup
