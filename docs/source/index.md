@@ -2,7 +2,7 @@
 hide-sidebar: true
 ---
 
-# Python cookiecutter
+# python-cookiecutter
 
 A tool to automatically create a Python project structure ready to
 release via GitHub and [PyPI](https://pypi.org/).
