@@ -107,7 +107,7 @@ notfound_context = {
 
     <p>Sorry, we couldn't find that page.</p>
 
-    <p>We occasionally restructure the cookiercutter website, and some links may have broken.</p> 
+    <p>We occasionally restructure the cookiecutter website, and some links may have broken.</p> 
 
     <p>Try using the search box or go to the homepage.</p>
 """,
