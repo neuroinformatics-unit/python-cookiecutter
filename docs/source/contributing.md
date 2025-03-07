@@ -81,6 +81,3 @@ make html
 
     Then, open `docs/build/index.html` in your browser to preview the changes.
 
-:::{important}
-Thank you for your contributions!
-:::
