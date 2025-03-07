@@ -80,4 +80,3 @@ make html
     ```
 
     Then, open `docs/build/index.html` in your browser to preview the changes.
-
