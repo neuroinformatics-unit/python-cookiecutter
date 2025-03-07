@@ -4,7 +4,7 @@ Thank you for considering contributing to python-cookiecuttter! We welcome contr
 documentation, or enhancements.
 
 :::{note}
-You can Join the [Zulip Channel](https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter) here.
+To discuss contributing, you can join the [Zulip Channel](https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter) here.
 :::
 
 Please follow the guidelines below to ensure a smooth process.
