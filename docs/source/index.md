@@ -24,7 +24,7 @@ Learn how to begin using python cookiecutter.
 :link-type: doc
 :text-align: center
 
-Installation && Setup.
+Installation and Setup.
 :::
 
 :::{grid-item-card} {fas}`book-open;sd-text-primary` Documentation
