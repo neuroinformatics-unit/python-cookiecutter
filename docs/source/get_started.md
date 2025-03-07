@@ -20,6 +20,3 @@ tools, including:
 -   A documentation setup with
     [Sphinx](https://www.sphinx-doc.org/en/master/).
 
-:::{tip}
-With this tool, you can start immediately without manually setting up everything!
-:::
