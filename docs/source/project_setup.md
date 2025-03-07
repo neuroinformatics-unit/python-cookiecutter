@@ -111,9 +111,6 @@ If you respond positively to `Select create_docs:`, an additional `docs` folder 
 
 1. **Sign In to GitHub:** Visit [GitHub](https://github.com) and sign in with your account.
 
-:::{note}
-If you do not have an account create one
-:::
 
 2. **Create a New Repository:**
 
