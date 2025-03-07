@@ -135,7 +135,7 @@ If you initialize with a README, you will need to pull those changes before push
 ### Initializing a Git Repository
 
 :::{note}
-Although While creating a Cookiecutter Projects, it asks for a GitHub username or organization and package name, it does not initialize a git repository.
+When creating a cookiecutter project, it asks for a GitHub username or organization and package name. However this does not initialize a git repository.
 :::
 
 Navigate to your project folder and initialize git:
