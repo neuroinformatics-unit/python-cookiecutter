@@ -30,9 +30,6 @@ conda install -c conda-forge cookiecutter
 
 In the folder or directory, you want to create the project:
 
-:::{tip}
-You can use ``cd folder_name or directory`` to change directories
-:::
 
 Then Run the following command:
 
