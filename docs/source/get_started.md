@@ -19,4 +19,3 @@ tools, including:
     Actions](https://github.com/features/actions).
 -   A documentation setup with
     [Sphinx](https://www.sphinx-doc.org/en/master/).
-
