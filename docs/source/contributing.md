@@ -1,4 +1,4 @@
-# Contributing to python-cookiecutter
+# Contributing
 
 Thank you for considering contributing to python-cookiecuttter! We welcome contributions that improve the project, whether it's code,
 documentation, or enhancements.

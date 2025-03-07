@@ -60,11 +60,7 @@ Set up pre-commit hooks.
 :::
 ::::
 
-:::{note}
-This tool is based on
-[cookiecutter-napari-plugin](https://github.com/napari/napari-plugin-template)
-and provides a solid starting point for your projects.
-:::
+
 
 ```{toctree}
 :maxdepth: 2

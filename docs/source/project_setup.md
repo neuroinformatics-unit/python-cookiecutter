@@ -1,6 +1,8 @@
-# Installation & Setup
+# Project Setup
 
 This section describes how to set up your project using cookiecutter.
+
+## Installation & Setup
 
 First, install cookiecutter in your desired environment. Running in the terminal in your environment:
 

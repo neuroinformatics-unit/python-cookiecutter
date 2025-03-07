@@ -1,4 +1,4 @@
-# Add your modules and tests
+# modules and tests
 
 Your methods and classes would live inside the folder `my_awesome_software`. Split the functionalities into modules, and save them as `.py` files, e.g.:
 ```
@@ -42,8 +42,9 @@ from my_awesome_software import math
 
 If you're testing a small piece of code, make it a unit test. If you want to test whether two or more software units work well together, create an integration test.
 
->**Before committing your changes**
-
+:::{important}
+Before committing your changes
+:::
 ### Run the tests
 
 Be sure that you have installed pytest and run it
