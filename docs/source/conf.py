@@ -1,8 +1,8 @@
 # conf.py
 # Configuration file for the Sphinx documentation builder.
-project = 'python cookiecutter'
-author = 'NIU'
-release = "1.0.0"
+project = "python-cookiecutter"
+copyright = "2025, University College London"
+author = "Neuroinformatics Unit"
 
 # -- General configuration ---------------------------------------------------
 extensions = [
