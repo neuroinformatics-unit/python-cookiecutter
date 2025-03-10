@@ -1,4 +1,4 @@
-# modules and tests
+# Modules and tests
 
 Your methods and classes would live inside the folder `my_awesome_software`. Split the functionalities into modules, and save them as `.py` files, e.g.:
 ```
