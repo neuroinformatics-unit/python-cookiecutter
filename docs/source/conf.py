@@ -1,8 +1,19 @@
 # conf.py
 # Configuration file for the Sphinx documentation builder.
+import setuptools_scm
+
+
 project = "python-cookiecutter"
 copyright = "2025, University College London"
 author = "Neuroinformatics Unit"
+try:
+    full_version = setuptools_scm.get_version(root="../..", relative_to=__file__)
+    # Splitting the release on '+' to remove the commit hash
+    release = full_version.split('+', 1)[0]
+except LookupError:
+    # if git is not initialised, still allow local build
+    # with a dummy version
+    release = "0.0.0"
 
 # -- General configuration ---------------------------------------------------
 extensions = [
@@ -73,7 +84,7 @@ html_theme_options = {
         },
     ],
     "logo": {
-        "text": f"{project}",
+        "text": f"{project} v{release}",
     },
     "footer_start": ["footer_start"],
     "footer_end": ["footer_end"],
@@ -107,7 +118,7 @@ notfound_context = {
 
     <p>Sorry, we couldn't find that page.</p>
 
-    <p>We occasionally restructure the cookiecutter website, and some links may have broken.</p> 
+    <p>We occasionally restructure the python-cookiecutter website, and some links may have broken.</p> 
 
     <p>Try using the search box or go to the homepage.</p>
 """,

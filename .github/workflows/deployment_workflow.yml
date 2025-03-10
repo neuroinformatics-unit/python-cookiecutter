@@ -1,4 +1,4 @@
-name: Documentation
+name: Deployment Workflow
 on:
   push:
     branches:
