@@ -7,17 +7,27 @@ hide-sidebar: true
 A tool to automatically create a Python project structure ready to
 release via GitHub and [PyPI](https://pypi.org/).
 
+## Getting Started
+
+**Python-cookiecutter** automatically creates a structured project and sets up essential
+tools, including:
+
+-   A blank `README.md` file for documentation.
+-   A `LICENSE` file to define usage rights.
+-   [Pre-commit hooks](https://pre-commit.com/) to maintain code
+    quality.
+-   Automatic versioning with
+    [setuptools_scm](https://setuptools-scm.readthedocs.io/en/latest/).
+-   A test setup using [pytest](https://docs.pytest.org/en/7.0.x/).
+-   Automated formatting, testing, and publishing via [GitHub
+    Actions](https://github.com/features/actions).
+-   A documentation setup with
+    [Sphinx](https://www.sphinx-doc.org/en/master/).
+
+
 ::::{grid} 1 2 2 3
 :gutter: 3
 :class-container: sd-p-3
-
-:::{grid-item-card} {fas}`rocket;sd-text-primary` Get Started
-:link: get_started
-:link-type: doc
-:text-align: center
-
-Learn how to begin using python cookiecutter.
-:::
 
 :::{grid-item-card} {fas}`tools;sd-text-primary` Project Setup
 :link: project_setup
@@ -27,12 +37,12 @@ Learn how to begin using python cookiecutter.
 Installation and Setup.
 :::
 
-:::{grid-item-card} {fas}`book-open;sd-text-primary` Documentation
-:link: documentation
+:::{grid-item-card} {fas}`book-open;sd-text-primary` Infrastructure
+:link: infrastructure
 :link-type: doc
 :text-align: center
 
-Build and publish project documentation
+Pre-commit hooks, Versioning ,Github Actions & Documentation
 :::
 
 :::{grid-item-card} {fas}`handshake-angle;sd-text-primary` Contributing
@@ -42,37 +52,15 @@ Build and publish project documentation
 
 Guidelines on How to Contribute.
 :::
-
-:::{grid-item-card} {fas}`code-branch;sd-text-primary` Versioning
-:link: versioning
-:link-type: doc
-:text-align: center
-
-Semantic and Automated versioning.
-:::
-
-:::{grid-item-card} {fas}`circle-check;sd-text-primary` Pre Commits
-:link: pre_commits
-:link-type: doc
-:text-align: center
-
-Set up pre-commit hooks.
-:::
 ::::
-
 
 
 ```{toctree}
 :maxdepth: 2
-:caption: Get Started
+:caption: Documentation
 :hidden:
 
-get_started
 project_setup
-modules
-github_actions_setup
-pre_commits
-versioning
-documentation
+infrastructure
 contributing
 ```
