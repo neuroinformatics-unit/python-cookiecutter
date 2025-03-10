@@ -8,7 +8,6 @@
 
 A tool to automatically create a Python project structure ready to release via GitHub and [PyPI](https://pypi.org/).
 
-[![cookiecutter-python](docs/source/_static/cookiecutter-python.png)](https://github.com/neuroinformatics-unit/python-cookiecutter)
 
 ## Quick Install
 
