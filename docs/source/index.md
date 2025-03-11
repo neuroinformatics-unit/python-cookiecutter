@@ -42,7 +42,7 @@ Installation and Setup.
 :link-type: doc
 :text-align: center
 
-Pre-commit hooks, Versioning ,Github Actions & Documentation
+Pre-commit hooks, Versioning, GitHub Actions & Documentation
 :::
 
 :::{grid-item-card} {fas}`handshake-angle;sd-text-primary` Contributing
