@@ -50,7 +50,7 @@ Pre-commit hooks, Versioning, GitHub Actions & Documentation
 :link-type: doc
 :text-align: center
 
-Guidelines on How to Contribute.
+How to improve the cookiecutter
 :::
 ::::
 
