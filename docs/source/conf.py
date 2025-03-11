@@ -84,7 +84,7 @@ html_theme_options = {
         },
     ],
     "logo": {
-        "text": f"{project} v{release}",
+        "text": f"{project}",
     },
     "footer_start": ["footer_start"],
     "footer_end": ["footer_end"],
