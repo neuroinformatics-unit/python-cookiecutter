@@ -1,7 +1,7 @@
 # Contributing
 
 Thank you for considering contributing to python-cookiecuttter! We welcome contributions that improve the project, whether it's code,
-documentation, or enhancements.
+documentation, or anything else.
 
 :::{note}
 To discuss contributing, you can join the [Zulip Channel](https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter) here.
