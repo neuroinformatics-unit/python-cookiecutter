@@ -34,7 +34,7 @@ tools, including:
 :link-type: doc
 :text-align: center
 
-Installation and Setup.
+Installation and Setup
 :::
 
 :::{grid-item-card} {fas}`book-open;sd-text-primary` Infrastructure
