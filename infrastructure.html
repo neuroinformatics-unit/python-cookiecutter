@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Infrastructure &#8212; Python Cookiecutter</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=adc9d772" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=6aee1ebc"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'infrastructure';</script>
+    <link rel="canonical" href="https://python-cookiecutter.neuroinformatics.dev/infrastructure.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Project Setup" href="project_setup.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dark-logo-niu.png" class="logo__image only-light" alt=""/>
+    <img src="_static/dark-logo-niu.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">python-cookiecutter</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="project_setup.html">
+    Project Setup
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Infrastructure
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/python-cookiecutter" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter" title="Zulip (chat)" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip (chat)</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="project_setup.html">
+    Project Setup
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Infrastructure
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/python-cookiecutter" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter" title="Zulip (chat)" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip (chat)</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><div class="sidebar-header-items__center">
+    <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+      <div class="bd-toc-item navbar-nav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project_setup.html">Project Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_setup.html#installation-setup">Installation &amp; Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_setup.html#creating-a-cookiecutter-project">Creating a Cookiecutter Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_setup.html#creating-a-github-repository">Creating a GitHub Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_setup.html#initializing-a-git-repository">Initializing a Git Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project_setup.html#modules">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_setup.html#add-dependencies">Add dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#pre-commit-hooks">Pre-commit hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#versioning">Versioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#automated-versioning">Automated versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#github-actions-workflow">GitHub actions workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-documentation-locally">Building the documentation locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publishing-the-documentation">Publishing the documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docstrings-and-api-documentation">Docstrings and API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation-local-testing">Documentation Local Testing</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </nav>
+  </div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Infrastructure</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="infrastructure">
+<h1>Infrastructure<a class="headerlink" href="#infrastructure" title="Link to this heading">#</a></h1>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<p>Write your test methods and classes in the <code class="docutils literal notranslate"><span class="pre">test</span></code> folder. We are using <a class="reference external" href="https://docs.pytest.org/en/7.2.x/getting-started.html">pytest</a>.
+In your test module you can call your methods in a simple way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filename: test_math.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_awesome_software</span><span class="w"> </span><span class="kn">import</span> <span class="n">math</span>
+
+<span class="c1"># here your test function</span>
+</pre></div>
+</div>
+<p>If you’re testing a small piece of code, make it a unit test. If you want to test whether two or more software units work well together, create an integration test.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before committing your changes</p>
+</div>
+<section id="run-the-tests">
+<h3>Run the tests<a class="headerlink" href="#run-the-tests" title="Link to this heading">#</a></h3>
+<p>Be sure that you have installed pytest and run it</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest
+pytest
+</pre></div>
+</div>
+<p>You should also see coverage information.</p>
+</section>
+<section id="install-your-package-locally">
+<h3>Install your package locally<a class="headerlink" href="#install-your-package-locally" title="Link to this heading">#</a></h3>
+<p>For a local, editable install, in the project directory, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>For a local, editable install with all the development tools (e.g. testing, formatting etc.) run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[dev]&#39;</span>
+</pre></div>
+</div>
+<p>You might want to install your package in an <em>ad hoc</em> environment.</p>
+<p>To test if the installation works, try to call your modules with python in another folder from the same environment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">my_awesome_sofware.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_two_integers</span>
+<span class="n">add_two_integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="pre-commit-hooks">
+<h1>Pre-commit hooks<a class="headerlink" href="#pre-commit-hooks" title="Link to this heading">#</a></h1>
+<p>Running <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> will set up <a class="reference external" href="https://pre-commit.com/">pre-commit hooks</a> to ensure the code is
+formatted correctly. Currently, these are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/charliermarsh/ruff">ruff</a> does a number of jobs, including linting, auto-formatting code (with <code class="docutils literal notranslate"><span class="pre">ruff-format</span></code>), and sorting import statements.</p></li>
+<li><p><a class="reference external" href="https://mypy.readthedocs.io/en/stable/index.html">mypy</a> a static type checker</p></li>
+<li><p><a class="reference external" href="https://github.com/mgedmin/check-manifest">check-manifest</a> to ensure that the right files are included in the pip package.</p></li>
+<li><p><a class="reference external" href="https://github.com/codespell-project/codespell">codespell</a> to check for common misspellings.</p></li>
+</ul>
+<p>These will prevent code from being committed if any of these hooks fail. To run them individually:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w">   </span><span class="c1"># Lint all files in the current directory, and fix any fixable errors.</span>
+ruff<span class="w"> </span>format<span class="w">		   </span><span class="c1"># Format all files in the current directory.</span>
+mypy<span class="w"> </span>-p<span class="w"> </span>my_awesome_software
+check-manifest
+codespell
+</pre></div>
+</div>
+<p>You can also execute all the hooks using</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+<p>The best time to run this is after you have staged your changes, but before you commit them.</p>
+<p>In the case you see <code class="docutils literal notranslate"><span class="pre">mypy</span></code> failing with an error like <code class="docutils literal notranslate"><span class="pre">Library</span> <span class="pre">stubs</span> <span class="pre">not</span> <span class="pre">installed</span> <span class="pre">for</span> <span class="pre">this-package</span></code>, you do have to edit the <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file by adding the additional dependency to <code class="docutils literal notranslate"><span class="pre">mypy</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>-<span class="w"> </span>id:<span class="w"> </span>mypy
+<span class="w">	</span>additional_dependencies:
+<span class="w">		</span>-<span class="w"> </span>types-setuptools
+<span class="w">		</span>-<span class="w"> </span>types-this-package
+</pre></div>
+</div>
+</section>
+<section id="versioning">
+<h1>Versioning<a class="headerlink" href="#versioning" title="Link to this heading">#</a></h1>
+<p>We recommend the use of <a class="reference external" href="https://semver.org/">semantic versioning</a>, which uses a <code class="docutils literal notranslate"><span class="pre">MAJOR</span></code>.<code class="docutils literal notranslate"><span class="pre">MINOR</span></code>.<code class="docutils literal notranslate"><span class="pre">PATCH</span></code> versiong number where these mean:</p>
+<ul class="simple">
+<li><p>PATCH = small bugfix</p></li>
+<li><p>MINOR = new feature</p></li>
+<li><p>MAJOR = breaking change</p></li>
+</ul>
+<section id="automated-versioning">
+<h2>Automated versioning<a class="headerlink" href="#automated-versioning" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/pypa/setuptools_scm"><code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code></a> can be used to automatically version your package. It has been pre-configured in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file. <a class="reference external" href="https://github.com/pypa/setuptools_scm#default-versioning-scheme"><code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code> will automatically infer the version using git</a>. To manually set a new semantic version, create a tag and make sure the tag is pushed to GitHub. Make sure you commit any changes you wish to be included in this version. E.g. to bump the version to <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add new changes&quot;</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Bump to version 1.0.0&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>--follow-tags
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is also possible to perform this step by using the <a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">GitHub web interface or CLI</a>.</p>
+</div>
+</section>
+</section>
+<section id="github-actions-workflow">
+<h1>GitHub actions workflow<a class="headerlink" href="#github-actions-workflow" title="Link to this heading">#</a></h1>
+<p>A GitHub actions workflow (<code class="docutils literal notranslate"><span class="pre">.github/workflows/test_and_deploy.yml</span></code>) has been set up to run (on each commit/PR):</p>
+<ul class="simple">
+<li><p>Linting checks (pre-commit).</p></li>
+<li><p>Testing (only if linting checks pass)</p></li>
+<li><p>Release to PyPI (only if a git tag is present and if tests pass). Requires <code class="docutils literal notranslate"><span class="pre">TWINE_API_KEY</span></code> from PyPI to be set in repository secrets.</p></li>
+</ul>
+<p>This automation ensures that each commit or pull request is validated and that releases are published only when all checks pass.</p>
+</section>
+<section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h1>
+<p>Software documentation is important for effectively communicating how to use the software to others as well as to your future self.</p>
+<p>If you want to include documentation in your package, make sure to respond with <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">Yes</span></code> when prompted during the <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code> setup. This will instantiate a <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder with a skeleton documentation system, that you can build upon.</p>
+<p>The documentation source files are located in the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> folder and should be written in either <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> or <a class="reference external" href="https://myst-parser.readthedocs.io/en/stable/syntax/typography.html">markdown</a>. The <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file corresponds to the main page of the documentation website. Other <code class="docutils literal notranslate"><span class="pre">.rst</span></code>  or <code class="docutils literal notranslate"><span class="pre">.md</span></code> files can be included in the main page via the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive.</p>
+<p>The documentation is built using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> and the <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/latest/">PyData Sphinx Theme</a>. The <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> file contains the <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code> configuration.</p>
+<section id="building-the-documentation-locally">
+<h2>Building the documentation locally<a class="headerlink" href="#building-the-documentation-locally" title="Link to this heading">#</a></h2>
+<p>You can build and view the documentation website locally, on your machine. To do so, run the following commands from the root of your project:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the documentation build dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+<span class="c1"># Build the documentation</span>
+sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/build
+</pre></div>
+</div>
+<p>This should create a <code class="docutils literal notranslate"><span class="pre">docs/build</span></code> folder. You can view the local build by opening <code class="docutils literal notranslate"><span class="pre">docs/build/index.html</span></code> in a browser.
+To refresh the documentation, after making changes, remove the <code class="docutils literal notranslate"><span class="pre">docs/build</span></code> folder and re-run the above command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>docs/build
+sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/build
+</pre></div>
+</div>
+</section>
+<section id="publishing-the-documentation">
+<h2>Publishing the documentation<a class="headerlink" href="#publishing-the-documentation" title="Link to this heading">#</a></h2>
+<p>We have included an extra GitHub actions workflow in <code class="docutils literal notranslate"><span class="pre">.github/workflows/docs_build_and_deploy.yml</span></code> that will build the documentation and deploy it to <a class="reference external" href="https://pages.github.com/">GitHub pages</a>.</p>
+<ul class="simple">
+<li><p>The build step is triggered every time a pull request is opened or a push is made to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. This way you can make sure that the documentation does not break before merging your changes.</p></li>
+<li><p>The deployment is triggered only when a tag is present (see <a class="reference internal" href="#automated-versioning"><span class="std std-ref">Automated versioning</span></a>). This ensures that new documentation versions are published in tandem with the release of a new package version on PyPI (see <a class="reference internal" href="#github-actions-workflow"><span class="std std-ref">GitHub actions workflow</span></a>).</p></li>
+<li><p>The published docs are by default hosted at <code class="docutils literal notranslate"><span class="pre">https://&lt;github_username_or_organization&gt;.github.io/&lt;package_name&gt;/</span></code>. To enable hosting, you will need to go to the settings of your repository, and under the “Pages” section, select the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch as the source for your GitHub pages site.</p></li>
+<li><p>A popular alternative to GitHub pages for hosting the documentation is <a class="reference external" href="https://readthedocs.org/">Read the Docs</a>. To enable hosting on Read the Docs, you will need to create an account on the website and follow the instructions to link your GitHub repository to your Read the Docs account.</p></li>
+</ul>
+</section>
+<section id="docstrings-and-api-documentation">
+<h2>Docstrings and API documentation<a class="headerlink" href="#docstrings-and-api-documentation" title="Link to this heading">#</a></h2>
+<p>The journey towards good documentation starts with writing docstrings for all functions in your module code. In the example <code class="docutils literal notranslate"><span class="pre">math.py</span></code> and <code class="docutils literal notranslate"><span class="pre">greetings.py</span></code> modules you will find some docstrings that you can use as a template. We have written the example docstrings following the <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html">numpy style</a> but you may also choose another widely used style, such as the <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google style</a>.</p>
+<p>Once you have written docstrings for all your functions, API documentation can be automatically generated via the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">Sphinx autodoc extension</a>. We have given examples of how to do this in the <code class="docutils literal notranslate"><span class="pre">docs/source/api_index.rst</span></code> file.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="project_setup.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Project Setup</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="contributing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Infrastructure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-tests">Run the tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-your-package-locally">Install your package locally</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-hooks">Pre-commit hooks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-versioning">Automated versioning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#github-actions-workflow">GitHub actions workflow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation-locally">Building the documentation locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-documentation">Publishing the documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings-and-api-documentation">Docstrings and API documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/" target="_blank" >Sphinx</a> 8.1.3.
+    <br/>
+    </p>
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank" >PyData Sphinx Theme</a>
+    0.16.1.
+    </p></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="things-in-a-row">
+    <a href="https://neuroinformatics.dev/" target="_blank" >
+        <img src="_static/light-logo-niu.png" alt="Sponsors" class="only-light img-sponsor"/>
+        <img src="_static/dark-logo-niu.png" alt="Sponsors" class="only-dark img-sponsor"/>
+    </a>
+    <p class="sphinx-version">python-cookiecutter is based on <a href="https://github.com/napari/napari-plugin-template" target="_blank">cookiecutter-napari-plugin</a>.</p>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project Setup &#8212; Python Cookiecutter</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=adc9d772" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=6aee1ebc"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project_setup';</script>
+    <link rel="canonical" href="https://python-cookiecutter.neuroinformatics.dev/project_setup.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Infrastructure" href="infrastructure.html" />
+    <link rel="prev" title="python-cookiecutter" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dark-logo-niu.png" class="logo__image only-light" alt=""/>
+    <img src="_static/dark-logo-niu.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">python-cookiecutter</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Project Setup
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="infrastructure.html">
+    Infrastructure
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/python-cookiecutter" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter" title="Zulip (chat)" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip (chat)</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Project Setup
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="infrastructure.html">
+    Infrastructure
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/neuroinformatics-unit/python-cookiecutter" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter" title="Zulip (chat)" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip (chat)</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><div class="sidebar-header-items__center">
+    <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+      <div class="bd-toc-item navbar-nav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-setup">Installation &amp; Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-cookiecutter-project">Creating a Cookiecutter Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-github-repository">Creating a GitHub Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initializing-a-git-repository">Initializing a Git Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-dependencies">Add dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html#pre-commit-hooks">Pre-commit hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html#versioning">Versioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#automated-versioning">Automated versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html#github-actions-workflow">GitHub actions workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html#documentation">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#building-the-documentation-locally">Building the documentation locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#publishing-the-documentation">Publishing the documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#docstrings-and-api-documentation">Docstrings and API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation-local-testing">Documentation Local Testing</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </nav>
+  </div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Project Setup</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="project-setup">
+<h1>Project Setup<a class="headerlink" href="#project-setup" title="Link to this heading">#</a></h1>
+<p>This section describes how to set up your project using cookiecutter.</p>
+<section id="installation-setup">
+<h2>Installation &amp; Setup<a class="headerlink" href="#installation-setup" title="Link to this heading">#</a></h2>
+<p>First, install cookiecutter in your desired environment. Running in the terminal in your environment:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have Python installed to use Cookiecutter</p>
+</div>
+<p>using pip or conda:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+pip</label><div class="sd-tab-content docutils">
+<p>Install using pip</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>cookiecutter
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+conda</label><div class="sd-tab-content docutils">
+<p>Install using conda</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>cookiecutter
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-cookiecutter-project">
+<h2>Creating a Cookiecutter Project<a class="headerlink" href="#creating-a-cookiecutter-project" title="Link to this heading">#</a></h2>
+<p>In the folder or directory, you want to create the project:</p>
+<p>Then Run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cookiecutter<span class="w"> </span>https://github.com/neuroinformatics-unit/python-cookiecutter
+</pre></div>
+</div>
+<p>You will be then asked a series of questions about how you want to set up your project.</p>
+<p>For each one, type your answer, enter a single number (or just hit return) to choose from a default option.</p>
+<p>such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">full_name</span> <span class="pre">[Python</span> <span class="pre">developer]:</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">Adam</span> <span class="pre">Tyson</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">email</span> <span class="pre">[yourname&#64;example.com]:</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">cookiecutter&#64;adamltyson.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">github_username_or_organization</span> <span class="pre">[githubuser]:</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">adamltyson</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">package_name</span> <span class="pre">[python-package]:</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">my-awesome-software</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">github_repository_url:</span></code> - Default will be e.g. <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;your-username&gt;/my-awesome-software</span></code>, but you can also provide this later.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module_name</span> <span class="pre">[my_awesome_software]:</span></code> - The default will be the same as <code class="docutils literal notranslate"><span class="pre">package_name</span></code> but with hyphens converted to underscores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">short_description</span> <span class="pre">[A</span> <span class="pre">simple</span> <span class="pre">Python</span> <span class="pre">package]:</span></code> - Enter a simple, one-line description of your Python package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">license:</span></code> - choose from:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">BSD-3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">MIT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">-</span> <span class="pre">Mozilla</span> <span class="pre">Public</span> <span class="pre">License</span> <span class="pre">2.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">-</span> <span class="pre">Apache</span> <span class="pre">Software</span> <span class="pre">License</span> <span class="pre">2.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">-</span> <span class="pre">GNU</span> <span class="pre">LGPL</span> <span class="pre">v3.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">-</span> <span class="pre">GNU</span> <span class="pre">GPL</span> <span class="pre">v3.0</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">create_docs:</span></code> - Whether to generate documentation using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, choose from:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">Yes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">No</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>This is the structure cookiecutter will create:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── my-awesome-software/
+	├── LICENSE
+	├── MANIFEST.in
+	├── README.md
+	├── pyproject.toml
+	├── tox.ini
+	├── my_awesome_software/
+	│	└── __init__.py
+	└── tests/
+		├── __init__.py
+		├── test_integration/
+		│	└── __init__.py
+		└── test_unit/
+				├── __init__.py
+				└──  test_placeholder.py
+</pre></div>
+</div>
+<p>A project with this information will then be written to the current working directory.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you respond positively to <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">create_docs:</span></code>, an additional <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder will be created and two example Python modules (<code class="docutils literal notranslate"><span class="pre">math.py</span></code> and <code class="docutils literal notranslate"><span class="pre">greetings.py</span></code>) will be added to the above structure.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── my-awesome-software/
+	└── docs/
+		├── make.bat
+		├── Makefile
+		├── requirements.txt
+	    └── source/
+			├── api_index.rst
+			├── conf.py
+			├── getting_started.md
+			└── index.rst
+	└── my_awesome_software/
+		├── __init__.py
+		├── greetings.py
+		└── math.py
+</pre></div>
+</div>
+</section>
+<section id="creating-a-github-repository">
+<h2>Creating a GitHub Repository<a class="headerlink" href="#creating-a-github-repository" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Sign In to GitHub:</strong> Visit <a class="reference external" href="https://github.com">GitHub</a> and sign in with your account.</p></li>
+<li><p><strong>Create a New Repository:</strong></p>
+<ul class="simple">
+<li><p>Click on the <strong>+</strong> icon in the upper-right corner of the page and select <strong>New repository</strong>.</p></li>
+<li><p>Alternatively, you can navigate directly to: <a class="reference external" href="https://github.com/new">New Repository</a></p></li>
+</ul>
+</li>
+<li><p><strong>Fill in Repository Details:</strong></p>
+<ul class="simple">
+<li><p><strong>Repository Name:</strong> Enter a name for your project (e.g: <code class="docutils literal notranslate"><span class="pre">my-awesome-software</span></code>).</p></li>
+<li><p><strong>Description:</strong> Optionally, provide a short description of your project.</p></li>
+<li><p><strong>Repository Visibility:</strong> Choose between <strong>Public</strong> or <strong>Private</strong>.</p></li>
+<li><p><strong>Initialize Repository:</strong> You may leave the repository empty (without a README, .gitignore, or license) if you plan to push your existing local project. If you prefer, you can initialize it with a README file.</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you initialize with a README, you will need to pull those changes before pushing your local repository.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Create the Repository:</strong> Click the <strong>Create repository</strong> button. GitHub will then create your new repository and provide you
+with the repository URL (e.g.<code class="docutils literal notranslate"><span class="pre">https://github.com/your-username/my-awesome-software.git</span></code>).</p></li>
+</ol>
+</section>
+<section id="initializing-a-git-repository">
+<h2>Initializing a Git Repository<a class="headerlink" href="#initializing-a-git-repository" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When creating a cookiecutter project, it asks for a GitHub username or organization and package name. However this does not initialize a git repository.</p>
+</div>
+<p>Navigate to your project folder and initialize git:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>my-awesome-software
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init<span class="w"> </span>-b<span class="w"> </span>main
+</pre></div>
+</div>
+<p>If you’re using an older Git version (<code class="docutils literal notranslate"><span class="pre">&lt;2.28</span></code>), use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Then, add and commit your changes:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit&quot;</span>
+</pre></div>
+</div>
+<p>Finally, add the remote origin and push to GitHub:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;your-username&gt;/my-awesome-software.git
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>That’s it! Your project is now set up and ready to go. 🚀</p>
+</section>
+</section>
+<section id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h1>
+<p>Your methods and classes would live inside the folder <code class="docutils literal notranslate"><span class="pre">my_awesome_software</span></code>. Split the functionalities into modules, and save them as <code class="docutils literal notranslate"><span class="pre">.py</span></code> files, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_awesome_software
+	├── __init__.py
+	├── greetings.py
+	└── math.py
+</pre></div>
+</div>
+<p>If you want to import methods and classes from one module to another you can use the dot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filename: greetings.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">subtract_two_integers</span>
+</pre></div>
+</div>
+<p>If you want to import all the modules when installing you can add the following to your <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<section id="add-dependencies">
+<h2>Add dependencies<a class="headerlink" href="#add-dependencies" title="Link to this heading">#</a></h2>
+<p>To ensure any dependencies are installed at the same time as installing
+your package, add them to your <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file. E.g. to add <code class="docutils literal notranslate"><span class="pre">numpy</span></code>
+and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> as dependencies, add them to the <code class="docutils literal notranslate"><span class="pre">dependencies</span> <span class="pre">=</span> <span class="pre">[]</span></code> list under
+the <code class="docutils literal notranslate"><span class="pre">[project]</span></code> heading:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;numpy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pandas&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">python-cookiecutter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="infrastructure.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Infrastructure</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Project Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-setup">Installation &amp; Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-cookiecutter-project">Creating a Cookiecutter Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-github-repository">Creating a GitHub Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-git-repository">Initializing a Git Repository</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-dependencies">Add dependencies</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/" target="_blank" >Sphinx</a> 8.1.3.
+    <br/>
+    </p>
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank" >PyData Sphinx Theme</a>
+    0.16.1.
+    </p></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="things-in-a-row">
+    <a href="https://neuroinformatics.dev/" target="_blank" >
+        <img src="_static/light-logo-niu.png" alt="Sponsors" class="only-light img-sponsor"/>
+        <img src="_static/dark-logo-niu.png" alt="Sponsors" class="only-dark img-sponsor"/>
+    </a>
+    <p class="sphinx-version">python-cookiecutter is based on <a href="https://github.com/napari/napari-plugin-template" target="_blank">cookiecutter-napari-plugin</a>.</p>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

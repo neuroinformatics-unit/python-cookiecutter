@@ -1,0 +1,64 @@
+html[data-theme=dark] {
+    --pst-color-primary: #04B46D;
+    --pst-color-link: var(--pst-color-primary);
+  }
+
+html[data-theme=light] {
+  --pst-color-primary: #03A062;
+  --pst-color-link: var(--pst-color-primary);
+}
+
+body .bd-article-container {
+max-width: 100em !important;
+}
+
+.col {
+flex: 0 0 50%;
+max-width: 50%;
+}
+
+.img-sponsor {
+height: 50px;
+padding-top: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+}
+
+.things-in-a-row {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+/* grids to match theme colors */
+.sd-card-icon {
+  color: var(--sd-color-primary);
+  font-size: 1.5em;
+  margin-bottom: 0.5rem;
+}
+
+.sd-card {
+  padding: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.sd-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ensuring content area uses full width when sidebar is hidden */
+.bd-page-width {
+  max-width: 90% !important;
+}
+
+/* Hide sidebar on pages with hide-sidebar metadata */
+body[data-hide-sidebar="true"] .bd-sidebar-primary {
+  display: none !important;
+}
+
+/* Expand content width when sidebar hidden */
+body[data-hide-sidebar="true"] .bd-main {
+  flex-grow: 1;
+  max-width: 75%;
+}
