@@ -43,7 +43,7 @@ cookiecutter https://github.com/neuroinformatics-unit/python-cookiecutter
 ```
 You will be then asked a series of questions about how you want to set up your project.
 
-[View Full Documentation →](python-cookiecutter.neuroinformatics.dev)
+[View Full Documentation →](https://python-cookiecutter.neuroinformatics.dev)
 
 ## Contributing
 
