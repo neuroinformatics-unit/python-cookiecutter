@@ -34,7 +34,7 @@ pip install cookiecutter
 
 conda install -c conda-forge cookiecutter
 ```
-### Creating a Cookiecutter project
+### Creating a cookiecutter project
 
 In the folder, you want to create the repo run:
 
