@@ -93,7 +93,7 @@ html_theme_options = {
 
 # Sitemap configuration
 github_user = "neuroinformatics-unit"
-html_baseurl = "https://neuroinformatics-unit.github.io/python-cookiecutter/"
+html_baseurl = "https://python-cookiecutter.neuroinformatics.dev"
 sitemap_url_scheme = "{link}"
 
   
@@ -127,3 +127,16 @@ notfound_context = {
 # needed for GH pages (vs readthedocs),
 # because we have no '/<language>/<version>/' in the URL
 notfound_urls_prefix = None
+
+# The linkcheck builder will skip verifying that anchors exist when checking
+# these URLs
+linkcheck_anchors_ignore_for_url = [
+    "https://neuroinformatics.zulipchat.com/",
+    "https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter",
+    "https://github.com/pypa/setuptools_scm#default-versioning-scheme",
+]
+# A list of regular expressions that match URIs that should not be checked
+linkcheck_ignore = [
+    "https://github.com/",
+    "https://opensource.org/license/bsd-3-clause/",  # to avoid odd 403 error
+]
