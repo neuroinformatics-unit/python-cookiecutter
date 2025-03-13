@@ -47,7 +47,7 @@ You will be then asked a series of questions about how you want to set up your p
 
 ## Contributing
 
-We welcome contributions! See our [Contribution Guidelines](python-cookiecutter.neuroinformatics.dev/contributing) for workflow details.
+We welcome contributions! See our [Contribution Guidelines](https://python-cookiecutter.neuroinformatics.dev/contributing) for workflow details.
 
 ## License
 ⚖️ [BSD 3-Clause](./LICENSE)
