@@ -95,7 +95,7 @@ filterwarnings = [
     "error",
 ]
 
-[tool.setuptools-scm]
+[tool.setuptools_scm]
 
 [tool.check-manifest]
 {% if cookiecutter.create_docs == "yes" -%}
