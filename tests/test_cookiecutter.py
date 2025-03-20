@@ -276,7 +276,7 @@ def test_pyproject_toml(package_path_config_dict):
     ]
 
     assert project_toml["build-system"]["requires"] == [
-        "setuptools>=45",
+        "setuptools>=64",
         "wheel",
         "setuptools_scm[toml]>=6.2",
     ]
