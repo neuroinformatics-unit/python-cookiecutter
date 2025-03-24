@@ -272,13 +272,13 @@ def test_pyproject_toml(package_path_config_dict):
         "mypy",
         "pre-commit",
         "ruff",
-        "setuptools_scm",
+        "setuptools-scm",
     ]
 
     assert project_toml["build-system"]["requires"] == [
-        "setuptools>=45",
+        "setuptools>=64",
         "wheel",
-        "setuptools_scm[toml]>=6.2",
+        "setuptools-scm[toml]>=8",
     ]
 
     assert (
