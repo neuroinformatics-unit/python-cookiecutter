@@ -35,7 +35,7 @@ jobs:
 
       # Debugging: Verify installed version
       - name: Check python-cookiecutter version (Main)
-        run: pip list | grep python-cookiecutter
+        run: python -c "from importlib.metadata import version; print('python-cookiecutter', version('python-cookiecutter'))"
 
   build_sphinx_docs_commit:
     name: Build Sphinx Docs (Commit Hash)
@@ -49,7 +49,7 @@ jobs:
 
       # Debugging: Verify installed version
       - name: Check python-cookiecutter version (Commit)
-        run: pip list | grep python-cookiecutter
+        run: python -c "from importlib.metadata import version; print('python-cookiecutter', version('python-cookiecutter'))"
 
   deploy_sphinx_docs:
     name: Deploy Sphinx Docs
