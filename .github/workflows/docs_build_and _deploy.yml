@@ -16,6 +16,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install python-cookiecutter
+        run: pip install python-cookiecutter
+
   linting:
     # scheduled workflows should not run on forks
     if: (${{ github.event_name == 'schedule' }} && ${{ github.repository_owner == 'neuroinformatics-unit' }} && ${{ github.ref == 'refs/heads/main' }}) || (${{ github.event_name != 'schedule' }})
