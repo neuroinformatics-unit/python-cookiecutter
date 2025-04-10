@@ -25,7 +25,7 @@ jobs:
 
       - name: Install python-cookiecutter
         run: pip install python-cookiecutter
-      
+
   build_sphinx_docs_main:
     name: Build Sphinx Docs (Main Branch)
     runs-on: ubuntu-latest
