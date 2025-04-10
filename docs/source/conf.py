@@ -1,15 +1,16 @@
 # conf.py
 # Configuration file for the Sphinx documentation builder.
-import setuptools_scm
+from importlib.metadata import version as get_version
 
 
 project = "python-cookiecutter"
 copyright = "2025, University College London"
 author = "Neuroinformatics Unit"
 try:
-    full_version = setuptools_scm.get_version(root="../..", relative_to=__file__)
+    # full_version = setuptools_scm.get_version(root="../..", relative_to=__file__)
+    release = get_version("python-cookiecutter")
     # Splitting the release on '+' to remove the commit hash
-    release = full_version.split('+', 1)[0]
+    release = release.split('+', 1)[0]
 except LookupError:
     # if git is not initialised, still allow local build
     # with a dummy version
