@@ -36,7 +36,7 @@ jobs:
       # Debugging: Verify installed version
       - name: Check python-cookiecutter version (Main)
         run: pip list | grep python-cookiecutter
-        
+
   build_sphinx_docs_commit:
     name: Build Sphinx Docs (Commit Hash)
     runs-on: ubuntu-latest
