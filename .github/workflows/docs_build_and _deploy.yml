@@ -23,18 +23,37 @@ jobs:
     steps:
       - uses: neuroinformatics-unit/actions/lint@v2
 
-  build_sphinx_docs:
-    name: Build Sphinx Docs
+  build_sphinx_docs_main:
+    name: Build Sphinx Docs (Main Branch)
     runs-on: ubuntu-latest
     steps:
+      # Using the main branch version of the action from the NIU repo
       - uses: neuroinformatics-unit/actions/build_sphinx_docs@main
         with:
           python-version: 3.12
           use-make: true
 
+      # Debugging: Verify installed version
+      - name: Check python-cookiecutter version (Main)
+        run: pip list | grep python-cookiecutter
+        
+  build_sphinx_docs_commit:
+    name: Build Sphinx Docs (Commit Hash)
+    runs-on: ubuntu-latest
+    steps:
+      # Using the commit hash version of the action from the NIU repo PR Add fetch tags as an input #81 smg/fetch-tags
+      - uses: neuroinformatics-unit/actions/build_sphinx_docs@fe6e2b549ec67a5077c319f5a51d57b258b043af
+        with:
+          python-version: 3.12
+          use-make: true
+
+      # Debugging: Verify installed version
+      - name: Check python-cookiecutter version (Commit)
+        run: pip list | grep python-cookiecutter
+
   deploy_sphinx_docs:
     name: Deploy Sphinx Docs
-    needs: build_sphinx_docs
+    needs: build_sphinx_docs_commit
     permissions:
       contents: write
     # Deploy on: main branch pushes OR tags OR manual trigger
