@@ -1,13 +1,14 @@
 # conf.py
 # Configuration file for the Sphinx documentation builder.
-import setuptools_scm
+from importlib.metadata import version as get_version
 
 
 project = "python-cookiecutter"
 copyright = "2025, University College London"
 author = "Neuroinformatics Unit"
+
 try:
-    full_version = setuptools_scm.get_version(root="../..", relative_to=__file__)
+    full_version = get_version(project)
     # Splitting the release on '+' to remove the commit hash
     release = full_version.split('+', 1)[0]
 except LookupError:
@@ -84,6 +85,7 @@ html_theme_options = {
         },
     ],
     "logo": {
+        # The release version can be included here if desired later by using f"{project} {release}"
         "text": f"{project}",
     },
     "footer_start": ["footer_start"],
