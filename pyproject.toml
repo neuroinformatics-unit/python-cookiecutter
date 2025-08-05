@@ -1,3 +1,22 @@
+[project]
+name = "python-cookiecutter"
+authors = [{ name = "Neuroinformatics Unit" }]
+description = "A tool to automatically create a Python project structure ready to release via GitHub and PyPI."
+readme = "README.md"
+dynamic = ["version"]
+
+license = { text = "BSD-3-Clause" }
+
+[build-system]
+requires = [
+    "setuptools>=64",
+    "wheel",
+    "setuptools-scm[toml]>=8",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
 [tool.ruff]
 line-length = 79
 exclude = ["__init__.py", "build", ".eggs"]
