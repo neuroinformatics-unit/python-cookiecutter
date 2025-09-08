@@ -11,6 +11,30 @@ html[data-theme=light] {
 body .bd-article-container {
 max-width: 100em !important;
 }
+/* Custom CSS for the documentation site */
+/* prevent logo from being too wide and text clashing with next item */
+/* See https://github.com/pydata/pydata-sphinx-theme/issues/1143#issuecomment-2468763375 */
+
+.navbar-header-items__start .navbar-item {
+  width: 100%;
+}
+
+.navbar-item .navbar-brand {
+  width: 100%;
+}
+
+.navbar-brand img {
+  min-width: 0;
+  height: auto;
+  max-height: 100%;
+  flex-shrink: 1;
+}
+
+.navbar-brand p {
+  flex: 0 1 auto;
+}
+
+/* sponsors */
 
 .col {
 flex: 0 0 50%;

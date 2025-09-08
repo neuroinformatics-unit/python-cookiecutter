@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=adc9d772" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=eb4ebe6c" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -123,7 +123,7 @@
     <img src="_static/dark-logo-niu.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
-    <p class="title logo__title">python-cookiecutter</p>
+    <p class="title logo__title">python-cookiecutter v0.1.dev1</p>
   
 </a></div>
     
@@ -470,7 +470,8 @@ to GitHub:</p>
 <ul>
 <li><p><strong>First-Time Setup:</strong> Install the required dependencies and build
 the docs:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="c1"># Must execute from project root directory</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
 sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/build
 </pre></div>
 </div>
@@ -478,7 +479,7 @@ sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/buil
 </ul>
 <p>Alternatively, you can use the following commands to install the
 dependencies and build the docs:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt<span class="w">  </span><span class="c1"># Must execute this command from project root directory</span>
 <span class="nb">cd</span><span class="w"> </span>docs
 make<span class="w"> </span>html
 </pre></div>
