@@ -85,8 +85,7 @@ html_theme_options = {
         },
     ],
     "logo": {
-        # The release version can be included here if desired later by using f"{project} {release}"
-        "text": f"{project} {release}",
+        "text": f"{project} v{release}",
     },
     "footer_start": ["footer_start"],
     "footer_end": ["footer_end"],

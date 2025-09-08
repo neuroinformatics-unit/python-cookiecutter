@@ -12,7 +12,8 @@ body .bd-article-container {
 max-width: 100em !important;
 }
 /* Custom CSS for the documentation site */
-/* prevent logo from being to wide and text clashing with next item */
+/* prevent logo from being too wide and text clashing with next item */
+/* See https://github.com/pydata/pydata-sphinx-theme/issues/1143#issuecomment-2468763375 */
 
 .navbar-header-items__start .navbar-item {
   width: 100%;
