@@ -53,6 +53,7 @@ If you are contributing to the Documentation, Before pushing your changes, you c
     the docs:
 
     ``` sh
+     # Must execute from project root directory
     pip install -r docs/requirements.txt
     sphinx-build docs/source docs/build
     ```
@@ -61,7 +62,7 @@ Alternatively, you can use the following commands to install the
 dependencies and build the docs:
 
  ``` sh
-pip install -r docs/requirements.txt
+pip install -r docs/requirements.txt  # Must execute this command from project root directory
 cd docs
 make html
 ```

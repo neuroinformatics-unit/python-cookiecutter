@@ -9,7 +9,7 @@
 import os
 import sys
 
-import setuptools_scm
+from importlib.metadata import version as get_version
 
 # Used when building API docs, put the dependencies
 # of any class you are documenting here
@@ -24,7 +24,9 @@ project = "{{cookiecutter.package_name}}"
 copyright = "2022, {{cookiecutter.full_name}}"
 author = "{{cookiecutter.full_name}}"
 try:
-    release = setuptools_scm.get_version(root="../..", relative_to=__file__)
+    full_version = get_version(project)
+    # Splitting the release on '+' to remove the commit hash
+    release = full_version.split('+', 1)[0]
 except LookupError:
     # if git is not initialised, still allow local build
     # with a dummy version
