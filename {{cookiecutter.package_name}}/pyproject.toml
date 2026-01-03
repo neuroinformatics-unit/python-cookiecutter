@@ -150,6 +150,8 @@ python =
     3.13: py313
 
 [testenv]
+    CI
+    GITHUB_ACTIONS
 extras =
     dev
 commands =
