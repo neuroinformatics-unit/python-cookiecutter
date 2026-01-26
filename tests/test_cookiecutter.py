@@ -228,9 +228,7 @@ def test_pyproject_toml(package_path_config_dict):
     assert project_toml["project"]["description"] == "Lets Test CookieCutter"
     assert project_toml["project"]["readme"] == "README.md"
     assert project_toml["project"]["requires-python"] == ">=3.11.0"
-    assert (
-        project_toml["project"]["license"]["text"] == "MIT"
-    )  # parameterize this? test if url not given?
+    assert project_toml["project"]["license"] == "MIT"
 
     assert project_toml["project"]["classifiers"] == [
         "Development Status :: 2 - Pre-Alpha",
@@ -240,7 +238,6 @@ def test_pyproject_toml(package_path_config_dict):
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
         "Operating System :: OS Independent",
-        "License :: OSI Approved :: MIT License",
     ]
 
     test_repo_url = (
@@ -276,7 +273,7 @@ def test_pyproject_toml(package_path_config_dict):
     ]
 
     assert project_toml["build-system"]["requires"] == [
-        "setuptools>=64",
+        "setuptools>=77",
         "wheel",
         "setuptools-scm[toml]>=8",
     ]
@@ -321,4 +318,3 @@ def test_pip_install(pip_install):
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details
     )
-    assert "License: MIT" in show_details

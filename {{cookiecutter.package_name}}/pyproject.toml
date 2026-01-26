@@ -9,18 +9,20 @@ dynamic = ["version"]
 dependencies = []
 
 {% if cookiecutter.license == "MIT" -%}
-license = {text = "{{cookiecutter.license}}"}
+license = "MIT"
 {%- elif cookiecutter.license == "BSD-3" -%}
-license = {text = "BSD-3-Clause"}
+license = "BSD-3-Clause"
 {%- elif cookiecutter.license == "GNU GPL v3.0" -%}
-license = {text = "GPL-3.0-only"}
+license = "GPL-3.0-only"
 {%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
-license = {text = "LGPL-3.0-only"}
+license = "LGPL-3.0-only"
 {%- elif cookiecutter.license == "Apache Software License 2.0" -%}
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 {%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
-license = {text = "MPL-2.0"}
+license = "MPL-2.0"
 {%- endif %}
+
+license-files = ["LICENSE"]
 
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
@@ -30,19 +32,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
-    {% if cookiecutter.license == "MIT" -%}
-    "License :: OSI Approved :: MIT License",
-    {%- elif cookiecutter.license == "BSD-3" -%}
-    "License :: OSI Approved :: BSD License",
-    {%- elif cookiecutter.license == "GNU GPL v3.0" -%}
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-    {%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
-    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
-    {%- elif cookiecutter.license == "Apache Software License 2.0" -%}
-    "License :: OSI Approved :: Apache Software License",
-    {%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
-    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
-    {%- endif %}
 ]
 
 {% if cookiecutter.github_repository_url != 'provide later' -%}
@@ -72,7 +61,7 @@ dev = [
 
 [build-system]
 requires = [
-    "setuptools>=64",
+    "setuptools>=77",
     "wheel",
     "setuptools-scm[toml]>=8",
 ]
