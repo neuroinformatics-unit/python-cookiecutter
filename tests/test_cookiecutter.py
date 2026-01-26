@@ -230,7 +230,6 @@ def test_pyproject_toml(package_path_config_dict):
     assert project_toml["project"]["requires-python"] == ">=3.11.0"
     assert project_toml["project"]["license"] == "MIT"
 
-
     assert project_toml["project"]["classifiers"] == [
         "Development Status :: 2 - Pre-Alpha",
         "Programming Language :: Python",
