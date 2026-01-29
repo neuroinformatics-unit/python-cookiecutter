@@ -86,3 +86,8 @@ body[data-hide-sidebar="true"] .bd-main {
   flex-grow: 1;
   max-width: 75%;
 }
+
+.bd-header .navbar-header-items__start {
+  margin-right: 0 !important;
+  padding-right: 1.5rem;
+}
