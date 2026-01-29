@@ -92,6 +92,7 @@ html_title = "{{cookiecutter.package_name}}"
 
 # Customize the theme
 html_theme_options = {
+    "navbar_align": "left",
     "icon_links": [
         {
             # Label for this link

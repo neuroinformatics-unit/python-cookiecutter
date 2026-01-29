@@ -69,7 +69,7 @@ html_favicon = "_static/favicon.ico"
 
 html_theme_options = {
     "navbar_start": ["navbar-logo"],
-    "navbar_center": ["navbar-nav"],
+    "navbar_align": "left",
     "icon_links": [
         {
             "name": "GitHub",
