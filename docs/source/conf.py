@@ -136,7 +136,7 @@ linkcheck_anchors_ignore_for_url = [
     "https://neuroinformatics.zulipchat.com/#narrow/channel/406003-Python-cookiecutter",
     "https://github.com/pypa/setuptools_scm#default-versioning-scheme",
 ]
-# A list of regular expressions that match URIs that should not be checked
+# A list of regular expressions that match URLs that should not be checked
 linkcheck_ignore = [
     "https://github.com/",
     "https://opensource.org/license/bsd-3-clause/",  # to avoid odd 403 error
