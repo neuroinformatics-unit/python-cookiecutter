@@ -2,6 +2,7 @@ import os
 import platform
 import subprocess
 from pathlib import Path
+from importlib.metadata import metadata
 
 import pytest
 import toml
@@ -275,7 +276,7 @@ def test_pyproject_toml(package_path_config_dict):
     assert project_toml["build-system"]["requires"] == [
         "setuptools>=77",
         "wheel",
-        "setuptools-scm[toml]>=8",
+        "setuptools_scm[toml]>=8",
     ]
 
     assert (
@@ -318,3 +319,5 @@ def test_pip_install(pip_install):
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details
     )
+    meta = metadata(config_dict["package_name"])
+    assert meta["License-Expression"] == "MIT"

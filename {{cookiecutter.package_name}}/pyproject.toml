@@ -63,7 +63,7 @@ dev = [
 requires = [
     "setuptools>=77",
     "wheel",
-    "setuptools-scm[toml]>=8",
+    "setuptools_scm[toml]>=8",
 ]
 build-backend = "setuptools.build_meta"
 
