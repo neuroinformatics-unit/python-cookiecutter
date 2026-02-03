@@ -8,7 +8,6 @@ dynamic = ["version"]
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
 
-
 [build-system]
 requires = [
     "setuptools>=77",
