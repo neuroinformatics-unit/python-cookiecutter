@@ -5,13 +5,15 @@ description = "A tool to automatically create a Python project structure ready t
 readme = "README.md"
 dynamic = ["version"]
 
-license = { text = "BSD-3-Clause" }
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+
 
 [build-system]
 requires = [
-    "setuptools>=64",
+    "setuptools>=77",
     "wheel",
-    "setuptools-scm[toml]>=8",
+    "setuptools_scm[toml]>=8",
 ]
 build-backend = "setuptools.build_meta"
 
