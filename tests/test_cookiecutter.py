@@ -1,8 +1,8 @@
 import os
 import platform
 import subprocess
-from pathlib import Path
 from importlib.metadata import metadata
+from pathlib import Path
 
 import pytest
 import toml
