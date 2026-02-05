@@ -1,7 +1,6 @@
 import os
 import platform
 import subprocess
-from importlib.metadata import metadata
 from pathlib import Path
 
 import pytest
@@ -320,4 +319,3 @@ def test_pip_install(pip_install):
         in show_details
     )
     assert "License-Expression: MIT" in show_details
-
