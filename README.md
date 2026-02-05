@@ -16,7 +16,7 @@ tools, including:
 -   [Pre-commit hooks](https://pre-commit.com/) to maintain code
     quality.
 -   Automatic versioning with
-    [setuptools_scm](https://setuptools-scm.readthedocs.io/en/latest/).
+    [setuptools-scm](https://setuptools-scm.readthedocs.io/en/latest/).
 -   A test setup using [pytest](https://docs.pytest.org/en/7.0.x/).
 -   Automated formatting, testing, and publishing via [GitHub
     Actions](https://github.com/features/actions).

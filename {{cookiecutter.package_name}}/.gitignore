@@ -79,5 +79,5 @@ venv/
 # OS
 .DS_Store
 
-# written by setuptools_scm
+# written by setuptools-scm
 **/_version.py
