@@ -319,5 +319,5 @@ def test_pip_install(pip_install):
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details
     )
-    meta = metadata(config_dict["package_name"])
-    assert meta["License-Expression"] == "MIT"
+    assert "License-Expression: MIT" in show_details
+
