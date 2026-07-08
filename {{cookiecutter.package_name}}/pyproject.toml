@@ -89,7 +89,7 @@ filterwarnings = [
 [tool.check-manifest]
 {% if cookiecutter.create_docs == "yes" -%}
 ignore = [
-  ".yaml",
+  "*.yaml",
   "tox.ini",
   "tests/",
   "tests/test_unit/",
@@ -99,7 +99,7 @@ ignore = [
 ]
 {% elif cookiecutter.create_docs == "no" -%}
 ignore = [
-  ".yaml",
+  "*.yaml",
   "tox.ini",
   "tests/",
   "tests/test_unit/",
