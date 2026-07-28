@@ -111,7 +111,7 @@ It is also possible to perform this step by using the [GitHub web interface or C
 A GitHub actions workflow (`.github/workflows/test_and_deploy.yml`) has been set up to run on each commit/PR:
 * Linting checks (pre-commit).
 * Testing (only if linting checks pass)
-* Release to PyPI (only if a git tag is present and if tests pass). This requires [trusted publishing](#trusted-publishing-on-pypi) to be set up, and the tag must follow the `vX.Y.Z` format.
+* Release to PyPI (only if a git tag is present and if tests pass). This requires [trusted publishing](#trusted-publishing-on-pypi) to be set up.
 
 This automation ensures that each commit or pull request is validated and that releases are published only when all checks pass.
 
@@ -119,18 +119,10 @@ This automation ensures that each commit or pull request is validated and that r
 
 Releases are published using [trusted publishing](https://docs.pypi.org/trusted-publishers/), which is the method recommended by PyPI.
 
-If your package is not on PyPI yet, you will need to [create the project through a "pending" publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/), i.e. a trusted publisher that you register before the project exists and that creates it the first time it is used. Go to the ["Publishing" page](https://pypi.org/manage/account/publishing/) of your PyPI account settings and fill in the GitHub form as follows:
+* If your package is **not on PyPI yet**, [create the project through a "pending" publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/), i.e. a trusted publisher that you register before the project exists and that creates it the first time it is used.
+* If your package is **already on PyPI**, [add the publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/) under the "Publishing" section of your existing project's settings.
 
-* PyPI Project Name: `<package_name>`
-* Owner: `<github_username_or_organization>`
-* Repository name: `<package_name>`
-* Workflow name: `test_and_deploy.yml`
-* Environment name: `pypi`
-
-:::{note}
-- Bear in mind that a "pending" publisher does not reserve your project name on PyPI — the name is only claimed once you make your first release.
-- If your package is already on PyPI, you don't need a "pending" publisher. Instead, [add the publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/) under the "Publishing" section of your existing project's settings, using the same values as above.
-:::
+In both cases, the **workflow name** must match the one used in this repo: `test_and_deploy.yml`.
 
 :::{tip}
 The `pypi` [GitHub environment](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments) is created by GitHub on the first tagged release. It comes without any protection rules by default, meaning that the only thing preventing an untagged commit from being published is the workflow file itself. As an additional protection, you can also restrict the environment to `v*` tags, by going to the settings of your repository and, under the "Environments" section, adding a deployment tag rule. If you prefer the [GitHub CLI](https://cli.github.com/):
