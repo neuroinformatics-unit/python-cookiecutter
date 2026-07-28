@@ -123,6 +123,7 @@ Releases are published using [trusted publishing](https://docs.pypi.org/trusted-
 * If your package is **already on PyPI**, [add the publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/) under the "Publishing" section of your existing project's settings.
 
 In both cases, the **workflow name** must match the one used in this repo: `test_and_deploy.yml`.
+The **environment name** should also match the one specified in the workflow file (`pypi` by default).
 
 :::{tip}
 The `pypi` [GitHub environment](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments) is created by GitHub on the first tagged release. It comes without any protection rules by default, meaning that the only thing preventing an untagged commit from being published is the workflow file itself. As an additional protection, you can also restrict the environment to `v*` tags, by going to the settings of your repository and, under the "Environments" section, adding a deployment tag rule. If you prefer the [GitHub CLI](https://cli.github.com/):
