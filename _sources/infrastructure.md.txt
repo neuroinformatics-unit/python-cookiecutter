@@ -44,6 +44,7 @@ You might want to install your package in an _ad hoc_ environment.
 To test if the installation works, try to call your modules with python in another folder from the same environment.
 ```python
 from my_awesome_sofware.math import add_two_integers
+
 add_two_integers(1, 2)
 ```
 

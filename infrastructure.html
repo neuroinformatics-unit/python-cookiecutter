@@ -27,18 +27,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=5c2b050f" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="_static/documentation_options.js?v=6aee1ebc"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
@@ -478,12 +478,13 @@ pytest
 </pre></div>
 </div>
 <p>For a local, editable install with all the development tools (e.g. testing, formatting etc.) run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[dev]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[dev]'</span>
 </pre></div>
 </div>
 <p>You might want to install your package in an <em>ad hoc</em> environment.</p>
 <p>To test if the installation works, try to call your modules with python in another folder from the same environment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">my_awesome_sofware.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_two_integers</span>
+
 <span class="n">add_two_integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -537,8 +538,8 @@ codespell
 <h2>Automated versioning<a class="headerlink" href="#automated-versioning" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/pypa/setuptools_scm"><code class="docutils literal notranslate"><span class="pre">setuptools-scm</span></code></a> can be used to automatically version your package. It has been pre-configured in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file. <a class="reference external" href="https://github.com/pypa/setuptools_scm#default-versioning-scheme"><code class="docutils literal notranslate"><span class="pre">setuptools-scm</span></code> will automatically infer the version using git</a>. To manually set a new semantic version, create a tag and make sure the tag is pushed to GitHub. Make sure you commit any changes you wish to be included in this version. E.g. to bump the version to <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add new changes&quot;</span>
-git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Bump to version 1.0.0&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Add new changes"</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Bump to version 1.0.0"</span>
 git<span class="w"> </span>push<span class="w"> </span>--follow-tags
 </pre></div>
 </div>
@@ -572,13 +573,13 @@ The <strong>environment name</strong> should also match the one specified in the
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">REPO</span><span class="o">=</span>&lt;github_username_or_organization&gt;/&lt;package_name&gt;
 
 <span class="c1"># Create the environment with custom ref policies enabled</span>
-gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;repos/</span><span class="nv">$REPO</span><span class="s2">/environments/pypi&quot;</span><span class="w"> </span>--input<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
-<span class="s">{&quot;deployment_branch_policy&quot;:{&quot;protected_branches&quot;:false,&quot;custom_branch_policies&quot;:true}}</span>
+gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">"repos/</span><span class="nv">$REPO</span><span class="s2">/environments/pypi"</span><span class="w"> </span>--input<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
+<span class="s">{"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":true}}</span>
 <span class="s">EOF</span>
 
 <span class="c1"># Restrict it to v* tags</span>
-gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;repos/</span><span class="nv">$REPO</span><span class="s2">/environments/pypi/deployment-branch-policies&quot;</span><span class="w"> </span>--input<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
-<span class="s">{&quot;name&quot;:&quot;v*&quot;,&quot;type&quot;:&quot;tag&quot;}</span>
+gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"repos/</span><span class="nv">$REPO</span><span class="s2">/environments/pypi/deployment-branch-policies"</span><span class="w"> </span>--input<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
+<span class="s">{"name":"v*","type":"tag"}</span>
 <span class="s">EOF</span>
 </pre></div>
 </div>
@@ -711,8 +712,8 @@ sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/buil
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -726,7 +727,7 @@ sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/buil
     <p class="theme-version">
     Built with the
     <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank" >PyData Sphinx Theme</a>
-    0.20.0.
+    0.21.0.
     </p></div>
       
     </div>
